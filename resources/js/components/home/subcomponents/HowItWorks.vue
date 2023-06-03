@@ -4,8 +4,8 @@
         <div class="contentwarpper" data-aos="fade-up" data-aos-duration="1500" data-aos-once="true">
             <div class="text-left mx-5">
                 <div class="step"><h1>Step 1</h1></div> <hr>
-                <div class="title mt-3"><h4>Tell us what you're looking for</h4></div>
-                <div class="paragraph"><p>Request any products by selecting the appropriate category and fill in the product details.</p></div>
+                <div class="title mt-3"><h4>Organize your information</h4></div>
+                <div class="paragraph"><p>Keep track of the projects you implement according to an appropriate category or subcategory.</p></div>
             </div>
             <div class="mx-5">
                 <img :src="'../img/illustrator/request.png'" alt="">
@@ -17,15 +17,15 @@
             </div>
             <div class="text-left mx-5">
                 <div class="step"><h1>Step 2</h1></div> <hr>
-                <div class="title mt-3"><h4>Review offers from qualified sellers</h4></div>
-                <div class="paragraph"><p>Receive the list of products offered by the authorized sellers to be reviewed.</p></div>
+                <div class="title mt-3"><h4>Review through the graphic system the distribution of projects.</h4></div>
+                <div class="paragraph"><p>Check the list of items of each project collaboratively with authorized roles.</p></div>
             </div>
         </div>
         <div class="contentwarpper" data-aos="fade-up" data-aos-duration="1500" data-aos-once="true">
             <div class="text-left mx-5">
                 <div class="step"><h1>Step 3</h1></div> <hr>
-                <div class="title mt-3"><h4>Strike a deal</h4></div>
-                <div class="paragraph"><p>Select and accept the offers, complete payment and your product are on its way!</p></div>
+                <div class="title mt-3"><h4>Choose a package </h4></div>
+                <div class="paragraph"><p>Select the package that best suits your needs, complete the payment and you will have access to this tool for the correct management of your projects.</p></div>
             </div>
             <div class="mx-5">
                 <img :src="'../img/illustrator/accept.png'" alt="">

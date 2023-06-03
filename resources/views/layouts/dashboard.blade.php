@@ -45,7 +45,7 @@
                                     <a class="nav-link" href="{{ route('login') }}">Login</a>
                                 </li>
                             @endif
-                            
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">Sign Up</a>
@@ -102,13 +102,13 @@
                                         <a class="dropdown-item" href="{{ route('seller.index') }}">
                                             Profile
                                         </a>
-                                        
+
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                             document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
                                         </a>
-                                        
+
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                             @csrf
                                         </form>
@@ -129,13 +129,13 @@
                                         <a class="dropdown-item" href="{{ route('admin.index') }}">
                                             Profile
                                         </a>
-                                        
+
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                             document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
                                         </a>
-                                        
+
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                             @csrf
                                         </form>
@@ -183,24 +183,24 @@
                                 <h6><i class="fas fa-tachometer-alt mr-3 col-1"></i> Overview</h6>
                             </li>
                         </a>
+                        <a href="{{ route('admin.project.index') }}">
+                            <li class="text-7 sidebar-list py-4 px-4 w-100 h-100 cursor-pointer {{ Route::currentRouteName() == 'admin.project.index' || Route::currentRouteName() == 'admin.project.createIndex' ? 'active' : '' }}">
+                                <h6><i class="fas fa-book-open mr-3 col-1"></i> Proyectos</h6>
+                            </li>
+                        </a>
+                        <a href="{{ route('admin.project.index') }}">
+                            <li class="text-7 sidebar-list py-4 px-4 w-100 h-100 cursor-pointer {{ Route::currentRouteName() == 'admin.user.index' || Route::currentRouteName() == 'admin.user.createIndex' ? 'active' : '' }}">
+                                <h6><i class="fas fa-box mr-3 col-1"></i> Herramienta</h6>
+                            </li>
+                        </a>
+                        <a href="{{ route('admin.user.index') }}">
+                            <li class="text-7 sidebar-list py-4 px-4 w-100 h-100 cursor-pointer {{ Route::currentRouteName() == 'admin.user.index' || Route::currentRouteName() == 'admin.user.createIndex' ? 'active' : '' }}">
+                                <h6><i class="fas fa-globe-americas mr-3 col-1"></i> Google Maps</h6>
+                            </li>
+                        </a>
                         <a href="{{ route('admin.user.index') }}">
                             <li class="text-7 sidebar-list py-4 px-4 w-100 h-100 cursor-pointer {{ Route::currentRouteName() == 'admin.user.index' || Route::currentRouteName() == 'admin.user.createIndex' ? 'active' : '' }}">
                                 <h6><i class="fas fa-users mr-3 col-1"></i> Usuarios</h6>
-                            </li>
-                        </a>
-                        <a href="{{ route('admin.project.index') }}">
-                            <li class="text-7 sidebar-list py-4 px-4 w-100 h-100 cursor-pointer {{ Route::currentRouteName() == 'admin.project.index' || Route::currentRouteName() == 'admin.project.createIndex' ? 'active' : '' }}">
-                                <h6><i class="fas fa-users mr-3 col-1"></i> Proyectos</h6>
-                            </li>
-                        </a>
-                        <a href="{{ route('admin.user.index') }}">
-                            <li class="text-7 sidebar-list py-4 px-4 w-100 h-100 cursor-pointer {{ Route::currentRouteName() == 'admin.user.index' || Route::currentRouteName() == 'admin.user.createIndex' ? 'active' : '' }}">
-                                <h6><i class="fas fa-users mr-3 col-1"></i> Google Maps</h6>
-                            </li>
-                        </a>
-                        <a href="{{ route('admin.project.index') }}">
-                            <li class="text-7 sidebar-list py-4 px-4 w-100 h-100 cursor-pointer {{ Route::currentRouteName() == 'admin.user.index' || Route::currentRouteName() == 'admin.user.createIndex' ? 'active' : '' }}">
-                                <h6><i class="fas fa-users mr-3 col-1"></i> Herramienta</h6>
                             </li>
                         </a>
                         <a href="{{ route('feedbacks.index') }}">

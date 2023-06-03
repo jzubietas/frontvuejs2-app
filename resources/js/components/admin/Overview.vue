@@ -19,24 +19,24 @@
                 <div class="w-100 overflow-auto">
                     <ul class="p-0 d-flex flex-column">
                         <li @click="setContinent(continent)" v-for="continent in getContinents" :key="continent" class="single-list list-unstyled p-3 border">
-                            <div class="d-inline-block w-50">continent {{ continent }}</div><div class="d-inline-block w-50 text-right"><i class="fas fa-chevron-right"></i></div> 
+                            <div class="d-inline-block w-50">continent {{ continent }}</div><div class="d-inline-block w-50 text-right"><i class="fas fa-chevron-right"></i></div>
                         </li>
                     </ul>
-                </div>   
+                </div>
 
                 <div class="w-100 overflow-auto">
                     <ul class="p-0 d-flex flex-column">
                         <li @click="setCountry(country)" v-for="country in getCountries" :key="country" class="single-list list-unstyled p-3 border">
-                            <div class="d-inline-block w-50">pais {{ country }}</div><div class="d-inline-block w-50 text-right"><i class="fas fa-chevron-right"></i></div> 
+                            <div class="d-inline-block w-50">pais {{ country }}</div><div class="d-inline-block w-50 text-right"><i class="fas fa-chevron-right"></i></div>
                         </li>
                     </ul>
                 </div>
-                             
+
             </div>
         </div>
-        
 
-        <div class="warpper px-5">
+
+        <!-- <div class="warpper px-5">
             <h4 class="font-weight-600"><i class="fas fa-users"></i> Users Data</h4>
             <div class="row mt-4 pt-5 pb-4">
                 <div class="col-4 text-center">
@@ -55,8 +55,8 @@
                     <p class="text-7">Total Buyer(s)</p>
                 </div>
             </div>
-        </div>
-        <div class="warpper px-5 d-none">
+        </div> -->
+        <!-- <div class="warpper px-5 d-none">
             <h4 class="font-weight-600"><i class="fas fa-boxes"></i> Miscellaneous</h4>
             <div class="row mt-4 pt-5 pb-4">
                 <div class="col-4 text-center">
@@ -69,13 +69,13 @@
                     <h4 v-else>0</h4>
                     <p class="text-7">Pending Feedbacks</p>
                 </div>
-                <!-- <div class="col-4 text-center">
+                <div class="col-4 text-center">
                     <h4 v-if="data.avg_rating[0].avg_rating">{{ data.avg_rating[0].avg_rating}}/5</h4>
                     <h4 v-else>Not Rated Yet</h4>
                     <p class="text-7">Average Rating</p>
-                </div> -->
+                </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -83,7 +83,7 @@
 export default {
     props:[
         'data'
-    ],    
+    ],
     mounted(){
         console.log(this.data)
     }

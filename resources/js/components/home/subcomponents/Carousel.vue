@@ -9,8 +9,8 @@
         </div>
         <div class="bgcover">
             <div class="innerbgcover">
-                <h1>Any Products, We Find For You</h1>
-                <h5>Get Special Offers From Qualified Sellers!</h5>
+                <h1>Graphic system for projects</h1>
+                <h5>Get special offers</h5>
                 <a href="/requests/create" class="shopbutton text-1">Shop Now</a>
             </div>
         </div>
@@ -36,7 +36,7 @@
             }
         },
         methods: {
-            
+
         },
         mounted() {
             console.log('Component mounted.')
@@ -86,7 +86,7 @@
     line-height: 45px;
     margin-top: 15px;
     max-width: 160px;
-    width: 100%; 
+    width: 100%;
     background-color: rgba(19, 65, 83, 1);
 
     box-shadow: inset 0 0 20px rgba(46, 130, 139, 0);
@@ -101,7 +101,7 @@
   outline: 1px solid;
   outline-color: rgba(190, 218, 250, 0);
   outline-offset: 15px;
-  text-shadow: 1px 1px 2px #2E828B; 
+  text-shadow: 1px 1px 2px #2E828B;
   color: #FCFAF1;
 }
 </style>

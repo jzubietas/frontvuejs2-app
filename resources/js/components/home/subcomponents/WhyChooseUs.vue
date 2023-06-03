@@ -9,9 +9,13 @@
                 <div class="step"><h1>About Us</h1></div> <hr>
                 <div class="paragraph">
                     <p>
-                        An e-commerce platform that serves as a reverse marketplace for daily consumer products. The platform is inspired to enhance both sellers and buyers experiences in shopping and selling products online. We put the power for the buyers to be as specific or general as necessary and allow them to set their budget request in order to acquire their needs. 
+                        Welcome to our company, leaders in the sale of a graphic system for project control. In a world where efficiency and productivity are increasingly important, it is essential to have tools that allow us to effectively manage our projects, and with our system, we are sure that you will achieve your goals.
                         <br/><br/>
-                        Built with an agile and simple shopping concept while maintaining the quality value to the users. Say no more spending much time on looking for the products that you want and start request now.
+                        We have designed this software thinking about the real needs of our customers, and therefore, our system offers a friendly and easy to use interface, without neglecting the functionality and enterprise-level features.
+                        <br/><br/>
+                        In addition, our project control system is highly customizable, allowing you to adapt it to the special needs of your company and your specific projects. And to make sure you don't get left behind, our highly trained support team is available to help you with any questions or problems you may face.
+                        <br/><br/>
+                        Trust us and enjoy the peace of mind that comes from knowing that you have a tool of excellence for project control. Contact us and purchase our graphic system today.
                     </p>
                 </div>
                 <a href="/requests/create"><div class="shopbutton">Shop Now</div></a>
@@ -59,7 +63,7 @@ export default {
         line-height: 45px;
         margin-top: 25px;
         max-width: 160px;
-        width: 100%; 
+        width: 100%;
         color: #FCFAF1;
         background-color: rgba(19, 65, 83, 1);
 
@@ -74,6 +78,6 @@ export default {
         outline: 1px solid;
         outline-color: rgba(190, 218, 250, 0);
         outline-offset: 15px;
-        text-shadow: 1px 1px 2px #2E828B; 
+        text-shadow: 1px 1px 2px #2E828B;
     }
 </style>
