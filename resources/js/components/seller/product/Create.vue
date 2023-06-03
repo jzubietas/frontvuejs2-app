@@ -11,8 +11,8 @@
                 </a>
             </div>
             <div v-if="step == 1" class="step1 mt-5">
-                
-                <h6 class="d-inline-block mr-3">Select Your Product's Category:</h6> 
+
+                <h6 class="d-inline-block mr-3">Select Your Product's Category:</h6>
                 <span v-if="chosen_category" class="text-3"> {{chosen_category}} <i class="fas fa-chevron-right mx-2"></i></span>
                 <span v-if="chosen_subcategory" class="text-3"> {{chosen_subcategory}} <i class="fas fa-chevron-right mx-2"></i></span>
                 <span v-if="chosen_subcategory2" class="text-3"> {{chosen_subcategory2}}</span>
@@ -21,21 +21,21 @@
                     <div class="w-100 overflow-auto">
                         <ul class="p-0 d-flex flex-column">
                             <li @click="setCategory(category)" v-for="category in getCategories" :key="category" class="single-list list-unstyled p-3 border">
-                                <div class="d-inline-block w-50">{{ category }}</div><div class="d-inline-block w-50 text-right"><i class="fas fa-chevron-right"></i></div> 
+                                <div class="d-inline-block w-50">{{ category }}</div><div class="d-inline-block w-50 text-right"><i class="fas fa-chevron-right"></i></div>
                             </li>
                         </ul>
                     </div>
                     <div class="w-100 overflow-auto">
                         <ul class="p-0 d-flex flex-column">
                             <li @click="setSubCategory(subcategory)" v-for="subcategory in getSubCategories" :key="subcategory" class="single-list list-unstyled p-3 border">
-                                <div class="d-inline-block w-50">{{ subcategory }}</div><div class="d-inline-block w-50 text-right"><i class="fas fa-chevron-right"></i></div> 
+                                <div class="d-inline-block w-50">{{ subcategory }}</div><div class="d-inline-block w-50 text-right"><i class="fas fa-chevron-right"></i></div>
                             </li>
                         </ul>
                     </div>
                     <div class="w-100 overflow-auto">
                         <ul class="p-0 d-flex flex-column">
                             <li @click="setSubCategory2(item)" v-for="item in getSubCategories2" :key="item.id" class="single-list list-unstyled p-3 border">
-                                <div class="d-inline-block w-50">{{ item.subcategory2 }}</div> 
+                                <div class="d-inline-block w-50">{{ item.subcategory2 }}</div>
                             </li>
                         </ul>
                     </div>
@@ -47,7 +47,7 @@
             </div>
 
             <div v-else-if="step == 2" class="step2 mt-5">
-                <h6>Enter Your Product's Details:</h6> 
+                <h6>Enter Your Product's Details:</h6>
                 <span v-if="chosen_category" class="text-3"> {{chosen_category}} <i class="fas fa-chevron-right mx-2"></i></span>
                 <span v-if="chosen_subcategory" class="text-3"> {{chosen_subcategory}} <i class="fas fa-chevron-right mx-2"></i></span>
                 <span v-if="chosen_subcategory2" class="text-3"> {{chosen_subcategory2}}</span>
@@ -55,41 +55,41 @@
                 <div class="row">
                     <div class="d-inline-flex flex-column col-6 justify-content-center align-items-center">
                         <img id="product-image" :src="preview_product_img" alt="product image" class="cursor-pointer" @click="selectImage">
-                        <p class="mt-2 cursor-pointer" @click="selectImage">Upload Image</p> 
+                        <p class="mt-2 cursor-pointer" @click="selectImage">Upload Image</p>
                         <input ref="fileInput" type="file" class="d-none" @change="onFileChange">
                     </div>
                     <form class="col-6">
 
                         <div v-if="isSuccess" class="successmsg p-3 my-4"><i class="fas fa-check text-9 mr-2"></i> Successfully listed the product. </div>
                         <div v-if="isError" class="errormsg p-3 my-4"><i class="fas fa-times text-8 mr-2"></i> {{ errortext }}</div>
-                        <div v-if="isEmpty" class="errormsg p-3 my-4"><i class="fas fa-exclamation text-8 mr-2"></i> Please enter all the required fields and upload your product's image. </div>    
+                        <div v-if="isEmpty" class="errormsg p-3 my-4"><i class="fas fa-exclamation text-8 mr-2"></i> Please enter all the required fields and upload your product's image. </div>
 
-                        <label for="name" class="d-block mt-4 text-7">Name<span class="text-8">*</span></label> 
+                        <label for="name" class="d-block mt-4 text-7">Name<span class="text-8">*</span></label>
                         <input v-model="product.name" type="text" name="name" id='name' class="form-input" placeholder="Enter your product's title*" required autofocus>
-                        
-                        <label for="brand" class="d-block mt-4 text-7">Brand<span class="text-8">*</span></label> 
+
+                        <label for="brand" class="d-block mt-4 text-7">Brand<span class="text-8">*</span></label>
                         <input v-model="product.brand" type="text" name="brand" id='brand' class="form-input" placeholder="Enter your product's brand*" required>
-                        
-                        <label for="description" class="d-block mt-4 text-7">Description<span class="text-8">*</span></label> 
+
+                        <label for="description" class="d-block mt-4 text-7">Description<span class="text-8">*</span></label>
                         <input v-model="product.description" type="text" name="description" id='description' class="form-input" placeholder="Enter your product's description*" required>
-                        
+
                         <div class="row">
                             <div class="col-6">
-                                <label for="stock" class="d-block mt-4 text-7">Stock<span class="text-8">*</span></label> 
-                                <input v-model="product.stock" type="number" name="stock" id='stock' class="form-input" placeholder="Enter your product's stock*" required>                                
+                                <label for="stock" class="d-block mt-4 text-7">Stock<span class="text-8">*</span></label>
+                                <input v-model="product.stock" type="number" name="stock" id='stock' class="form-input" placeholder="Enter your product's stock*" required>
                             </div>
 
                             <div class="col-6">
-                                <label for="price" class="d-block mt-4 text-7">Price<span class="text-8">*</span></label> 
+                                <label for="price" class="d-block mt-4 text-7">Price<span class="text-8">*</span></label>
                                 <input v-model="product.price" type="number" name="price" id='price' class="form-input" placeholder="Enter your product's price*" required>
                             </div>
                         </div>
 
-                    
+
                         <div @click="submitRequest" class="submit-button d-inline-block w-50">Submit</div>
                         <div @click="clearFields" class="clear-button d-inline-block w-50">Clear</div>
 
-                    </form> 
+                    </form>
                 </div>
                 <div @click="prevStep" class="d-inline-block position-absolute back-button text-3"><i class="fas fa-arrow-left"></i> Back</div>
 
@@ -122,7 +122,7 @@ export default {
                 image: "",
                 category: "",
             },
-            
+
 
             isSuccess: false,
             isError: false,
@@ -244,7 +244,7 @@ export default {
                     arr.push(this.categories[item]);
                 }
             }
-            return arr;        
+            return arr;
         },
     },
     mounted(){
@@ -285,7 +285,7 @@ export default {
         line-height: 45px;
         margin-top: 25px;
         max-width: 160px;
-        width: 100%; 
+        width: 100%;
         color: #FCFAF1;
         background-color: #999999;
     }
@@ -294,7 +294,7 @@ export default {
         cursor: pointer;
         text-align: center;
         line-height: 45px;
-        width: 100%; 
+        width: 100%;
         color: #FCFAF1;
         background-color: rgba(19, 65, 83, 1);
 
@@ -315,10 +315,10 @@ export default {
         outline: 1px solid;
         outline-color: rgba(190, 218, 250, 0);
         outline-offset: 15px;
-        text-shadow: 1px 1px 2px #2E828B; 
+        text-shadow: 1px 1px 2px #2E828B;
     }
 
-    
+
 
 
     /* PAGE 2 */
@@ -364,7 +364,7 @@ export default {
         text-align: center;
         line-height: 45px;
         margin-top: 35px;
-        width: 100%; 
+        width: 100%;
         color: #E40041;
         background-color: transparent;
 
@@ -379,7 +379,7 @@ export default {
         outline: 1px solid;
         outline-color: rgba(190, 218, 250, 0);
         outline-offset: 15px;
-        text-shadow: 1px 1px 2px #2E828B; 
+        text-shadow: 1px 1px 2px #2E828B;
     }
 
     .back-button{
