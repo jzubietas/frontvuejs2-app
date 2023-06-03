@@ -23,7 +23,7 @@
                         </select>
                     </div>
                 </form>
-                
+
                 <div class="mt-5">
                     <table class="table table-hover">
                         <thead>
@@ -53,14 +53,14 @@
                         <p>No feedbacks to be shown.</p>
                     </div>
                 </div>
-                
+
 
             </div>
         </div>
 
         <confirm-modal v-if="toggleConfirmModal" @confirmed="completeFeedback" @closeConfirmModal="closeConfirmModal" :title="confirmModalTitle"></confirm-modal>
     </div>
-    
+
 </template>
 
 <script>
@@ -102,8 +102,8 @@ export default {
             document.body.style.overflow = 'auto';
         },
         completeFeedback(){
-            axios.put('/feedbacks',{ 
-                'feedback_id': this.selected_feedback.feedback_id, 
+            axios.put('/feedbacks',{
+                'feedback_id': this.selected_feedback.feedback_id,
             })
             .then( response => {
                 console.log(response.data);
