@@ -1,6 +1,6 @@
 <template>
-  <div class="componentwarpper">
-    <div class="container mt-5" fluid>
+  <div style="margin-top: 8rem;">
+    <div class="mx-5 mt-5" fluid>
       <div class="row">
         <div class="col">
           <div class="card" no-body>
@@ -95,7 +95,7 @@
       <div class="mt-5"></div>
     </div>
 
-    <div class="container mt-4" fluid>
+    <div class="mx-5 mt-4" fluid>
       <div class="row">
         <div
           class="col-lg-4 col-md-4 col-sm-12"
@@ -256,6 +256,9 @@ import Modal from './../Modal.vue';
 export default {
     components: {
         Modal
+    },
+    directives: {
+      'b-modal':  Modal
     },
   props: ["data"],
   data() {

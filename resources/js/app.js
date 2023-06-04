@@ -10,9 +10,9 @@ AOS.init();
 window.axios = require('axios');
 const metas = document.getElementsByTagName('meta');
 for (let i = 0; i < metas.length; i++) {
-  if (metas[i].getAttribute('name') === "csrf-token") {
-    axios.defaults.headers.common['X-CSRF-TOKEN'] = metas[i].getAttribute('content');
-  }
+    if (metas[i].getAttribute('name') === "csrf-token") {
+        axios.defaults.headers.common['X-CSRF-TOKEN'] = metas[i].getAttribute('content');
+    }
 }
 
 Vue.use(require('vue-moment'));
@@ -51,6 +51,13 @@ Vue.component('Order', require('./components/buyer/order/Order.vue').default);
 Vue.component('SellerOrder', require('./components/seller/order/Order.vue').default);
 
 Vue.component('Payment', require('./components/payment/Payment.vue').default);
+
+Vue.component('Herramienta', require('./components/herramienta/HerramientaSNF.vue').default);
+
+// Vue.component('b-modal', require('./components/Modal.vue'));
+// Vue.component('b-button', require('./components/BaseButton.vue'));
+// Vue.component('b-form-radio', require('./components/BaseRadio.vue'));
+// Vue.component('b-form-radio-group', require('./components/ButtonRadioGroup.vue'));
 
 
 

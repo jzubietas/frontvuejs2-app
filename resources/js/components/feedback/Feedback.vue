@@ -1763,23 +1763,24 @@
 
 <script>
 import ConfirmModal from "../template/ConfirmModal.vue";
-import BaseInput from "./../../../js/components/BaseInput.vue";
-import BaseButton from "./../../../js/components/BaseButton.vue";
-import BaseAlert from "./../../../js/components/BaseAlert.vue";
-import BaseRadio from "./../../../js/components/BaseRadio.vue";
-import ButtonRadioGroup from "./../../../js/components/ButtonRadioGroup.vue";
-import Modal from "./../../../js/components/Modal.vue";
 import ThreeStateCheckbox from "./../../../js/components/Checkbox/ThreeStateCheckbox.vue";
 import MatrixStakeholders from "../../../js/components/Matrix/MatrixStakeholders.vue";
 import { dataInitMatrix } from "../../../js/components/Matrix/defaultData";
 import Vue from "vue";
 import { Input, Tooltip, Popover } from "element-ui";
-import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
+import {
+  BModal,
+  VBModal,
+  BFormInput,
+  BFormGroup,
+  BFormRadio,
+  BFormRadioGroup,
+  BFormFile,
+} from "bootstrap-vue";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import { GridLayout, GridItem } from "vue-grid-layout";
 import { Form } from "vform";
-
 
 const defaultProyecto = {
   nombre: "",
@@ -1939,23 +1940,29 @@ export default {
     ThreeStateCheckbox,
     MatrixStakeholders,
     Form,
-    BootstrapVue,
-    IconsPlugin,
-    BaseInput,
-    Modal,
     Input,
     Tooltip,
-    Popover,
-    BaseButton,
-    BaseAlert,
-    ButtonRadioGroup,
-    BaseRadio,
+
     Vue,
+    Popover,
+    BModal,
+    VBModal,
+    BFormInput,
+    BFormGroup,
+    BFormRadioGroup,
+    BFormRadioGroup,
+    BFormFile,
   },
   props: ["data"],
   directives: {
-  'b-popover': Popover
-},
+    "b-popover": Popover,
+    "b-modal": VBModal,
+    "b-form-input": BFormInput,
+    "b-form-group": BFormGroup,
+    "b-form-radio": BFormRadio,
+    "b-form-radio-group": BFormRadioGroup,
+    "b-form-file": BFormFile,
+  },
   data() {
     return {
       feedbacks: this.data.feedbacks,
@@ -3676,7 +3683,7 @@ export default {
     },
   },
   mounted() {
-    console.log(this.data);
+    // console.log(this.data);
     this.$root.$on("estilo1", () => {
       this.showStyle1 = true;
     });
@@ -3949,3 +3956,5 @@ export default {
   transition-duration: 100ms;
 }
 </style>
+
+
