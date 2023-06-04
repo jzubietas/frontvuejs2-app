@@ -154,9 +154,9 @@
 
 <script>
 import ThreeStateCheckbox from "../../../js/components/Checkbox/ThreeStateCheckbox.vue";
-import Dialog from "../../../../node_modules/primevue/dialog";
-import Button from "../../../../node_modules/primevue/button";
-import TextArea from "../../../../node_modules/primevue/textarea";
+import Dialog from "primevue/dialog";
+import Button from "primevue/button";
+import TextArea from "primevue/textarea";
 import { sizeCols, nuevoItem, nuevoCategoria } from "./defaultData";
 
 export default {
