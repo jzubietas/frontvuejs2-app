@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ContinentController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\SectorController;
@@ -53,7 +54,7 @@ Route::group(['middleware' => ['auth','buyer','user.active']], function () {
     Route::get('/requests/create', [RequestController::class, 'createIndex'])->name('request.createindex');
     Route::post('/requests/create', [RequestController::class, 'create'])->name('request.create');
     Route::delete('/requests', [RequestController::class, 'destroy'])->name('request.destroy');
-    
+
     Route::get('/requests/offers/{id}', [OfferController::class, 'show'])->name('offer.show');
 
     Route::get('/checkout/{id}', [PaymentController::class, 'index'])->name('payment.index');
@@ -79,7 +80,7 @@ Route::group(['middleware' => ['auth','seller','user.active']], function () {
 
     Route::get('/seller/requests', [RequestController::class, 'sellerIndex'])->name('seller.request.index');
     Route::get('/seller/requests/{id}', [RequestController::class, 'sellerShow'])->name('seller.request.show');
-    
+
     Route::get('/seller/offers', [OfferController::class, 'index'])->name('offer.index');
     Route::post('/seller/offers', [OfferController::class, 'create'])->name('offer.create');
     Route::delete('/seller/offers', [OfferController::class, 'destroy'])->name('offer.destroy');
@@ -105,8 +106,14 @@ Route::group(['middleware' => ['auth','admin','user.active']], function () {
     Route::get('/admin/projects', [ProjectController::class, 'index'])->name('admin.project.index');
     Route::get('/admin/projects/create', [ProjectController::class, 'createIndex'])->name('admin.project.createindex');
     Route::post('/admin/projects/create', [ProjectController::class, 'create'])->name('admin.project.create');
-    Route::post('/admin/projects/update', [ProjectController::class, 'update'])->name('admin.project.update');
+    Route::put('/admin/projects/update', [ProjectController::class, 'update'])->name('admin.project.update');
     Route::delete('/admin/projects', [ProjectController::class, 'destroy'])->name('admin.project.destroy');
+
+    Route::get('/admin/notes', [NoteController::class, 'index'])->name('admin.note.index');
+    Route::get('/admin/notes/create', [NoteController::class, 'createIndex'])->name('admin.note.createindex');
+    Route::post('/admin/notes/create', [NoteController::class, 'create'])->name('admin.note.create');
+    Route::put('/admin/notes/update', [NoteController::class, 'update'])->name('admin.note.update');
+    Route::delete('/admin/notes', [NoteController::class, 'destroy'])->name('admin.note.destroy');
 
     Route::get('/feedbacks', [FeedbackController::class, 'index'])->name('feedbacks.index');
     Route::put('/feedbacks', [FeedbackController::class, 'update'])->name('feedbacks.update');
@@ -116,6 +123,8 @@ Route::group(['middleware' => ['auth','admin','user.active']], function () {
 
     Route::get('/admin/sectors/get', [SectorController::class, 'recent_orders'])->name('admin.sector.get');
     Route::get('/admin/sectortypes/get', [SectortypeController::class, 'recent_orders'])->name('admin.sectortype.get');
+
+    Route::get('/admin/map', [ProjectController::class, 'map'])->name('admin.map.index');
 });
 
 

@@ -153,7 +153,7 @@
 </template>
 
 <script>
-import ThreeStateCheckbox from "../../../js/components/Checkbox/ThreeStateCheckbox.vue";
+import ThreeStateCheckbox from "./../../components/Checkbox/ThreeStateCheckbox.vue";
 import Dialog from "primevue/dialog";
 import Button from "primevue/button";
 import TextArea from "primevue/textarea";

@@ -1793,7 +1793,7 @@
 import ConfirmModal from "../template/ConfirmModal.vue";
 import ThreeStateCheckbox from "./../../../js/components/Checkbox/ThreeStateCheckbox.vue";
 import MatrixStakeholders from "../../../js/components/Matrix/MatrixStakeholders.vue";
-import { dataInitMatrix } from "../../../js/components/Matrix/defaultData";
+import { dataInitMatrix } from "../Matrix/defaultData";
 import Vue from "vue";
 import { Input, Tooltip, Popover } from "element-ui";
 import {
@@ -2595,7 +2595,7 @@ export default {
         const proyectoId = this.$route.query.id;
 
         formProyecto
-          .put(this.$gate.getApiUrl() + "proyectos/" + proyectoId)
+          .put("/admin/proyectos/update/" + proyectoId)
           .then(() => {
             this.hideModal("modal-proyecto");
             this.$swal.fire(

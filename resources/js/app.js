@@ -7,6 +7,9 @@ import 'aos/dist/aos.css';
 import Vue from 'vue';
 AOS.init();
 
+//import GoogleMapsLoader from "google-maps";
+
+
 window.axios = require('axios');
 const metas = document.getElementsByTagName('meta');
 for (let i = 0; i < metas.length; i++) {
@@ -37,6 +40,9 @@ Vue.component('AdminOverview', require('./components/admin/Overview.vue').defaul
 
 Vue.component('Product', require('./components/seller/product/Product.vue').default);
 Vue.component('CreateProduct', require('./components/seller/product/Create.vue').default);
+
+Vue.component('Note', require('./components/admin/note/Note.vue').default);
+Vue.component('CreateNote', require('./components/admin/note/Create.vue').default);
 
 Vue.component('Project', require('./components/admin/project/Project.vue').default);
 Vue.component('CreateProject', require('./components/admin/project/Create.vue').default);
