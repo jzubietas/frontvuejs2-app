@@ -3,12 +3,12 @@
     <div class="warpper min-vh-100">
       <div class="content-warpper d-flex justify-content-between">
         <h4 class="d-inline-block font-weight-600">
-          Add New Project
+          Agregar nuevo proyecto
         </h4>
 
         <a :href="'/admin/projects'">
           <div class="d-inline-block text-3">
-            My Projects <i class="fas fa-arrow-right"></i>
+            Mis Proyectos <i class="fas fa-arrow-right"></i>
           </div>
         </a>
       </div>
@@ -51,72 +51,89 @@
             </div>
 
 
-            <label for="name" class="d-block mt-4 text-7"
-              >Nombre de la unidad de operaciones<span class="text-8">*</span></label
-            >
-            <input
-              v-model="project.name"
-              type="text"
-              name="name"
-              id="name"
-              class="form-input"
-              placeholder="Ingrese el nombre del proyecto*"
-              required
-              autofocus
-            />
+            <div class="row">
+              <div class="col-12">
+                <label for="name" class="d-block mt-4 text-7"
+                  >Nombre de la unidad de operaciones<span class="text-8">*</span></label
+                >
+                <input
+                  v-model="project.name"
+                  type="text"
+                  name="name"
+                  id="name"
+                  class="form-input"
+                  placeholder="Ingrese el nombre del proyecto*"
+                  required
+                  autofocus
+                />
+              </div>
 
-            <label for="description" class="d-block mt-4 text-7"
-              >Descripcion<span class="text-8">*</span></label
-            >
-            <input
-              v-model="project.description"
-              type="text"
-              name="description"
-              id="description"
-              class="form-input"
-              placeholder="Ingrese descripcion del proyecto*"
-              required
-            />
+              <div class="col-12">
+                <label for="description" class="d-block mt-4 text-7"
+                  >Descripcion<span class="text-8">*</span></label
+                >
+                <input
+                  v-model="project.description"
+                  type="text"
+                  name="description"
+                  id="description"
+                  class="form-input"
+                  placeholder="Ingrese descripcion del proyecto*"
+                  required
+                />
+              </div>
+              <div class="col-6">
 
-            <label for="continents" class="d-block mt-4 text-7"
-              >Seleccione un Continente</label
-            >
-            <select
-              name="continent-name"
-              id="continents"
-              class="form-control form-control-sm"
-              v-model="project.selectedContinent" ref="select"
-              v-on:change="setContinent(project.selectedContinent)"
-            >
-              <option selected disabled value="">Seleccion</option>
-              <option
-                v-for="continent in continents"
-                :value="continent.id"
-                :key="continent.id"
-              >
-                {{ continent.continent }}
-              </option>
-            </select>
+                <label for="continents" class="d-block mt-4 text-7"
+                  >Seleccione un Continente</label
+                >
+                <select
+                  name="continent-name"
+                  id="continents"
+                  class="form-control form-control-sm"
+                  v-model="project.selectedContinent" ref="select"
+                  v-on:change="setContinent(project.selectedContinent)"
+                >
+                  <option selected disabled value="">Seleccion</option>
+                  <option
+                    v-for="continent in continents"
+                    :value="continent.id"
+                    :key="continent.id"
+                  >
+                    {{ continent.continent }}
+                  </option>
+                </select>
+              </div>
 
-            <label for="countries" class="d-block mt-4 text-7"
-              >Seleccione un país</label
-            >
-            <select
-              name="country-name"
-              id="countries"
-              class="form-control form-control-sm"
-              v-model="project.selectedCountry" ref="select"
-              v-on:change="setCountry(project.selectedCountry)"
-            >
-              <option selected disabled value="">Seleccion</option>
-              <option
-                v-for="country in countries"
-                :value="country.id"
-                :key="country.id"
-              >
-                {{ country.country }}
-              </option>
-            </select>
+              <div class="col-6">
+                <label for="countries" class="d-block mt-4 text-7"
+                  >Seleccione un país</label
+                >
+                <select
+                  name="country-name"
+                  id="countries"
+                  class="form-control form-control-sm"
+                  v-model="project.selectedCountry" ref="select"
+                  v-on:change="setCountry(project.selectedCountry)"
+                >
+                  <option selected disabled value="">Seleccion</option>
+                  <option
+                    v-for="country in countries"
+                    :value="country.id"
+                    :key="country.id"
+                  >
+                    {{ country.country }}
+                  </option>
+                </select>
+              </div>
+            </row>
+            
+
+            
+
+            
+
+            
 
             <label for="sectors" class="d-block mt-4 text-7"
               >Seleccione un sector</label

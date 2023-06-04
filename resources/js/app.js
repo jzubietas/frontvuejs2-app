@@ -7,6 +7,9 @@ import 'aos/dist/aos.css';
 import Vue from 'vue';
 AOS.init();
 
+//import GoogleMapsLoader from "google-maps";
+
+
 window.axios = require('axios');
 const metas = document.getElementsByTagName('meta');
 for (let i = 0; i < metas.length; i++) {
