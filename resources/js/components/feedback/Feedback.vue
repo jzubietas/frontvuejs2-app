@@ -1780,6 +1780,7 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 import { GridLayout, GridItem } from "vue-grid-layout";
 import { Form } from "vform";
 
+
 const defaultProyecto = {
   nombre: "",
   objetivo: "",
@@ -1952,6 +1953,9 @@ export default {
     Vue,
   },
   props: ["data"],
+  directives: {
+  'b-popover': Popover
+},
   data() {
     return {
       feedbacks: this.data.feedbacks,
