@@ -36,7 +36,11 @@
               class="form-input col-6 d-inline-block"
             >
               <option value="All">Todos</option>
-              <option v-for="item in data.brands" :value="item.brand" :key="item-1">
+              <option
+                v-for="item in data.brands"
+                :value="item.brand"
+                :key="item - 1"
+              >
                 {{ item.brand }}
               </option>
             </select>
@@ -51,7 +55,11 @@
               class="form-input col-6 d-inline-block"
             >
               <option value="All">Todos</option>
-              <option v-for="item in data.sectors" :value="item.sector" :key="item-2">
+              <option
+                v-for="item in data.sectors"
+                :value="item.sector"
+                :key="item - 2"
+              >
                 {{ item.sector }}
               </option>
             </select>

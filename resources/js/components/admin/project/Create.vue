@@ -4,7 +4,6 @@
       <div class="content-warpper d-flex justify-content-between">
         <h4 class="d-inline-block font-weight-600">
           Add New Project
-          <span class="text-7 font-weight-200">(Step {{ step }}/2)</span>
         </h4>
 
         <a :href="'/admin/projects'">
