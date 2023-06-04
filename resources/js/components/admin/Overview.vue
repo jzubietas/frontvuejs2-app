@@ -1,9 +1,9 @@
 <template>
-  <div style="margin-top: 8rem;">
+  <div style="margin-top: 8rem">
     <div class="mx-5 mt-5" fluid>
       <div class="row">
         <div class="col">
-          <div class="card" no-body style="background-color: #ecf0f5;">
+          <div class="card" no-body style="background-color: #ecf0f5">
             <div class="card-header border-0 bg-transparent">
               <h1 class="mb-0">Bienvenido: Empresa Minera Buenaventura</h1>
               <div class="d-flex align-items-center mt-2">
@@ -11,7 +11,7 @@
                   Ingrese unidad de operaciones
                 </h3>
                 <button
-                type="button"
+                  type="button"
                   class="btn base-button rounded-circle ml-2 btn-success btn-md text-left"
                   style="height: 27px; padding: 0px 4px"
                   v-b-modal.modal-unidad-operaciones
@@ -22,7 +22,10 @@
             </div>
             <hr class="my-1" />
             <div class="row">
-              <div class="card-body d-flex align-items-center" style="gap: 10px">
+              <div
+                class="card-body d-flex align-items-center"
+                style="gap: 10px"
+              >
                 <div class="col-lg-3 d-flex flex-wrap">
                   <select
                     name="tipo"
@@ -58,7 +61,7 @@
                       value=""
                       class="form-control form-control-sm"
                       placeholder="Nombre del proyecto"
-                    >
+                    />
                   </b-input-group>
                 </div>
                 <div class="col-lg-3 text-center">
@@ -70,20 +73,22 @@
                       'btn btn-light': !filtroActivo,
                     }"
                     @click="aplicarFiltro()"
-                    ><i
+                  >
+                    <i
                       :class="{
                         'fas fa-check': filtroActivo,
                         'fas fa-ban': !filtroActivo,
                       }"
-                    ></i
-                  ></button>
+                    ></i>
+                  </button>
                   <button
                     title="Resetear filtro"
                     type="button"
                     class="btn btn-primary"
                     @click="resetFiltro()"
-                    ><i class="fas fa-undo"></i
-                  ></button>
+                  >
+                    <i class="fas fa-undo"></i>
+                  </button>
                 </div>
               </div>
             </div>
@@ -121,17 +126,18 @@
               v-for="category in division.categories"
               :key="category"
             >
-              <summary>{{ category }}
-              <button
-                class="btn base-button rounded-circle ml-2 btn-success btn-md text-left"
-                style="height: 27px; padding: 0px 4px"
-                type="button"
-                v-b-modal.modal-categoria
-                @click="openModalCategory(division)"
-              >
-                <i class="fas fa-plus"></i>
-              </button>
-            </summary>
+              <summary>
+                {{ category }}
+                <button
+                  class="btn base-button rounded-circle ml-2 btn-success btn-md text-left"
+                  style="height: 27px; padding: 0px 4px"
+                  type="button"
+                  v-b-modal.modal-categoria
+                  @click="openModalCategory(division)"
+                >
+                  <i class="fas fa-plus"></i>
+                </button>
+              </summary>
               <details class="ml-4">
                 <summary>Nacional</summary>
                 <p class="ml-4 mb-0">
@@ -156,7 +162,7 @@
       </div>
     </div>
 
-
+    <!-- Version anterior -->
     <div class="warpper px-5">
       <a :href="'/admin/projects/create'">
         <div class="d-inline-block text-3">
@@ -164,116 +170,57 @@
         </div>
       </a>
     </div>
-
-    <!--<div class="warpper px-5">
-      <span v-if="chosen_country" class="text-3">
-        {{ chosen_country }} <i class="fas fa-chevron-right mx-2"></i
-      ></span>
-      <span v-if="chosen_continent" class="text-3">
-        {{ chosen_continent }} <i class="fas fa-chevron-right mx-2"></i
-      ></span>
-
-      <div class="d-flex w-100 border mt-3">
-        <div class="w-100 overflow-auto">
-          <ul class="p-0 d-flex flex-column">
-            <li
-              @click="setContinent(continent)"
-              v-for="continent in getContinents"
-              :key="continent"
-              class="single-list list-unstyled p-3 border"
-            >
-              <div class="d-inline-block w-50">continent {{ continent }}</div>
-              <div class="d-inline-block w-50 text-right">
-                <i class="fas fa-chevron-right"></i>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="w-100 overflow-auto">
-          <ul class="p-0 d-flex flex-column">
-            <li
-              @click="setCountry(country)"
-              v-for="country in getCountries"
-              :key="country"
-              class="single-list list-unstyled p-3 border"
-            >
-              <div class="d-inline-block w-50">pais {{ country }}</div>
-              <div class="d-inline-block w-50 text-right">
-                <i class="fas fa-chevron-right"></i>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- <div class="warpper px-5">
-            <h4 class="font-weight-600"><i class="fas fa-users"></i> Users Data</h4>
-            <div class="row mt-4 pt-5 pb-4">
-                <div class="col-4 text-center">
-                    <h4 v-if="data.total_admin[0].total_admin">{{ data.total_admin[0].total_admin}}</h4>
-                    <h4 v-else>0</h4>
-                    <p class="text-7">Total Admin(s)</p>
-                </div>
-                <div class="col-4 text-center">
-                    <h4 v-if="data.total_project[0].total_seller">{{ data.total_seller[0].total_project }}</h4>
-                    <h4 v-else>0</h4>
-                    <p class="text-7">Total Project(s)</p>
-                </div>
-                <div class="col-4 text-center d-none">
-                    <h4 v-if="data.total_buyer[0].total_buyer">{{ data.total_buyer[0].total_buyer }}</h4>
-                    <h4 v-else>0</h4>
-                    <p class="text-7">Total Buyer(s)</p>
-                </div>
-            </div>
-        </div> -->
-    <!-- <div class="warpper px-5 d-none">
-            <h4 class="font-weight-600"><i class="fas fa-boxes"></i> Miscellaneous</h4>
-            <div class="row mt-4 pt-5 pb-4">
-                <div class="col-4 text-center">
-                    <h4 v-if="data.total_order[0].total_order">{{ data.total_order[0].total_order }}</h4>
-                    <h4 v-else>0</h4>
-                    <p class="text-7">Completed Orders</p>
-                </div>
-                <div class="col-4 text-center">
-                    <h4 v-if="data.total_feedback[0].total_feedback">{{ data.total_feedback[0].total_feedback }}</h4>
-                    <h4 v-else>0</h4>
-                    <p class="text-7">Pending Feedbacks</p>
-                </div>
-                <div class="col-4 text-center">
-                    <h4 v-if="data.avg_rating[0].avg_rating">{{ data.avg_rating[0].avg_rating}}/5</h4>
-                    <h4 v-else>Not Rated Yet</h4>
-                    <p class="text-7">Average Rating</p>
-                </div>
-            </div>
-        </div> -->
+    
   </div>
 </template>
 
 <script>
-import Modal from './../Modal.vue';
+import Modal from "./../Modal.vue";
+import {
+  BModal,
+  VBModal,
+  BFormInput,
+  BFormGroup,
+  BFormRadio,
+  BFormRadioGroup,
+  BFormFile,
+} from "bootstrap-vue";
 export default {
-    components: {
-        Modal
-    },
-    directives: {
-      'b-modal':  Modal
-    },
+  components: {
+    Modal,
+    BModal,
+    VBModal,
+    BFormInput,
+    BFormGroup,
+    BFormRadioGroup,
+    BFormRadioGroup,
+    BFormFile,
+  },
+  directives: {
+    "b-modal": Modal,
+  },
   props: ["data"],
+  directives: {
+    "b-modal": VBModal,
+    "b-form-input": BFormInput,
+    "b-form-group": BFormGroup,
+    "b-form-radio": BFormRadio,
+    "b-form-radio-group": BFormRadioGroup,
+    "b-form-file": BFormFile,
+  },
   data() {
     return {
       chosen_country: "",
       chosen_continent: "",
       getContinents: "",
-        getCountries: "",
+      getCountries: "",
 
-        filtroActivo: false,
-        submittedNames: [],
+      filtroActivo: false,
+      submittedNames: [],
     };
-    },
-    methods: {
-//----------------------------------------------------
+  },
+  methods: {
+    //----------------------------------------------------
 
     checkFormValidity() {
       const valid = this.$refs.form.checkValidity();
@@ -321,7 +268,7 @@ export default {
     },
     openModalCategory(division) {
       this.divisionEdited = division;
-      console.log("division: ", division);
+      //   console.log("division: ", division);
     },
 
     //----------------------------------------------------
@@ -345,7 +292,7 @@ export default {
     },
   },
   mounted() {
-    console.log(this.data);
+    // console.log(this.data);
   },
 };
 </script>
