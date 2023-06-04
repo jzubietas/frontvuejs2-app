@@ -4,8 +4,8 @@
       class="checkbox"
       :class="{
         neutral: status == 0,
-        negative: status == 1,
-        positive: status == 2,
+        positive: status == 1,
+        negative: status == 2,
       }"
       @click="changeStatus()"
     >
@@ -46,8 +46,8 @@ export default {
   computed: {
     statusText() {
       if (this.status == 0) return "Indeterminado";
-      if (this.status == 1) return "Negativo";
-      return "Positivo";
+      if (this.status == 1) return "Positivo";
+      return "Negativo";
     },
   },
   methods: {
