@@ -126,14 +126,7 @@
                   </option>
                 </select>
               </div>
-            </row>
-            
-
-            
-
-            
-
-            
+            </div>
 
             <label for="sectors" class="d-block mt-4 text-7"
               >Seleccione un sector</label
