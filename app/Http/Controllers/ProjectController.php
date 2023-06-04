@@ -113,4 +113,17 @@ class ProjectController extends Controller
         $requests = Project::destroy($request->project_id);
         return 'Successfully Deleted';
     }
+
+    public function map(){
+
+        $maps = DB::table('projects')
+                            ->select(DB::raw('projects.*'))                            
+                            ->get();
+
+        $data = [
+            'map' => $maps,
+        ];
+
+        return view('map.index', ['data' => $data]);
+    }
 }

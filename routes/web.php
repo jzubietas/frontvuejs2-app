@@ -116,6 +116,8 @@ Route::group(['middleware' => ['auth','admin','user.active']], function () {
 
     Route::get('/admin/sectors/get', [SectorController::class, 'recent_orders'])->name('admin.sector.get');
     Route::get('/admin/sectortypes/get', [SectortypeController::class, 'recent_orders'])->name('admin.sectortype.get');
+
+    Route::get('/admin/map', [ProjectController::class, 'map'])->name('admin.map.index');
 });
 
 

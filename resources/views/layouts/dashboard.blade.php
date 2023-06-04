@@ -193,8 +193,8 @@
                                 <h6><i class="fas fa-box mr-3 col-1"></i> Herramienta</h6>
                             </li>
                         </a>
-                        <a href="{{ route('admin.user.index') }}">
-                            <li class="text-7 sidebar-list py-4 px-4 w-100 h-100 cursor-pointer {{ Route::currentRouteName() == 'admin.user.index' || Route::currentRouteName() == 'admin.user.createIndex' ? 'active' : '' }}">
+                        <a href="{{ route('admin.map.index') }}">
+                            <li class="text-7 sidebar-list py-4 px-4 w-100 h-100 cursor-pointer {{ Route::currentRouteName() == 'admin.map.index' ? 'active' : '' }}">
                                 <h6><i class="fas fa-globe-americas mr-3 col-1"></i> Google Maps</h6>
                             </li>
                         </a>
