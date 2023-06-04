@@ -21,14 +21,17 @@
               </tr>
               <tr class="border-primary">
                 <td colspan="2">
-                  <div class="card-body d-flex" style="gap: 10px">
+                  <div
+                    class="card-body d-flex align-items-center"
+                    style="gap: 10px"
+                  >
                     <h3 v-b-popover="popOver[0]" class="m-0">Proyecto</h3>
                     <button
                       v-b-popover.hover.top="'Nuevo Proyecto'"
                       type="button"
                       @click="addStickyNoteProyecto('modal-proyectos')"
                       class="btn base-button rounded-circle btn-success btn-sm text-left"
-                      style="padding-left: 6px; padding-right: 6px"
+                      style="padding-left: 10px; padding-right: 10px"
                     >
                       <i class="fas fa-plus"></i>
                     </button>
@@ -104,14 +107,17 @@
               </tr>
               <tr class="headt">
                 <td class="border-right">
-                  <div class="card-header d-flex" style="gap: 10px">
+                  <div
+                    class="card-body d-flex align-items-center bg-white"
+                    style="gap: 10px"
+                  >
                     <h3 v-b-popover="popOver[1]" class="m-0">Promotores</h3>
                     <button
+                    type="button"
+                    class="btn base-button rounded-circle btn-success btn-sm text-left"
+                    style="padding-left: 10px; padding-right: 10px"
                       v-b-popover.hover.top="'Nuevo Promotor'"
                       @click="addStickyNotePromotor('modal-promotores')"
-                      type="button"
-                      class="btn base-button rounded-circle btn-success btn-sm text-left"
-                      style="padding-left: 6px; padding-right: 6px"
                     >
                       <i class="fas fa-plus"></i>
                     </button>
@@ -182,14 +188,17 @@
                   <!--ZoneDrop-->
                 </td>
                 <td>
-                  <div class="card-body d-flex" style="gap: 10px">
+                  <div
+                    class="card-body d-flex align-items-center"
+                    style="gap: 10px"
+                  >
                     <h3 v-b-popover="popOver[2]" class="m-0">
                       Beneficiarios <strong>(+/-)</strong>
                     </h3>
                     <button
                       type="button"
                       class="btn base-button rounded-circle btn-success btn-sm text-left"
-                      style="padding-left: 6px; padding-right: 6px"
+                      style="padding-left: 10px; padding-right: 10px"
                       v-b-popover.hover.top="'Nuevo Beneficiario'"
                       @click="addStickyNoteBeneficiario('modal-beneficiarios')"
                     >
@@ -260,7 +269,10 @@
               <!-- Responsabilidades -->
               <tr>
                 <td colspan="2">
-                  <div class="card-body d-flex" style="gap: 10px">
+                  <div
+                    class="card-body d-flex align-items-center"
+                    style="gap: 10px"
+                  >
                     <h3 v-b-popover="popOver[3]" class="m-0">
                       Responsabilidades
                     </h3>
@@ -268,7 +280,7 @@
                       v-b-popover.hover.top="'Nueva Responsabilidad'"
                       type="button"
                       class="btn base-button rounded-circle btn-success btn-sm text-left"
-                      style="padding-left: 6px; padding-right: 6px"
+                      style="padding-left: 10px; padding-right: 10px"
                       @click="
                         addStickyNoteResponsabilidad('modal-responsabilidades')
                       "
@@ -344,14 +356,17 @@
               </tr>
               <tr>
                 <td colspan="2">
-                  <div class="card-body d-flex" style="gap: 10px">
+                  <div
+                    class="card-body d-flex align-items-center"
+                    style="gap: 10px"
+                  >
                     <h3 v-b-popover="popOver[4]" class="m-0">
                       Recursos Sociales
                     </h3>
                     <button
                       type="button"
                       class="btn base-button rounded-circle btn-success btn-sm text-left"
-                      style="padding-left: 6px; padding-right: 6px"
+                      style="padding-left: 10px; padding-right: 10px"
                       v-b-popover.hover.top="'Nuevo Recurso Social'"
                       @click="addStickyNoteRecursoSocial('modal-recursos')"
                     >
@@ -419,14 +434,17 @@
               </tr>
               <tr>
                 <td colspan="2">
-                  <div class="card-body d-flex" style="gap: 10px">
+                  <div
+                    class="card-body d-flex align-items-center"
+                    style="gap: 10px"
+                  >
                     <h3 v-b-popover="popOver[5]" class="m-0">
                       Mecanismo Diálogo
                     </h3>
                     <button
                       type="button"
                       class="btn base-button rounded-circle btn-success btn-sm text-left"
-                      style="padding-left: 6px; padding-right: 6px"
+                      style="padding-left: 10px; padding-right: 10px"
                       v-b-popover.hover.top="'Nuevo Mecanismo de Diálogo'"
                       @click="addStickyNoteMecanismoDialogo('modal-dialogos')"
                     >
@@ -501,14 +519,17 @@
               </tr>
               <tr>
                 <td colspan="2">
-                  <div class="card-body d-flex" style="gap: 10px">
+                  <div
+                    class="card-body d-flex align-items-center"
+                    style="gap: 10px"
+                  >
                     <h3 v-b-popover="popOver[6]" class="m-0">
                       Gestión de la Comunidad
                     </h3>
                     <button
                       type="button"
                       class="btn base-button rounded-circle btn-success btn-sm text-left"
-                      style="padding-left: 6px; padding-right: 6px"
+                      style="padding-left: 10px; padding-right: 10px"
                       v-b-popover.hover.top="'Nueva Gestión de la Comunidad'"
                       @click="addStickyNoteGestionComunidad('modal-gestiones')"
                     >
@@ -583,14 +604,17 @@
               </tr>
               <tr>
                 <td colspan="2">
-                  <div class="card-body d-flex" style="gap: 10px">
+                  <div
+                    class="card-body d-flex align-items-center"
+                    style="gap: 10px"
+                  >
                     <h3 v-b-popover="popOver[7]" class="m-0">
                       Beneficios <strong>(+/-)</strong>
                     </h3>
                     <button
                       type="button"
                       class="btn base-button rounded-circle btn-success btn-sm text-left"
-                      style="padding-left: 6px; padding-right: 6px"
+                      style="padding-left: 10px; padding-right: 10px"
                       v-b-popover.hover.top="'Nuevo Beneficio'"
                       @click="addStickyNoteBeneficio('modal-beneficios')"
                     >
@@ -598,11 +622,15 @@
                     </button>
                     <button
                       type="button"
-                      class="btn base-button rounded-circle btn-success btn-sm text-left"
-                      style="padding-left: 6px; padding-right: 6px"
+                      class="btn base-button rounded-circle btn-sm text-left"
+                      style="
+                        padding-left: 10px;
+                        padding-right: 10px;
+                        background: #5e72e4;
+                      "
                       v-b-popover.hover.top="'Ver Matriz'"
                     >
-                      <i class="fas fa-eye"></i>
+                      <i class="fas fa-eye text-white"></i>
                     </button>
                   </div>
                   <!--ZoneDrop-->
@@ -1750,7 +1778,7 @@
     </b-modal>
 
     <!-- SECCION DE MATRIZ -->
-    <div class="container">
+    <div class="container mt-4 px-0">
       <MatrixStakeholders
         :key="keyMatrix"
         :stakeHolders="project.promotores"
@@ -3704,6 +3732,12 @@ export default {
 </script>
 
 <style>
+h3 {
+  font-size: 1.0625rem !important;
+}
+.card-body {
+  padding: 1.25rem !important;
+}
 .form-input {
   background-color: transparent;
   color: #333333;

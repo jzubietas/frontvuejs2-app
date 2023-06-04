@@ -3,7 +3,7 @@
     <div class="mx-5 mt-5" fluid>
       <div class="row">
         <div class="col">
-          <div class="card" no-body>
+          <div class="card" no-body style="background-color: #ecf0f5;">
             <div class="card-header border-0 bg-transparent">
               <h1 class="mb-0">Bienvenido: Empresa Minera Buenaventura</h1>
               <div class="d-flex align-items-center mt-2">
