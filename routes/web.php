@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ContinentController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\SectorController;
@@ -107,6 +108,12 @@ Route::group(['middleware' => ['auth','admin','user.active']], function () {
     Route::post('/admin/projects/create', [ProjectController::class, 'create'])->name('admin.project.create');
     Route::put('/admin/projects/update', [ProjectController::class, 'update'])->name('admin.project.update');
     Route::delete('/admin/projects', [ProjectController::class, 'destroy'])->name('admin.project.destroy');
+
+    Route::get('/admin/notes', [NoteController::class, 'index'])->name('admin.note.index');
+    Route::get('/admin/notes/create', [NoteController::class, 'createIndex'])->name('admin.note.createindex');
+    Route::post('/admin/notes/create', [NoteController::class, 'create'])->name('admin.note.create');
+    Route::put('/admin/notes/update', [NoteController::class, 'update'])->name('admin.note.update');
+    Route::delete('/admin/notes', [NoteController::class, 'destroy'])->name('admin.note.destroy');
 
     Route::get('/feedbacks', [FeedbackController::class, 'index'])->name('feedbacks.index');
     Route::put('/feedbacks', [FeedbackController::class, 'update'])->name('feedbacks.update');
