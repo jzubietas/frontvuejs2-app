@@ -16,32 +16,23 @@ class ContinentSeeder extends Seeder
     {
         DB::table('continents')->insert([
             /*-------------------------*/
-            /* Category: Women Clothes */
-            /*-------------------------*/
-
-            /* Dresses */
+            /* Category: continents */
+            /*-------------------------*/        
             [
                 'continent'=>'America',
-                'country'=>'Peru',
             ],
             [
                 'continent'=>'Europa',
-                'country'=>'Alemania',
             ],
             [
-                'continent'=>'Europa',
-                'country'=>'Noruega',
-            ],
-            /*[
                 'continent'=>'Asia',
             ],
             [
                 'continent'=>'Africa',
-            ],*/
-            /* Tops */
-            /*[
+            ],
+            [
                 'continent'=>'Oceania',
-            ],*/
+            ],
             
         ]); 
     }

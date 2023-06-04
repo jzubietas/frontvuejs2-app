@@ -9,6 +9,10 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ContinentController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\SectorController;
+use App\Http\Controllers\SectortypeController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
@@ -106,6 +110,12 @@ Route::group(['middleware' => ['auth','admin','user.active']], function () {
 
     Route::get('/feedbacks', [FeedbackController::class, 'index'])->name('feedbacks.index');
     Route::put('/feedbacks', [FeedbackController::class, 'update'])->name('feedbacks.update');
+
+    Route::get('/admin/continents/get', [ContinentController::class, 'recent_orders'])->name('admin.continent.get');
+    Route::get('/admin/countries/get/{id}', [CountryController::class, 'recent_orders'])->name('admin.country.get');
+
+    Route::get('/admin/sectors/get', [SectorController::class, 'recent_orders'])->name('admin.sector.get');
+    Route::get('/admin/sectortypes/get', [SectortypeController::class, 'recent_orders'])->name('admin.sectortype.get');
 });
 
 

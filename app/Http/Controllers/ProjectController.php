@@ -66,6 +66,12 @@ class ProjectController extends Controller
             //$product->price = $request->price;
             $product->image = '';
             //$product->category_id = $request->category_id;
+
+            $product->continent_id = $request->continent_id;
+            $product->country_id = $request->country_id;
+            $product->sector_id = $request->sector_id;
+            $product->sector_type_id = $request->sector_type_id;
+
             //$product->seller_id = Auth::user()->seller->id;
             $product->save();
 

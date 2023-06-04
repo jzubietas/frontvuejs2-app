@@ -85,14 +85,16 @@
               name="continent-name"
               id="continents"
               class="form-control form-control-sm"
-              v-model="project.selectedContinent"
+              v-model="project.selectedContinent" ref="select"
+              v-on:change="setContinent(project.selectedContinent)"
             >
+              <option selected disabled value="">Seleccion</option>
               <option
-                v-for="continent in project.continents"
-                :value="continent"
-                :key="continent"
+                v-for="continent in continents"
+                :value="continent.id"
+                :key="continent.id"
               >
-                {{ continent }}
+                {{ continent.continent }}
               </option>
             </select>
 
@@ -103,16 +105,60 @@
               name="country-name"
               id="countries"
               class="form-control form-control-sm"
-              v-model="project.selectedCountry"
+              v-model="project.selectedCountry" ref="select"
+              v-on:change="setCountry(project.selectedCountry)"
             >
+              <option selected disabled value="">Seleccion</option>
               <option
-                v-for="country in filteredCountries"
-                :value="country"
-                :key="country"
+                v-for="country in countries"
+                :value="country.id"
+                :key="country.id"
               >
-                {{ country }}
+                {{ country.country }}
               </option>
             </select>
+
+            <label for="sectors" class="d-block mt-4 text-7"
+              >Seleccione un sector</label
+            >
+            <select
+              name="sector-name"
+              id="sectors"
+              class="form-control form-control-sm"
+              v-model="project.selectedSector" ref="select"
+              v-on:change="setSector(project.selectedSector)"
+            >
+              <option selected disabled value="">Seleccion</option>
+              <option
+                v-for="sector in sectors"
+                :value="sector.id"
+                :key="sector.id"
+              >
+                {{ sector.name }}
+              </option>
+            </select>
+
+            <label for="sector_types" class="d-block mt-4 text-7"
+              >Seleccione un tipo de sector</label
+            >
+            <select
+              name="sector-type-name"
+              id="sector_types"
+              class="form-control form-control-sm"
+              v-model="project.selectedSectorType" ref="select"
+              v-on:change="setSectortype(project.selectedSectorType)"
+            >
+              <option selected disabled value="">Seleccion</option>
+              <option
+                v-for="sectortype in sectortypes"
+                :value="sectortype.id"
+                :key="sectortype.id"
+              >
+                {{ sectortype.name }}
+              </option>
+            </select>
+
+
 
             <div
               @click="submitRequest"
@@ -134,17 +180,25 @@ export default {
   props: ["categories"],
   data() {
     return {
+      selectedValue: null,
       step: 1,
-      chosen_category: "",
-      chosen_subcategory: "",
-      chosen_subcategory2: "",
+      chosen_continent: "",
+      chosen_country: "",
+      chosen_sector: "",
+      chosen_sectortype: "",   
       preview_project_img: "../../img/illustrator/uploadimage.png",
       project: {
         name: "",
         description: "",
         image: "",
+        chosen_continent:"",
+        chosen_country:"",
+        chosen_sector:"",
+        chosen_sectortype:"",
         selectedContinent: "",
         selectedCountry: "",
+        selectedSector: "",
+        selectedSectorType: "",
         continents: ["America", "Europa", "Asia", "Africa"],
         countries: {
           'America': [
@@ -164,9 +218,65 @@ export default {
       isError: false,
       isEmpty: false,
       errortext: "",
+      countries: [],
+      continents: [],
+      sectors: [],
+      sectortypes: []
     };
   },
   methods: {
+    getContinents() {
+      axios.get('/admin/continents/get')
+        .then(response => {
+          const continents = response.data;
+          this.continents = continents;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    setContinent( continent ){
+      console.log(continent);
+      axios.get('/admin/countries/get/'+continent)
+        .then(response => {
+          this.project.chosen_continent = continent;
+          this.project.chosen_country = ""; 
+          const countries = response.data;
+          this.countries = countries;
+        })
+        .catch(error => {
+          console.log(error);
+        });      
+    },
+    setCountry( country ){
+        this.project.chosen_country = country;
+    },
+    getSectors() {
+      axios.get('/admin/sectors/get')
+        .then(response => {
+          const sectors = response.data;
+          this.sectors = sectors;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    setSector( sector ){
+        this.project.chosen_sector = sector;
+    },
+    getSectorTypes() {
+      axios.get('/admin/sectortypes/get')
+        .then(response => {
+          const sectortypes = response.data;
+          this.sectortypes = sectortypes;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    setSectortype( sectortype ){
+        this.project.chosen_sectortype = sectortype;
+    },
     selectImage() {
       this.$refs.fileInput.click();
     },
@@ -174,11 +284,14 @@ export default {
       this.project.image = e.target.files[0];
       this.preview_project_img = URL.createObjectURL(this.project.image);
     },
-
     submitRequest() {
       if (
         this.project.name == "" ||
         this.project.description == "" ||
+        this.project.chosen_continent == "" ||
+        this.project.chosen_country == "" ||
+        this.project.chosen_sector == "" ||
+        this.project.chosen_sectortype == "" ||
         this.project.image == ""
       ) {
         this.isSuccess = false;
@@ -188,6 +301,10 @@ export default {
         let formData = new FormData();
         formData.append("name", this.project.name);
         formData.append("description", this.project.description);
+        formData.append("continent_id", this.project.chosen_continent);
+        formData.append("country_id", this.project.chosen_country);
+        formData.append("sector_id", this.project.chosen_sector);
+        formData.append("sector_type_id", this.project.chosen_sectortype);
         formData.append("image", this.project.image);
         axios
           .post("/admin/projects/create", formData, {
@@ -225,8 +342,15 @@ export default {
     filteredCountries() {
       return this.project.countries[this.project.selectedContinent] || [];
     },
+    getCountries(){
+            return new Set(this.countries.map(x => x.country));
+        },
   },
-  mounted() {},
+  mounted(){
+    this.getContinents();
+    this.getSectors();
+    this.getSectorTypes();
+  }
 };
 </script>
 

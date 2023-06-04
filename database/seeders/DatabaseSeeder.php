@@ -30,7 +30,8 @@ class DatabaseSeeder extends Seeder
             BuyerRatingSeeder::class,
             SectorSeeder::class,
             SectorTypeSeeder::class,
-            ContinentSeeder::class
+            ContinentSeeder::class,
+            CountrySeeder::class
         ]);
     }
 }
