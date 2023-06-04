@@ -104,7 +104,7 @@
               </tr>
               <tr class="headt">
                 <td class="border-right">
-                  <b-card-body class="d-flex" style="gap: 10px">
+                  <div class="card-header d-flex" style="gap: 10px">
                     <h3 v-b-popover="popOver[1]" class="m-0">Promotores</h3>
                     <button
                       v-b-popover.hover.top="'Nuevo Promotor'"
@@ -115,7 +115,7 @@
                     >
                       <i class="fas fa-plus"></i>
                     </button>
-                  </b-card-body>
+                  </div>
 
                   <!--ZoneDrop-->
                   <div
@@ -182,7 +182,7 @@
                   <!--ZoneDrop-->
                 </td>
                 <td>
-                  <b-card-body class="d-flex" style="gap: 10px">
+                  <div class="card-body d-flex" style="gap: 10px">
                     <h3 v-b-popover="popOver[2]" class="m-0">
                       Beneficiarios <strong>(+/-)</strong>
                     </h3>
@@ -195,7 +195,7 @@
                     >
                       <i class="fas fa-plus"></i>
                     </button>
-                  </b-card-body>
+                  </div>
                   <!--ZoneDrop-->
                   <div
                     id="content3"
@@ -260,7 +260,7 @@
               <!-- Responsabilidades -->
               <tr>
                 <td colspan="2">
-                  <b-card-body class="d-flex" style="gap: 10px">
+                  <div class="card-body d-flex" style="gap: 10px">
                     <h3 v-b-popover="popOver[3]" class="m-0">
                       Responsabilidades
                     </h3>
@@ -275,7 +275,7 @@
                     >
                       <i class="fas fa-plus"></i>
                     </button>
-                  </b-card-body>
+                  </div>
                   <!--ZoneDrop-->
                   <div
                     id="content4"
@@ -344,7 +344,7 @@
               </tr>
               <tr>
                 <td colspan="2">
-                  <b-card-body class="d-flex" style="gap: 10px">
+                  <div class="card-body d-flex" style="gap: 10px">
                     <h3 v-b-popover="popOver[4]" class="m-0">
                       Recursos Sociales
                     </h3>
@@ -357,7 +357,7 @@
                     >
                       <i class="fas fa-plus"></i>
                     </button>
-                  </b-card-body>
+                  </div>
                   <!--ZoneDrop-->
                   <div
                     id="content5"
@@ -419,7 +419,7 @@
               </tr>
               <tr>
                 <td colspan="2">
-                  <b-card-body class="d-flex" style="gap: 10px">
+                  <div class="card-body d-flex" style="gap: 10px">
                     <h3 v-b-popover="popOver[5]" class="m-0">
                       Mecanismo Diálogo
                     </h3>
@@ -432,7 +432,7 @@
                     >
                       <i class="fas fa-plus"></i>
                     </button>
-                  </b-card-body>
+                  </div>
                   <!--ZoneDrop-->
                   <div
                     id="content6"
@@ -501,7 +501,7 @@
               </tr>
               <tr>
                 <td colspan="2">
-                  <b-card-body class="d-flex" style="gap: 10px">
+                  <div class="card-body d-flex" style="gap: 10px">
                     <h3 v-b-popover="popOver[6]" class="m-0">
                       Gestión de la Comunidad
                     </h3>
@@ -514,7 +514,7 @@
                     >
                       <i class="fas fa-plus"></i>
                     </button>
-                  </b-card-body>
+                  </div>
                   <!--ZoneDrop-->
                   <div
                     id="content7"
@@ -583,7 +583,7 @@
               </tr>
               <tr>
                 <td colspan="2">
-                  <b-card-body class="d-flex" style="gap: 10px">
+                  <div class="card-body d-flex" style="gap: 10px">
                     <h3 v-b-popover="popOver[7]" class="m-0">
                       Beneficios <strong>(+/-)</strong>
                     </h3>
@@ -604,7 +604,7 @@
                     >
                       <i class="fas fa-eye"></i>
                     </button>
-                  </b-card-body>
+                  </div>
                   <!--ZoneDrop-->
                   <div
                     id="content8"
@@ -876,13 +876,12 @@
             v-model="proyecto.componente"
           ></b-form-input>
         </b-form-group>
-        <b-button
-          class="float-right"
-          variant="success"
-          size="sm"
+        <button
+          class="float-right btn btn-sm btn-success"
           @click="addComponente()"
-          ><i class="fa fa-plus"></i> Agregar
-        </b-button>
+        >
+          <i class="fa fa-plus"></i> Agregar
+        </button>
         <br /><br />
         <!--Tabla-->
         <table class="table table-striped table-sm">
@@ -898,19 +897,19 @@
               <td>{{ itemc.id }}</td>
               <td>{{ itemc.nombre }}</td>
               <td>
-                <b-button
-                  size="sm"
-                  variant="danger"
+                <button
+                  class="btn btn-sm btn-danger"
                   @click="deleteComponente(itemc.id)"
-                  ><i class="fa fa-minus-circle"></i
-                ></b-button>
-                <b-button
-                  size="sm"
-                  variant="danger"
+                >
+                  <i class="fa fa-minus-circle"></i>
+                </button>
+                <button
+                  class="btn btn-sm btn-danger"
                   @click="editComponente(itemc.id)"
                   style="background: #5e72e4; border-color: #5e72e4"
-                  ><i class="fa fa-pen-square text-white"></i
-                ></b-button>
+                >
+                  <i class="fa fa-pen-square text-white"></i>
+                </button>
               </td>
             </tr>
           </tbody>
@@ -990,28 +989,24 @@
       </form>
       <template #modal-footer>
         <div class="w-100">
-          <b-row>
-            <b-col>
-              <b-button
-                variant="primary"
-                size="sm"
-                class="float-left"
+          <div class="row">
+            <div class="col">
+              <button
+                class="float-left btn btn-sm btn-primary"
                 @click="handleOk(1)"
               >
                 <i class="fa fa-save"></i> Guardar
-              </b-button>
-            </b-col>
-            <b-col class="text-rigth">
-              <b-button
-                variant="danger"
-                size="sm"
-                class="float-right"
+              </button>
+            </div>
+            <div class="col text-rigth">
+              <button
+                class="float-right btn btn-sm btn-danger"
                 @click="hideModal('modal-proyecto')"
               >
                 <i class="fa fa-times"></i> Cerrar
-              </b-button>
-            </b-col>
-          </b-row>
+              </button>
+            </div>
+          </div>
         </div>
       </template>
     </b-modal>
@@ -1025,7 +1020,7 @@
       @hidden="resetModal"
     >
       <form ref="promotor" @submit.stop.prevent="handleSubmit">
-        <b-container class="p-2">
+        <div class="container p-2">
           <b-form-group
             id="actor-social"
             label-cols-sm="4"
@@ -1103,32 +1098,32 @@
               max-rows="6"
             ></b-form-textarea>
           </b-form-group>
-        </b-container>
+        </div>
       </form>
       <template #modal-footer>
         <div class="w-100">
-          <b-row>
-            <b-col>
-              <b-button
+          <div class="row">
+            <div class="col">
+              <button
+                type="button"
+                class="btn btn-sm float-left"
                 variant="primary"
-                size="sm"
-                class="float-left"
                 @click="handleOk(2)"
               >
                 <i class="fa fa-save"></i> Guardar
-              </b-button>
-            </b-col>
-            <b-col class="text-rigth">
-              <b-button
+              </button>
+            </div>
+            <div class="col text-rigth">
+              <button
+                type="button"
+                class="btn btn-sm float-right"
                 variant="danger"
-                size="sm"
-                class="float-right"
                 @click="hideModal('modal-promotor')"
               >
                 <i class="fa fa-times"></i> Cerrar
-              </b-button>
-            </b-col>
-          </b-row>
+              </button>
+            </div>
+          </div>
         </div>
       </template>
     </b-modal>
@@ -1142,7 +1137,7 @@
       @hidden="resetModal"
     >
       <form ref="beneficiario" @submit.stop.prevent="handleSubmit">
-        <b-container class="p-2">
+        <div class="container p-2">
           <b-form-group
             id="actor-social"
             label-cols-sm="4"
@@ -1219,32 +1214,29 @@
             ></b-form-textarea>
           </b-form-group>
           <br /><br />
-        </b-container>
+        </div>
       </form>
       <template #modal-footer>
         <div class="w-100">
-          <b-row>
-            <b-col>
-              <b-button
-                variant="primary"
-                size="sm"
-                class="float-left"
+          <div class="row">
+            <div class="col">
+              <button
+                class="float-left btn btn-sm btn-primary"
+                type="button"
                 @click="handleOk(3)"
               >
                 <i class="fa fa-save"></i> Guardar
-              </b-button>
-            </b-col>
-            <b-col class="text-rigth">
-              <b-button
-                variant="danger"
-                size="sm"
-                class="float-right"
+              </button>
+            </div>
+            <div class="col text-rigth">
+              <button
+                class="float-right btn btn-sm btn-danger"
                 @click="hideModal('modal-beneficiario')"
               >
                 <i class="fa fa-times"></i> Cerrar
-              </b-button>
-            </b-col>
-          </b-row>
+              </button>
+            </div>
+          </div>
         </div>
       </template>
     </b-modal>
@@ -1258,7 +1250,7 @@
       @hidden="resetModal"
     >
       <form ref="responsabilidades" @submit.stop.prevent="handleSubmit">
-        <b-container class="p-2">
+        <div class="container p-2">
           <b-form-group
             id="actorSoc-responsabilidades"
             label-cols-sm="4"
@@ -1335,32 +1327,30 @@
               max-rows="6"
             ></b-form-textarea>
           </b-form-group>
-        </b-container>
+        </div>
       </form>
       <template #modal-footer>
         <div class="w-100">
-          <b-row>
-            <b-col>
-              <b-button
-                variant="primary"
-                size="sm"
-                class="float-left"
+          <div class="row">
+            <div class="col">
+              <button
+                class="float-left btn btn-sm btn-primary"
+                type="button"
                 @click="handleOk(4)"
               >
                 <i class="fa fa-save"></i> Guardar
-              </b-button>
-            </b-col>
-            <b-col class="text-rigth">
-              <b-button
-                variant="danger"
-                size="sm"
-                class="float-right"
+              </button>
+            </div>
+            <div class="col text-rigth">
+              <button
+                class="float-right btn btn-sm btn-danger"
+                type="button"
                 @click="hideModal('modal-responsabilidades')"
               >
                 <i class="fa fa-times"></i> Cerrar
-              </b-button>
-            </b-col>
-          </b-row>
+              </button>
+            </div>
+          </div>
         </div>
       </template>
     </b-modal>
@@ -1453,28 +1443,24 @@
       </form>
       <template #modal-footer>
         <div class="w-100">
-          <b-row>
-            <b-col>
-              <b-button
-                variant="primary"
-                size="sm"
-                class="float-left"
+          <div class="row">
+            <div class="col">
+              <button
+                class="float-left btn btn-sm btn-primary"
                 @click="handleOk(5)"
               >
                 <i class="fa fa-save"></i> Guardar
-              </b-button>
-            </b-col>
-            <b-col class="text-rigth">
-              <b-button
-                variant="danger"
-                size="sm"
-                class="float-right"
+              </button>
+            </div>
+            <div class="col text-rigth">
+              <button
+                class="float-right btn btn-sm btn-danger"
                 @click="hideModal('modal-recurso')"
               >
                 <i class="fa fa-times"></i> Cerrar
-              </b-button>
-            </b-col>
-          </b-row>
+              </button>
+            </div>
+          </div>
         </div>
       </template>
     </b-modal>
@@ -1488,7 +1474,7 @@
       @hidden="resetModal"
     >
       <form ref="dialogo" @submit.stop.prevent="handleSubmit">
-        <b-container class="p-2">
+        <div class="container p-2">
           <b-form-group v-slot="{ ariaDescribedby }">
             <b-form-checkbox-group
               v-model="dialogo.selected"
@@ -1537,32 +1523,28 @@
               max-rows="6"
             ></b-form-textarea>
           </b-form-group>
-        </b-container>
+        </div>
       </form>
       <template #modal-footer>
         <div class="w-100">
-          <b-row>
-            <b-col>
-              <b-button
-                variant="primary"
-                size="sm"
-                class="float-left"
+          <div class="row">
+            <div class="col">
+              <button
+                class="float-left btn btn-sm btn-primary"
                 @click="handleOk(6)"
               >
                 <i class="fa fa-save"></i> Guardar
-              </b-button>
-            </b-col>
-            <b-col class="text-rigth">
-              <b-button
-                variant="danger"
-                size="sm"
-                class="float-right"
+              </button>
+            </div>
+            <div class="col text-rigth">
+              <button
+                class="float-right btn btn-sm btn-danger"
                 @click="hideModal('modal-dialogo')"
               >
                 <i class="fa fa-times"></i> Cerrar
-              </b-button>
-            </b-col>
-          </b-row>
+              </button>
+            </div>
+          </div>
         </div>
       </template>
     </b-modal>
@@ -1576,7 +1558,7 @@
       @hidden="resetModal"
     >
       <form ref="compromiso" @submit.stop.prevent="handleSubmit">
-        <b-container class="p-2">
+        <div class="container p-2">
           <b-form-group v-slot="{ ariaDescribedby }">
             <b-form-checkbox-group
               v-model="compromiso.selected"
@@ -1625,32 +1607,30 @@
               max-rows="6"
             ></b-form-textarea>
           </b-form-group>
-        </b-container>
+        </div>
       </form>
       <template #modal-footer>
         <div class="w-100">
-          <b-row>
-            <b-col>
-              <b-button
-                variant="primary"
-                size="sm"
-                class="float-left"
+          <div class="row">
+            <div class="col">
+              <button
+                class="float-left btn btn-sm btn-primary"
+                typye="button"
                 @click="handleOk(7)"
               >
                 <i class="fa fa-save"></i> Guardar
-              </b-button>
-            </b-col>
-            <b-col class="text-rigth">
-              <b-button
-                variant="danger"
-                size="sm"
-                class="float-right"
+              </button>
+            </div>
+            <div class="col text-rigth">
+              <button
+                class="float-right btn btn-sm btn-danger"
+                typye="button"
                 @click="hideModal('modal-compromiso')"
               >
                 <i class="fa fa-times"></i> Cerrar
-              </b-button>
-            </b-col>
-          </b-row>
+              </button>
+            </div>
+          </div>
         </div>
       </template>
     </b-modal>
@@ -1664,7 +1644,7 @@
       @hidden="resetModal"
     >
       <form ref="rentabilidad" @submit.stop.prevent="handleSubmit">
-        <b-container class="p-2">
+        <div class="container p-2">
           <b-form-group
             id="actorSoc-rentabilidad"
             label-cols-sm="4"
@@ -1741,32 +1721,30 @@
               max-rows="6"
             ></b-form-textarea>
           </b-form-group>
-        </b-container>
+        </div>
       </form>
       <template #modal-footer>
         <div class="w-100">
-          <b-row>
-            <b-col>
-              <b-button
-                variant="primary"
-                size="sm"
-                class="float-left"
+          <div class="row">
+            <div class="col">
+              <button
+                class="float-left btn btn-sm btn-primary"
+                type="button"
                 @click="handleOk(8)"
               >
                 <i class="fa fa-save"></i> Guardar
-              </b-button>
-            </b-col>
-            <b-col class="text-rigth">
-              <b-button
-                variant="danger"
-                size="sm"
-                class="float-right"
+              </button>
+            </div>
+            <div class="col text-rigth">
+              <button
+                class="float-right btn btn-sm btn-danger"
+                type="button"
                 @click="hideModal('modal-rentabilidad')"
               >
                 <i class="fa fa-times"></i> Cerrar
-              </b-button>
-            </b-col>
-          </b-row>
+              </button>
+            </div>
+          </div>
         </div>
       </template>
     </b-modal>
@@ -1785,8 +1763,6 @@
 
 <script>
 import ConfirmModal from "../template/ConfirmModal.vue";
-import { Input, Tooltip, Popover } from '../../../../node_modules/element-ui';
-import { GridLayout, GridItem } from "../../../../node_modules/vue-grid-layout";
 import BaseInput from "./../../../js/components/BaseInput.vue";
 import BaseButton from "./../../../js/components/BaseButton.vue";
 import BaseAlert from "./../../../js/components/BaseAlert.vue";
@@ -1796,9 +1772,14 @@ import Modal from "./../../../js/components/Modal.vue";
 import ThreeStateCheckbox from "./../../../js/components/Checkbox/ThreeStateCheckbox.vue";
 import MatrixStakeholders from "../../../js/components/Matrix/MatrixStakeholders.vue";
 import { dataInitMatrix } from "../../../js/components/Matrix/defaultData";
-import { Form } from "../../../../node_modules/vform";
-import { BootstrapVue, IconsPlugin } from "../../../../node_modules/bootstrap-vue";
-import Vue from 'vue';
+import Vue from "vue";
+import { Input, Tooltip, Popover } from "element-ui";
+import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
+import { GridLayout, GridItem } from "vue-grid-layout";
+import { Form } from "vform";
+
 
 const defaultProyecto = {
   nombre: "",
@@ -1961,18 +1942,20 @@ export default {
     BootstrapVue,
     IconsPlugin,
     BaseInput,
-        Modal,
-        Input,
-        Tooltip,
-        Popover,
-        BaseButton,
-BaseAlert,
-        ButtonRadioGroup,
-        BaseRadio,
-        Vue,
-
+    Modal,
+    Input,
+    Tooltip,
+    Popover,
+    BaseButton,
+    BaseAlert,
+    ButtonRadioGroup,
+    BaseRadio,
+    Vue,
   },
   props: ["data"],
+  directives: {
+  'b-popover': Popover
+},
   data() {
     return {
       feedbacks: this.data.feedbacks,
