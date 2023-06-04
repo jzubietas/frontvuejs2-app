@@ -51,8 +51,9 @@
               the required fields and upload your project's image.
             </div>
 
+
             <label for="name" class="d-block mt-4 text-7"
-              >Nombre de proyecto<span class="text-8">*</span></label
+              >Nombre de la unidad de operaciones<span class="text-8">*</span></label
             >
             <input
               v-model="project.name"
@@ -139,7 +140,7 @@
             </select>
 
             <label for="sector_types" class="d-block mt-4 text-7"
-              >Seleccione un tipo de sector</label
+              >Seleccione una subcategoria</label
             >
             <select
               name="sector-type-name"
@@ -185,33 +186,33 @@ export default {
       chosen_continent: "",
       chosen_country: "",
       chosen_sector: "",
-      chosen_sectortype: "",   
+      chosen_sectortype: "",
       preview_project_img: "../../img/illustrator/uploadimage.png",
       project: {
         name: "",
         description: "",
         image: "",
-        chosen_continent:"",
-        chosen_country:"",
-        chosen_sector:"",
-        chosen_sectortype:"",
+        chosen_continent: "",
+        chosen_country: "",
+        chosen_sector: "",
+        chosen_sectortype: "",
         selectedContinent: "",
         selectedCountry: "",
         selectedSector: "",
         selectedSectorType: "",
         continents: ["America", "Europa", "Asia", "Africa"],
         countries: {
-          'America': [
-            'Canada',
-            'Mexico',
-            'United States',
-            'Argentina',
-            'Brazil',
-            'Chile',
+          America: [
+            "Canada",
+            "Mexico",
+            "United States",
+            "Argentina",
+            "Brazil",
+            "Chile",
           ],
-          'Europa': ['France', 'Germany', 'Italy'],
-          'Asia': ['China', 'India', 'Thailand'],
-          'Africa': ['Egypt', 'Nigeria'],
+          Europa: ["France", "Germany", "Italy"],
+          Asia: ["China", "India", "Thailand"],
+          Africa: ["Egypt", "Nigeria"],
         },
       },
       isSuccess: false,
@@ -221,61 +222,65 @@ export default {
       countries: [],
       continents: [],
       sectors: [],
-      sectortypes: []
+      sectortypes: [],
     };
   },
   methods: {
     getContinents() {
-      axios.get('/admin/continents/get')
-        .then(response => {
+      axios
+        .get("/admin/continents/get")
+        .then((response) => {
           const continents = response.data;
           this.continents = continents;
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
-    setContinent( continent ){
+    setContinent(continent) {
       console.log(continent);
-      axios.get('/admin/countries/get/'+continent)
-        .then(response => {
+      axios
+        .get("/admin/countries/get/" + continent)
+        .then((response) => {
           this.project.chosen_continent = continent;
-          this.project.chosen_country = ""; 
+          this.project.chosen_country = "";
           const countries = response.data;
           this.countries = countries;
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
-        });      
+        });
     },
-    setCountry( country ){
-        this.project.chosen_country = country;
+    setCountry(country) {
+      this.project.chosen_country = country;
     },
     getSectors() {
-      axios.get('/admin/sectors/get')
-        .then(response => {
+      axios
+        .get("/admin/sectors/get")
+        .then((response) => {
           const sectors = response.data;
           this.sectors = sectors;
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
-    setSector( sector ){
-        this.project.chosen_sector = sector;
+    setSector(sector) {
+      this.project.chosen_sector = sector;
     },
     getSectorTypes() {
-      axios.get('/admin/sectortypes/get')
-        .then(response => {
+      axios
+        .get("/admin/sectortypes/get")
+        .then((response) => {
           const sectortypes = response.data;
           this.sectortypes = sectortypes;
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
-    setSectortype( sectortype ){
-        this.project.chosen_sectortype = sectortype;
+    setSectortype(sectortype) {
+      this.project.chosen_sectortype = sectortype;
     },
     selectImage() {
       this.$refs.fileInput.click();
@@ -342,15 +347,15 @@ export default {
     filteredCountries() {
       return this.project.countries[this.project.selectedContinent] || [];
     },
-    getCountries(){
-            return new Set(this.countries.map(x => x.country));
-        },
+    getCountries() {
+      return new Set(this.countries.map((x) => x.country));
+    },
   },
-  mounted(){
+  mounted() {
     this.getContinents();
     this.getSectors();
     this.getSectorTypes();
-  }
+  },
 };
 </script>
 

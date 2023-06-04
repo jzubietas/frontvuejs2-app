@@ -84,6 +84,14 @@ export default {
     props:[
         'data'
     ],
+    data() {
+        return {
+            chosen_country: "",
+            chosen_continent: "",
+            getContinents: "",
+            getCountries: "",
+        }
+    },
     mounted(){
         console.log(this.data)
     }
