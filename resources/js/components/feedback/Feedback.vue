@@ -2013,7 +2013,12 @@ export default {
     "b-form-textarea": BFormTextarea,
   },
   data() {
-    return {
+      return {
+      filter: {
+        name: "",
+        brand: "All",
+        category: "All",
+      },
       visibleFormCrud: false,
       showStyle1: true,
       estilo1:
