@@ -15,8 +15,11 @@ class CreateStakeHoldersTable extends Migration
     {
         Schema::create('stakeholders', function (Blueprint $table) {
             $table->id();
-            $table->string('description');
-            //$table->string('color');
+            $table->string('name');
+            $table->string('color')->nullable()->default('');
+            $table->string('description')->nullable()->default('');
+            $table->string('coment')->nullable()->default('');
+            
             $table->unsignedBigInteger('project_id');
             $table->timestamps();
 
