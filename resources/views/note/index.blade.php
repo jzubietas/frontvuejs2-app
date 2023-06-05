@@ -2,6 +2,6 @@
 
 @section('content')
 
-<Product :data ='{{ json_encode($data) }}'></Product>
+<Note :data ='{{ json_encode($data) }}'></Note>
 
 @endsection
