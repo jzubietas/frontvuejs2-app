@@ -1808,6 +1808,7 @@ import ThreeStateCheckbox from "./../../../js/components/Checkbox/ThreeStateChec
 import MatrixStakeholders from "../../../js/components/Matrix/MatrixStakeholders.vue";
 import { dataInitMatrix } from "../Matrix/defaultData";
 import Vue from "vue";
+import Swal from "sweetalert2";
 import { Input, Tooltip, Popover } from "element-ui";
 import {
   BModal,
@@ -1987,7 +1988,6 @@ export default {
     Form,
     Input,
     Tooltip,
-
     Vue,
     Popover,
     BModal,
@@ -1999,6 +1999,7 @@ export default {
     BFormFile,
     BFormSelect,
     BFormTextarea,
+    Swal,
   },
   props: ["data"],
   directives: {
@@ -2013,7 +2014,7 @@ export default {
     "b-form-textarea": BFormTextarea,
   },
   data() {
-      return {
+    return {
       filter: {
         name: "",
         brand: "All",

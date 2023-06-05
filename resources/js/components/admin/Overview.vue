@@ -371,11 +371,11 @@
 import Modal from "./../Modal.vue";
 import { Form } from "vform";
 import Swal from "sweetalert2";
+import BaseButton from "./../BaseButton.vue";
 import { Input, Tooltip, Popover } from "element-ui";
 import {
   BModal,
   VBModal,
-  BButton,
   BFormInput,
   BFormGroup,
   BFormRadio,
@@ -391,7 +391,6 @@ export default {
     BModal,
     VBModal,
     Popover,
-    BButton,
     BFormInput,
     BFormGroup,
     BFormRadio,
@@ -403,11 +402,11 @@ export default {
     Input,
     Tooltip,
     Swal,
+    BaseButton,
   },
   directives: {
     "b-modal": VBModal,
     "b-popover": Popover,
-    "b-button": BButton,
     "b-form-input": BFormInput,
     "b-form-group": BFormGroup,
     "b-form-radio": BFormRadio,
@@ -435,7 +434,6 @@ export default {
         tipoContinente: "-1",
         dni: "",
       }),
-      name: "",
       division: {
         name: "",
         categories: [],
@@ -444,8 +442,9 @@ export default {
         name: "",
         subcategories: [],
       },
-      submittedNames: [],
+      name: "",
       nameState: null,
+      submittedNames: [],
       category: "",
       subcategory: "",
       categories: [],
@@ -553,13 +552,12 @@ export default {
       Swal.fire({
         title: "Se ocultara el proyecto",
         icon: "info",
-        html:
-          "Los usuarios con menor privilegio no podran visualizarlo",
+        html: "Los usuarios con menor privilegio no podran visualizarlo",
         showCloseButton: true,
         showCancelButton: true,
         focusConfirm: false,
         confirmButtonText: '<i class="fa fa-eye"></i> Ocultar!',
-        cancelButtonText: 'Cancelar',
+        cancelButtonText: "Cancelar",
       });
     },
     //----------------------------------------------------

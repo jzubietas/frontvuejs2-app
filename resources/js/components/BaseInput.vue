@@ -66,7 +66,20 @@
   </validation-provider>
 </template>
 <script>
+import { BFormGroup } from "bootstrap-vue";
+
 export default {
+  components: {
+    BFormGroup,
+    Input,
+    Tooltip,
+    Swal,
+    BaseButton,
+  },
+  directives: {
+    "b-form-group": BFormGroup,
+  },
+
   inheritAttrs: false,
   name: "base-input",
   props: {
