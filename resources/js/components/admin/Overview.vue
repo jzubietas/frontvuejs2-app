@@ -19,16 +19,21 @@
                   type="success"
                   v-b-modal.modal-unidad-operaciones
                 >
-                  <i class="fas fa-plus text-white"></i>
+                  <i
+                    class="fas fa-plus text-white"
+                    style="
+                      height: 20px;
+                      padding: 0px 4px;
+                      width: 20px;
+                      font-size: 11px;
+                    "
+                  ></i>
                 </base-button>
               </div>
             </div>
             <hr class="my-1" />
             <div class="row">
-              <div
-                class="card-body d-flex align-items-center"
-                style="gap: 10px"
-              >
+              <div class="card-body d-flex align-items-center px-0">
                 <div class="col-lg-3 d-flex flex-wrap">
                   <select
                     name="tipo"
@@ -105,16 +110,17 @@
     <div class="mx-5 mt-4" fluid>
       <div class="row">
         <div
-          class="col-lg-4 col-md-4 col-sm-12"
+          class="col-lg-4 col-md-6 col-sm-12"
           v-for="division in submittedNames"
           :key="division.name"
         >
           <div class="position-relative">
             <details class="card p-3 d-flex" open>
+              <!-- UNIDAD -->
               <summary>
                 {{ division.name }}
                 <button
-                  class="btn base-button rounded-circle ml-2 btn-success btn-md text-left"
+                  class="btn base-button rounded-circle btn-success btn-md text-left"
                   style="
                     height: 20px;
                     padding: 0px 4px;
@@ -128,7 +134,7 @@
                   <i class="fas fa-plus"></i>
                 </button>
                 <button
-                  class="btn base-button rounded-circle ml-2 btn-danger btn-md text-left"
+                  class="btn base-button rounded-circle btn-danger btn-md text-left"
                   style="
                     height: 20px;
                     padding: 0px 4px;
@@ -147,10 +153,11 @@
                 v-for="category in division.categories"
                 :key="category"
               >
+                <!-- NIVEL 1 -->
                 <summary>
                   {{ category }}
                   <button
-                    class="btn base-button rounded-circle ml-2 btn-success btn-md text-left"
+                    class="btn base-button rounded-circle btn-success btn-md text-left"
                     style="
                       height: 20px;
                       padding: 0px 4px;
@@ -164,7 +171,7 @@
                     <i class="fas fa-plus"></i>
                   </button>
                   <button
-                    class="btn base-button rounded-circle ml-2 btn-danger btn-md text-left"
+                    class="btn base-button rounded-circle btn-danger btn-md text-left"
                     style="
                       height: 20px;
                       padding: 0px 4px;
@@ -182,9 +189,10 @@
                   v-for="subcategory in subdivion"
                   :key="subcategory"
                 >
+                  <!-- NIVEL 2 -->
                   <summary>{{ subcategory }}</summary>
                   <button
-                    class="btn base-button rounded-circle ml-2 btn-success btn-md text-left"
+                    class="btn base-button rounded-circle btn-success btn-md text-left"
                     style="
                       height: 20px;
                       padding: 0px 4px;
@@ -208,7 +216,7 @@
                       >Nombre de proyecto</a
                     >
                     <button
-                      class="btn base-button rounded-circle ml-2 btn-primary btn-md text-left"
+                      class="btn base-button rounded-circle btn-primary btn-md text-left"
                       style="
                         height: 20px;
                         padding: 0px 4px;
@@ -226,17 +234,19 @@
                   <summary>
                     Particular
                     <button
-                      class="btn base-button rounded-circle ml-2 btn-success btn-md text-left"
-                      style="
-                        height: 20px;
-                        padding: 0px 4px;
-                        width: 20px;
-                        font-size: 11px;
-                      "
-                      type="button"
-                    >
-                      <i class="fas fa-plus"></i>
-                    </button>
+                    class="btn base-button rounded-circle btn-success btn-md text-left"
+                    style="
+                      height: 20px;
+                      padding: 0px 4px;
+                      width: 20px;
+                      font-size: 11px;
+                    "
+                    type="button"
+                    v-b-modal.modal-subcategoria
+                    @click="openModalCategory(subdivision)"
+                  >
+                    <i class="fas fa-plus"></i>
+                  </button>
                   </summary>
                   <p class="ml-4 mb-0">
                     <a
@@ -249,12 +259,12 @@
                       >Nombre de proyecto</a
                     >
                     <button
-                      class="btn base-button rounded-circle ml-2 btn-primary btn-md text-left"
+                      class="btn base-button rounded-circle btn-primary btn-md text-left"
                       style="
                         height: 20px;
                         padding: 0px 4px;
                         width: 20px;
-                        font-size: 11px;
+                        font-size: 8px;
                       "
                       type="button"
                       @click="hideCategory()"
@@ -308,39 +318,14 @@
         </b-form-group>
       </form>
     </b-modal>
-    <!-- Categoria -->
+    <!-- Niveles -->
     <b-modal
       id="modal-categoria"
       ref="modal"
-      title="Agregar categoria"
+      title="Agregar Nivel"
       @show="resetModal"
       @hidden="resetModal"
       @ok="handleOkCategory"
-    >
-      <form ref="form" @submit.stop.prevent="handleSubmit">
-        <b-form-group
-          label="Nombre de la categoria"
-          label-for="name-input"
-          invalid-feedback="Name is required"
-          :state="nameState"
-        >
-          <b-form-input
-            id="name-input"
-            v-model="category"
-            :state="nameState"
-            required
-          ></b-form-input>
-        </b-form-group>
-      </form>
-    </b-modal>
-    <!-- Sub-Categoria -->
-    <b-modal
-      id="modal-subcategoria"
-      ref="modal"
-      title="Agregar Subcategoria"
-      @show="resetModal"
-      @hidden="resetModal"
-      @ok="handleOkSubCategory"
     >
       <form ref="form" @submit.stop.prevent="handleSubmit">
         <div class="d-flex align-items-center">
@@ -351,14 +336,14 @@
         </div>
 
         <b-form-group
-          label="Nombre de la subcategoria"
+          label="Nombre del nivel"
           label-for="name-input"
           invalid-feedback="Name is required"
           :state="nameState"
         >
           <b-form-input
             id="name-input"
-            v-model="subcategory"
+            v-model="category"
             :state="nameState"
             required
           ></b-form-input>
