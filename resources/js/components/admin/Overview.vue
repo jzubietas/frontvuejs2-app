@@ -142,7 +142,7 @@
                     font-size: 11px;
                   "
                   type="button"
-                  @click="deleteCategory(division)"
+                  @click="confirmDeleteUnidad"
                 >
                   <i class="fas fa-minus"></i>
                 </button>
@@ -179,7 +179,7 @@
                       font-size: 11px;
                     "
                     type="button"
-                    @click="deleteCategory()"
+                    @click="confirmDeleteNivel()"
                   >
                     <i class="fas fa-minus"></i>
                   </button>
@@ -205,6 +205,7 @@
                   >
                     <i class="fas fa-plus"></i>
                   </button>
+
                   <p class="ml-4 mb-0">
                     <a
                       href="#"
@@ -224,7 +225,7 @@
                         font-size: 11px;
                       "
                       type="button"
-                      @click="hideCategory()"
+                      @click="hideProyect"
                     >
                       <i class="fas fa-eye text-white"></i>
                     </button>
@@ -234,19 +235,32 @@
                   <summary>
                     Particular
                     <button
-                    class="btn base-button rounded-circle btn-success btn-md text-left"
-                    style="
-                      height: 20px;
-                      padding: 0px 4px;
-                      width: 20px;
-                      font-size: 11px;
-                    "
-                    type="button"
-                    v-b-modal.modal-subcategoria
-                    @click="openModalCategory(subdivision)"
-                  >
-                    <i class="fas fa-plus"></i>
-                  </button>
+                      class="btn base-button rounded-circle btn-success btn-md text-left"
+                      style="
+                        height: 20px;
+                        padding: 0px 4px;
+                        width: 20px;
+                        font-size: 11px;
+                      "
+                      type="button"
+                      v-b-modal.modal-subcategoria
+                      @click="openModalCategory(subdivision)"
+                    >
+                      <i class="fas fa-plus"></i>
+                    </button>
+                    <button
+                      class="btn base-button rounded-circle btn-danger btn-md text-left"
+                      style="
+                        height: 20px;
+                        padding: 0px 4px;
+                        width: 20px;
+                        font-size: 11px;
+                      "
+                      type="button"
+                      @click="confirmDeleteNivel()"
+                    >
+                      <i class="fas fa-minus"></i>
+                    </button>
                   </summary>
                   <p class="ml-4 mb-0">
                     <a
@@ -267,7 +281,7 @@
                         font-size: 8px;
                       "
                       type="button"
-                      @click="hideCategory()"
+                      @click="hideProyect"
                     >
                       <i class="fas fa-eye text-white"></i>
                     </button>
@@ -356,6 +370,7 @@
 <script>
 import Modal from "./../Modal.vue";
 import { Form } from "vform";
+import Swal from "sweetalert2";
 import { Input, Tooltip, Popover } from "element-ui";
 import {
   BModal,
@@ -387,6 +402,7 @@ export default {
     BFormCheckbox,
     Input,
     Tooltip,
+    Swal,
   },
   directives: {
     "b-modal": VBModal,
@@ -446,7 +462,6 @@ export default {
   },
   methods: {
     //----------------------------------------------------
-
     checkFormValidity() {
       const valid = this.$refs.form.checkValidity();
       this.nameState = valid;
@@ -469,52 +484,83 @@ export default {
       this.handleSubmitSubCategory();
     },
     handleSubmit() {
-      // Exit when the form isn't valid
       if (!this.checkFormValidity()) {
         return;
       }
-      // Push the name to submitted names
       this.submittedNames.push(
         JSON.parse(JSON.stringify({ ...this.division, name: this.name }))
       );
-      // Hide the modal manually
       this.$nextTick(() => {
         this.$bvModal.hide("modal-unidad-operaciones");
       });
     },
     handleSubmitCategory() {
-      // Exit when the form isn't valid
       if (!this.checkFormValidity()) {
         return;
       }
       this.divisionEdited.categories.push(this.category);
-      // this.submittedNames.push(
-      //   JSON.parse(JSON.stringify({ ...this.division, name: this.name }))
-      // );
       this.$nextTick(() => {
         this.$bvModal.hide("modal-categoria");
       });
     },
     handleSubmitSubCategory() {
-      // Exit when the form isn't valid
       if (!this.checkFormValidity()) {
         return;
       }
       this.subDivisionEdited.subcategories.push(this.subcategory);
-      // this.submittedNames.push(
-      //   JSON.parse(JSON.stringify({ ...this.division, name: this.name }))
-      // );
       this.$nextTick(() => {
         this.$bvModal.hide("modal-subcategoria");
       });
     },
     openModalCategory(division) {
       this.divisionEdited = division;
-      //   console.log("division: ", division);
     },
     openModalSubCategory(subdivision) {
       this.subDivisionEdited = subdivision;
-      //   console.log("division: ", division);
+    },
+    //----------------------------------------------------
+    confirmDeleteUnidad() {
+      Swal.fire({
+        title: "¿Estás seguro de que quieres eliminar esta unidad?",
+        text: "¡Se perderan todos las categorias, subcategorias y los proyectos correspondientes!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Si, eliminar!",
+        confirmButtonColor: "#dc3545",
+        cancelButtonText: "Cancel",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Perform the deletion operation
+        }
+      });
+    },
+    confirmDeleteNivel() {
+      Swal.fire({
+        title: "¿Estás seguro de que quieres eliminar esta categoria?",
+        text: "¡Se perderan todos las subcategorias y los proyectos relacionados a esta!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Si, eliminar!",
+        confirmButtonColor: "#dc3545",
+        cancelButtonText: "Cancel",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Perform the deletion operation
+        }
+      });
+    },
+    hideProyect() {
+      Swal.fire({
+        title: "Se ocultara el proyecto",
+        icon: "info",
+        html:
+          "Los usuarios con menor privilegio no podran visualizarlo",
+        showCloseButton: true,
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText: '<i class="fa fa-eye"></i> Ocultar!',
+        cancelButtonText: 'Cancelar',
+      });
     },
     //----------------------------------------------------
     aplicarFiltro() {
