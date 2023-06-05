@@ -27,11 +27,11 @@
                   >
                     <h3 v-b-popover="popOver[0]" class="m-0">Proyecto</h3>
                     <button
-                      v-b-popover.hover.top="'Nuevo Proyecto'"
                       type="button"
-                      @click="addStickyNoteProyecto('modal-proyectos')"
                       class="btn base-button rounded-circle btn-success btn-sm text-left"
                       style="padding-left: 10px; padding-right: 10px"
+                      v-b-popover.hover.top="'Nuevo Proyecto'"
+                      @click="addStickyNoteProyecto('modal-proyectos')"
                     >
                       <i class="fas fa-plus"></i>
                     </button>
@@ -113,9 +113,9 @@
                   >
                     <h3 v-b-popover="popOver[1]" class="m-0">Promotores</h3>
                     <button
-                    type="button"
-                    class="btn base-button rounded-circle btn-success btn-sm text-left"
-                    style="padding-left: 10px; padding-right: 10px"
+                      type="button"
+                      class="btn base-button rounded-circle btn-success btn-sm text-left"
+                      style="padding-left: 10px; padding-right: 10px"
                       v-b-popover.hover.top="'Nuevo Promotor'"
                       @click="addStickyNotePromotor('modal-promotores')"
                     >
@@ -483,7 +483,6 @@
                           text-align-last: start;
                         "
                       >
-                        <!-- AQUI -->
                         <div @dblclick="editModal('modal-dialogo', item)">
                           <span
                             v-if="item.data.Dialogo.comentario == ''"
@@ -738,65 +737,6 @@
           </div>
         </div>
       </div>
-
-      <!-- <div class="warpper">
-                  <div class="px-5 d-flex justify-content-between">
-                      <h4 class="d-inline-block font-weight-600">
-                          <i class="fas fa-comment-dots mr-3"></i> Feedbacks
-                      </h4>
-                  </div>
-
-                  <div class="px-5 mt-5">
-                      <form class="row">
-                          <div class="col-8 p-0">
-                              <h6 class="col-4 d-inline-block text-right">
-                                  Search by Title:
-                              </h6><input v-model="filter.title" type="text" name="name" id='name' class="form-input col-5 d-inline-block" placeholder='Input'>
-
-                              <h6 class="col-4 d-inline-block mt-4 text-right">
-                                  Status:
-                              </h6><select v-model="filter.status" name="status" id='status' class="form-input col-5 d-inline-block">
-                                  <option value="All"> All </option>
-                                  <option value="Pending"> Pending </option>
-                                  <option value="Closed"> Closed </option>
-                              </select>
-                          </div>
-                      </form>
-
-                      <div class="mt-5">
-                          <table class="table table-hover">
-                              <thead>
-                                  <tr>
-                                      <th scope="col" width="5%">No.</th>
-                                      <th scope="col" width="20%">Title</th>
-                                      <th scope="col" width="30%">Message</th>
-                                      <th scope="col" width="15%">Email</th>
-                                      <th scope="col" class="text-center" width="10%">Role</th>
-                                      <th scope="col" class="text-center" width="10%">Status</th>
-                                  </tr>
-                              </thead>
-                              <tbody>
-                                  <tr v-for="(item, index) in feedbacks" :key="item.feedback_id">
-                                      <th class="py-4" scope="row">{{index + 1}}.</th>
-                                      <td class="py-4">{{ item.feedback_title }}</td>
-                                      <td class="py-4">{{ item.feedback_message }}</td>
-                                      <a :href="'mailto:'+item.user_email"><td class="py-4 text-6 cursor-pointer">{{item.user_email}} </td></a>
-                                      <td class="py-4 text-center">{{item.user_role}} </td>
-                                      <td v-if="item.feedback_status == 'Closed'" class="text-center text-3 py-4"><i class="fas fa-check"></i> {{item.feedback_status}} </td>
-                                      <td @click="openConfirmModal(item)" v-if="item.feedback_status == 'Pending'" class="text-center text-3 py-4 cursor-pointer"><i class="fas fa-edit"></i> {{item.feedback_status}} </td>
-                                  </tr>
-                              </tbody>
-                          </table>
-                          <div v-if="feedbacks==''" class="text-7 w-100 text-center">
-                              <img :src="'../img/illustrator/emptyview.png'" class="pointer-events-none empty-img" alt="">
-                              <p>No feedbacks to be shown.</p>
-                          </div>
-                      </div>
-
-
-                  </div>
-              </div>
-              <confirm-modal v-if="toggleConfirmModal" @confirmed="completeFeedback" @closeConfirmModal="closeConfirmModal" :title="confirmModalTitle"></confirm-modal> -->
     </div>
     <!-- SECCION DE MODALES -->
     <!--Modal Proyecto-->
@@ -825,25 +765,6 @@
             v-model="proyecto.nombre"
           ></b-form-input>
         </b-form-group>
-
-        <b-form-group
-          id="objetivo-proyecto"
-          label-cols-sm="4"
-          label-cols-lg="3"
-          content-cols-sm
-          content-cols-lg="7"
-          description=""
-          label="Objetivo"
-          label-for="objetivoProyecto"
-          label-size="sm"
-        >
-          <b-form-input
-            size="sm"
-            id="objetivoProyecto"
-            v-model="proyecto.objetivo"
-          ></b-form-input>
-        </b-form-group>
-
         <b-form-group
           id="colors-stiky-note"
           label-cols-sm="4"
@@ -863,6 +784,23 @@
             <b-form-radio class="input-radio"></b-form-radio>
             <b-form-radio class="input-radio"></b-form-radio>
           </b-form-radio-group>
+        </b-form-group>
+        <b-form-group
+          id="objetivo-proyecto"
+          label-cols-sm="4"
+          label-cols-lg="3"
+          content-cols-sm
+          content-cols-lg="7"
+          description=""
+          label="Objetivo"
+          label-for="objetivoProyecto"
+          label-size="sm"
+        >
+          <b-form-input
+            size="sm"
+            id="objetivoProyecto"
+            v-model="proyecto.objetivo"
+          ></b-form-input>
         </b-form-group>
 
         <b-form-group
@@ -894,7 +832,7 @@
           content-cols-sm
           content-cols-lg="7"
           description=""
-          label="Componentes"
+          label="Componentes:"
           label-for="componentesProyecto"
           label-size="sm"
         >
@@ -932,7 +870,7 @@
                   <i class="fa fa-minus-circle"></i>
                 </button>
                 <button
-                  class="btn btn-sm btn-danger"
+                  class="btn btn-sm btn-primary"
                   @click="editComponente(itemc.id)"
                   style="background: #5e72e4; border-color: #5e72e4"
                 >
@@ -1320,23 +1258,6 @@
             </b-form-radio-group>
           </b-form-group>
           <b-form-group
-            id="activ-responsabilidad"
-            label-cols-sm="4"
-            label-cols-lg="3"
-            content-cols-sm
-            content-cols-lg="7"
-            description=""
-            label="Responsabilidad:"
-            label-for="responsable-responsabilidades"
-            label-size="sm"
-          >
-            <b-form-input
-              size="sm"
-              id="responsable-responsabilidades"
-              v-model="responsabilidades.responsable"
-            ></b-form-input>
-          </b-form-group>
-          <b-form-group
             id="coment-responsabilidades"
             label-cols-sm="4"
             label-cols-lg="3"
@@ -1355,6 +1276,63 @@
               max-rows="6"
             ></b-form-textarea>
           </b-form-group>
+
+          <b-form-group
+            id="activ-responsabilidad"
+            label-cols-sm="4"
+            label-cols-lg="3"
+            content-cols-sm
+            content-cols-lg="7"
+            description=""
+            label="Responsabilidad:"
+            label-for="responsable-responsabilidades"
+            label-size="sm"
+          >
+            <b-form-input
+              size="sm"
+              id="responsable-responsabilidades"
+              v-model="responsabilidades.responsable"
+            ></b-form-input>
+          </b-form-group>
+          <button
+            class="float-right btn btn-sm btn-success"
+            @click="addResponsable()"
+          >
+            <i class="fa fa-plus"></i> Agregar
+          </button>
+          <table class="table table-striped table-sm mt-2">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Responsable</th>
+                <th scope="col">---</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                v-for="itemc in responsabilidades.responsables"
+                :key="itemc.id"
+              >
+                <td>{{ itemc.id }}</td>
+                <td>{{ itemc.nombre }}</td>
+                <td>
+                  <button
+                    class="btn btn-sm btn-danger"
+                    @click="deleteResponsable(itemc.id)"
+                  >
+                    <i class="fa fa-minus-circle"></i>
+                  </button>
+                  <button
+                    class="btn btn-sm btn-primary"
+                    @click="editResponsable(itemc.id)"
+                    style="background: #5e72e4; border-color: #5e72e4"
+                  >
+                    <i class="fa fa-pen-square text-white"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </form>
       <template #modal-footer>
@@ -1433,23 +1411,6 @@
           </b-form-radio-group>
         </b-form-group>
         <b-form-group
-          id="activ-recursoSocial"
-          label-cols-sm="4"
-          label-cols-lg="3"
-          content-cols-sm
-          content-cols-lg="7"
-          description=""
-          label="Recurso:"
-          label-for="recurso-recursoSocial"
-          label-size="sm"
-        >
-          <b-form-input
-            size="sm"
-            id="recurso-recursoSocial"
-            v-model="recurso.recursoSocial"
-          ></b-form-input>
-        </b-form-group>
-        <b-form-group
           id="coment-recursoSocial"
           label-cols-sm="4"
           label-cols-lg="3"
@@ -1468,6 +1429,59 @@
             max-rows="6"
           ></b-form-textarea>
         </b-form-group>
+        <b-form-group
+          id="activ-recursoSocial"
+          label-cols-sm="4"
+          label-cols-lg="3"
+          content-cols-sm
+          content-cols-lg="7"
+          description=""
+          label="Recurso:"
+          label-for="recurso-recursoSocial"
+          label-size="sm"
+        >
+          <b-form-input
+            size="sm"
+            id="recurso-recursoSocial"
+            v-model="recurso.recursoSocial"
+          ></b-form-input>
+        </b-form-group>
+        <button
+          class="float-right btn btn-sm btn-success"
+          @click="addRecurso()"
+        >
+          <i class="fa fa-plus"></i> Agregar
+        </button>
+        <table class="table table-striped table-sm mt-2">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Recurso</th>
+              <th scope="col">---</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="itemc in recurso.recursoSocials" :key="itemc.id">
+              <td>{{ itemc.id }}</td>
+              <td>{{ itemc.nombre }}</td>
+              <td>
+                <button
+                  class="btn btn-sm btn-danger"
+                  @click="deleteRecurso(itemc.id)"
+                >
+                  <i class="fa fa-minus-circle"></i>
+                </button>
+                <button
+                  class="btn btn-sm btn-primary"
+                  @click="editRecurso(itemc.id)"
+                  style="background: #5e72e4; border-color: #5e72e4"
+                >
+                  <i class="fa fa-pen-square text-white"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </form>
       <template #modal-footer>
         <div class="w-100">
@@ -1790,7 +1804,6 @@
 </template>
 
 <script>
-import ConfirmModal from "../template/ConfirmModal.vue";
 import ThreeStateCheckbox from "./../../../js/components/Checkbox/ThreeStateCheckbox.vue";
 import MatrixStakeholders from "../../../js/components/Matrix/MatrixStakeholders.vue";
 import { dataInitMatrix } from "../Matrix/defaultData";
@@ -1804,6 +1817,8 @@ import {
   BFormRadio,
   BFormRadioGroup,
   BFormFile,
+  BFormSelect,
+  BFormTextarea,
 } from "bootstrap-vue";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
@@ -1835,6 +1850,7 @@ const defaultBeneficiario = {
   comunidad: "",
   descripcion: "",
   comentarios: "",
+  color: "",
   impactos: [
     {
       value: null,
@@ -1867,12 +1883,15 @@ const defaultResponsabilidad = {
       text: "Tipo B",
     },
   ],
-  responsable: "",
+  color: "",
   comentarios: "",
+  responsable: "",
+  responsables: [],
 };
 
 const defaultRecursoSocial = {
   recursoSocial: "",
+  recursoSocials: [],
   nombreActor: "",
   comentarios: "",
   actorSocial: [
@@ -1961,8 +1980,6 @@ let DragPos = { x: null, y: null, w: 1, h: 1, i: null };
 
 export default {
   components: {
-    ConfirmModal,
-
     GridLayout,
     GridItem,
     ThreeStateCheckbox,
@@ -1977,9 +1994,11 @@ export default {
     VBModal,
     BFormInput,
     BFormGroup,
-    BFormRadioGroup,
+    BFormRadio,
     BFormRadioGroup,
     BFormFile,
+    BFormSelect,
+    BFormTextarea,
   },
   props: ["data"],
   directives: {
@@ -1990,20 +2009,16 @@ export default {
     "b-form-radio": BFormRadio,
     "b-form-radio-group": BFormRadioGroup,
     "b-form-file": BFormFile,
+    "b-form-select": BFormSelect,
+    "b-form-textarea": BFormTextarea,
   },
   data() {
-    return {
-      feedbacks: this.data.feedbacks,
-
+      return {
       filter: {
-        title: "",
-        status: "All",
+        name: "",
+        brand: "All",
+        category: "All",
       },
-
-      selected_feedback: "",
-      toggleConfirmModal: false,
-      confirmModalTitle: "",
-
       visibleFormCrud: false,
       showStyle1: true,
       estilo1:
@@ -2156,12 +2171,14 @@ export default {
           },
         ],
         responsable: "",
+        responsables: [],
         comentarios: "",
       }),
       //recurso Social
       selRecursoSocial: null,
       recurso: new Form({
         recursoSocial: "",
+        recursoSocials: [],
         nombreActor: "",
         comentarios: "",
         actorSocial: [
@@ -2262,63 +2279,6 @@ export default {
     };
   },
   methods: {
-    /* COMPLETE FEEDBACK */
-    openConfirmModal(feedback) {
-      this.selected_feedback = feedback;
-      this.confirmModalTitle = "Are you sure you want to close the feedback?";
-      this.toggleConfirmModal = true;
-      document.body.style.overflow = "hidden";
-    },
-    closeConfirmModal() {
-      this.toggleConfirmModal = false;
-      document.body.style.overflow = "auto";
-    },
-    completeFeedback() {
-      axios
-        .put("/feedbacks", {
-          feedback_id: this.selected_feedback.feedback_id,
-        })
-        .then((response) => {
-          console.log(response.data);
-          this.closeConfirmModal();
-          window.location.href = "/feedbacks";
-        })
-        .catch((error) => {
-          console.log(error.response.data);
-        });
-    },
-
-    /* FILTER FEEDBACKS */
-    filterData() {
-      var filtereddata = [];
-      if (this.filter.status == "All") {
-        for (var item in this.data.feedbacks) {
-          if (
-            this.data.feedbacks[item].feedback_title
-              .toLowerCase()
-              .includes(this.filter.title.toLowerCase())
-          ) {
-            filtereddata.push(this.data.feedbacks[item]);
-          }
-        }
-        this.feedbacks = filtereddata;
-      } else if (this.filter.status != "All") {
-        for (var item in this.data.feedbacks) {
-          if (
-            this.data.feedbacks[item].feedback_title
-              .toLowerCase()
-              .includes(this.filter.title.toLowerCase()) &&
-            this.data.feedbacks[item].feedback_status
-              .toLowerCase()
-              .includes(this.filter.status.toLowerCase())
-          ) {
-            filtereddata.push(this.data.feedbacks[item]);
-          }
-        }
-        this.feedbacks = filtereddata;
-      }
-    },
-
     touch(e) {
       this.stickyFloating.push({ value: "" });
     },
@@ -2331,6 +2291,7 @@ export default {
       this.dialogs.splice(index, 1);
       if (this.selected && this.selected.id === id) this.selected = null;
     },
+    //-------------CRUD COMPONENTE-----------------
     addComponente() {
       if (this.proyecto.componente != "") {
         this.proyecto.componentes.push({
@@ -2351,6 +2312,51 @@ export default {
     editComponente(val) {
       this.editmode = true;
       this.form.componente = val.name.split("")[0];
+    },
+
+    //-------------CRUD RESPONSABLE-----------------
+    addResponsable() {
+      if (this.responsabilidades.responsable != "") {
+        this.responsabilidades.responsables.push({
+          id: this.responsabilidades.length + 1,
+          nombre: this.responsabilidades.responsable,
+        });
+        this.responsabilidades.responsable = "";
+      } else {
+        this.$swal("", "Debe agregar el nombre del responsable", "error");
+      }
+    },
+    deleteResponsable(val) {
+      const index = this.responsabilidades.responsables
+        .map((item) => item.id)
+        .indexOf(val);
+      this.responsabilidades.responsables.splice(index, 1);
+    },
+    editResponsable(val) {
+      this.editmode = true;
+      this.form.responsable = val.name.split("")[0];
+    },
+    //-------------CRUD RECURSO SOCIAL-----------------
+    addRecurso() {
+      if (this.recurso.recursoSocial != "") {
+        this.recurso.recursoSocials.push({
+          id: this.recurso.recursoSocials.length + 1,
+          nombre: this.recurso.recursoSocial,
+        });
+        this.recurso.recursoSocial = "";
+      } else {
+        this.$swal("", "Debe agregar un nombre de componente", "error");
+      }
+    },
+    deleteRecurso(val) {
+      const index = this.recurso.recursoSocials
+        .map((item) => item.id)
+        .indexOf(val);
+      this.recurso.recursoSocials.splice(index, 1);
+    },
+    editRecurso(val) {
+      this.editmode = true;
+      this.form.recursoSocial = val.name.split("")[0];
     },
     //--  Comp Comunidad
     //------------------------------
@@ -3702,16 +3708,8 @@ export default {
       this.loadProyecto();
     });
   },
-  watch: {
-    "filter.title": function (newVal, oldVal) {
-      this.filterData();
-    },
-    "filter.status": function (newVal, oldVal) {
-      this.filterData();
-    },
-  },
+  watch: {},
   mounted() {
-    // console.log(this.data);
     this.$root.$on("estilo1", () => {
       this.showStyle1 = true;
     });
@@ -3737,40 +3735,6 @@ h3 {
 }
 .card-body {
   padding: 1.25rem !important;
-}
-.form-input {
-  background-color: transparent;
-  color: #333333;
-  border: 2px solid #999999;
-  padding: 5px;
-  border-radius: 0;
-  width: 100%;
-}
-.form-input:focus {
-  background-color: transparent;
-  color: #333333;
-  border: 2px solid #333333;
-  padding: 5px;
-  border-radius: 0;
-  width: 100%;
-}
-.form-input::placeholder {
-  color: #999999;
-}
-
-.empty-img {
-  opacity: 0.8;
-}
-.product-img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-}
-.buyer-img {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  border-radius: 50%;
 }
 
 .clamp {
