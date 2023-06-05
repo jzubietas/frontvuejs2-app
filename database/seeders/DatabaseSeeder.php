@@ -31,7 +31,8 @@ class DatabaseSeeder extends Seeder
             SectorSeeder::class,
             SectorTypeSeeder::class,
             ContinentSeeder::class,
-            CountrySeeder::class
+            CountrySeeder::class,
+            ProjectSeeder::class,
         ]);
     }
 }

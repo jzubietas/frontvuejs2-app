@@ -3,7 +3,7 @@
     <div class="warpper">
       <div class="px-5 d-flex justify-content-between">
         <h4 class="d-inline-block font-weight-600">
-          <i class="fas fa-box-open mr-3"></i>Mis Proyectos
+          <i class="fas fa-box-open mr-3"></i>Mis Notas
         </h4>
         <a :href="'/admin/notes/create'">
           <div class="d-inline-block text-3">
@@ -16,7 +16,7 @@
         <form class="row">
           <div class="col-4 p-0">
             <h6 class="col-6 d-inline-block text-left pl-0">
-              Buscar por Nombre de Proyecto:
+              Buscar por Nota:
             </h6>
             <input
               v-model="filter.name"
@@ -71,7 +71,7 @@
             <thead>
               <tr>
                 <th scope="col" width="5%">No.</th>
-                <th scope="col" width="15%">Nombre</th>
+                <th scope="col" width="15%">Proyecto</th>
                 <th scope="col" width="20">Descripcion</th>
                 <th scope="col" width="10%" class="text-center">Accion</th>
               </tr>
@@ -154,13 +154,13 @@ export default {
     };
   },
   methods: {
-    /* PROJECT DETAILS */
+    /* NOTE DETAILS */
     showDetails(note) {
       this.selectedNote = note;
 
       /*var arr= [];
             for(var i in this.data.seller_ratings){
-                if(this.data.seller_ratings[i].product_id == this.selectedProduct.id){
+                if(this.data.seller_ratings[i].note_id == this.selectedNote.id){
                     arr.push(this.data.seller_ratings[i]);
                 }
             }
@@ -175,7 +175,7 @@ export default {
       document.body.style.overflow = "auto";
     },
 
-    /* DELETE PROJECT */
+    /* DELETE NOTE */
     openConfirmDeleteModal(note) {
       this.selected_note_id = note.id;
       this.confirmModalTitle =
@@ -204,7 +204,7 @@ export default {
         });
     },
 
-    /* FILTER PROJECT */
+    /* FILTER NOTE */
     filterNote() {
       var filteredproj = [];
       if (this.filter.brand == "All" && this.filter.category == "All") {
@@ -217,60 +217,60 @@ export default {
             filteredproj.push(this.data.notes[note]);
           }
         }
-        this.projects = filteredproj;
+        this.notes = filteredproj;
       } else if (this.filter.brand != "All" && this.filter.category == "All") {
-        for (var project in this.data.projects) {
+        for (var note in this.data.notes) {
           if (
-            this.data.projects[project].name
+            this.data.notes[note].name
               .toLowerCase()
               .includes(this.filter.name.toLowerCase()) &&
-            this.data.projects[project].brand.toLowerCase() ==
+            this.data.notes[note].brand.toLowerCase() ==
               this.filter.brand.toLowerCase()
           ) {
-            filteredproj.push(this.data.projects[project]);
+              filterednote.push(this.data.notes[note]);
           }
         }
-        this.projects = filteredproj;
+        this.notes = filterednote;
       } else if (this.filter.brand == "All" && this.filter.category != "All") {
-        for (var project in this.data.projects) {
+        for (var note in this.data.notes) {
           if (
-            this.data.projects[project].name
+            this.data.notes[note].name
               .toLowerCase()
               .includes(this.filter.name.toLowerCase()) &&
-            this.data.projects[project].subcategory2.toLowerCase() ==
+            this.data.notes[note].subcategory2.toLowerCase() ==
               this.filter.category.toLowerCase()
           ) {
-            filteredproj.push(this.data.projects[project]);
+            filterednote.push(this.data.notes[note]);
           }
         }
-        this.projects = filteredproj;
+        this.notes = filterednote;
       } else if (this.filter.brand != "All" && this.filter.category != "All") {
-        for (var project in this.data.projects) {
+        for (var note in this.data.notes) {
           if (
-            this.data.projects[project].name
+            this.data.notes[note].name
               .toLowerCase()
               .includes(this.filter.name.toLowerCase()) &&
-            this.data.projects[project].brand.toLowerCase() ==
+            this.data.notes[note].brand.toLowerCase() ==
               this.filter.brand.toLowerCase() &&
-            this.data.projects[project].subcategory2.toLowerCase() ==
+            this.data.notes[note].subcategory2.toLowerCase() ==
               this.filter.category.toLowerCase()
           ) {
-            filteredproj.push(this.data.projects[project]);
+            filterednote.push(this.data.notes[note]);
           }
         }
-        this.projects = filteredprod;
+        this.notes = filterednote;
       }
     },
   },
   watch: {
     "filter.name": function (newVal, oldVal) {
-      this.filterProject();
+      this.filterNote();
     },
     "filter.brand": function (newVal, oldVal) {
-      this.filterProject();
+      this.filterNote();
     },
     "filter.category": function (newVal, oldVal) {
-      this.filterProject();
+      this.filterNote();
     },
   },
   mounted() {

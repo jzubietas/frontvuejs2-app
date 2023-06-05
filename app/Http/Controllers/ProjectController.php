@@ -13,7 +13,7 @@ class ProjectController extends Controller
     public function index(){
 
         $projects = DB::table('projects')
-                            ->select(DB::raw('projects.*'))                            
+                            ->select(DB::raw('projects.*'))
                             ->get();
 
         /*$seller_ratings = DB::table('seller_ratings')
@@ -78,10 +78,10 @@ class ProjectController extends Controller
             $file_name = $product->id.'.'.$request->file('image')->extension();
             $file_path = $request->file('image')->storeAs('img/projects', $file_name, 'public');
 
-            
+
             $product->image = "/storage/".$file_path;
             $product->save();
-            
+
             return $product;
         }
     }
@@ -101,9 +101,9 @@ class ProjectController extends Controller
 
             $file_name = $product->id.'.'.$request->file('image')->extension();
             $file_path = $request->file('image')->storeAs('img/projects', $file_name, 'public');
-            
+
             $product->image = "/storage/".$file_path;
-            
+
         }
         $product->save();
         return $product;
@@ -117,7 +117,7 @@ class ProjectController extends Controller
     public function map(){
 
         $maps = DB::table('projects')
-                            ->select(DB::raw('projects.*'))                            
+                            ->select(DB::raw('projects.*'))
                             ->get();
 
         $data = [
@@ -125,5 +125,10 @@ class ProjectController extends Controller
         ];
 
         return view('map.index', ['data' => $data]);
+    }
+
+    public function recent_orders() {
+        $projects = Project::get();
+        return response()->json($projects);
     }
 }

@@ -8,9 +8,7 @@ use App\Models\Continent;
 class ContinentController extends Controller
 {
     public function recent_orders() {
-
-     $continents = Continent::get();
-
-     return response()->json($continents);
-}
+        $continents = Continent::get();
+        return response()->json($continents);
+    }
 }

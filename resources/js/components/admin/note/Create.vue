@@ -3,27 +3,27 @@
     <div class="warpper min-vh-100">
       <div class="content-warpper d-flex justify-content-between">
         <h4 class="d-inline-block font-weight-600">
-          Agregar nuevo proyecto
+          Agregar nueva nota
         </h4>
 
-        <a :href="'/admin/projects'">
+        <a :href="'/admin/notes'">
           <div class="d-inline-block text-3">
-            Mis Proyectos <i class="fas fa-arrow-right"></i>
+            Mis notas <i class="fas fa-arrow-right"></i>
           </div>
         </a>
       </div>
 
       <div class="step2 mt-5">
-        <h6>Ingrese los detalles del proyecto:</h6>
+        <h6>Ingrese los detalles de la nota:</h6>
 
         <div class="row">
           <div
             class="d-inline-flex flex-column col-6 justify-content-center align-items-center"
           >
             <img
-              id="project-image"
-              :src="preview_project_img"
-              alt="project image"
+              id="note-image"
+              :src="preview_note_img"
+              alt="note image"
               class="cursor-pointer"
               @click="selectImage"
             />
@@ -52,123 +52,46 @@
 
 
             <div class="row">
-              <div class="col-12">
-                <label for="name" class="d-block mt-4 text-7"
-                  >Nombre de la unidad de operaciones<span class="text-8">*</span></label
-                >
-                <input
-                  v-model="project.name"
-                  type="text"
-                  name="name"
-                  id="name"
-                  class="form-input"
-                  placeholder="Ingrese el nombre del proyecto*"
-                  required
-                  autofocus
-                />
-              </div>
+
+              <div class="col-6">
+
+                    <label for="projects" class="d-block mt-4 text-7"
+                    >Seleccione un proyecto</label
+                    >
+                    <select
+                        name="project-name"
+                        id="projects"
+                        class="form-control form-control-sm"
+                        v-model="note.selectedProject" ref="select"
+                        v-on:change="setProject(note.selectedProject)"
+                    >
+                        <option selected disabled value="">Seleccion</option>
+                        <option
+                            v-for="project in projects"
+                            :value="project.id"
+                            :key="project.id"
+                        >
+                            {{ project.name }}
+                        </option>
+                    </select>
+                </div>
 
               <div class="col-12">
                 <label for="description" class="d-block mt-4 text-7"
                   >Descripcion<span class="text-8">*</span></label
                 >
                 <input
-                  v-model="project.description"
+                  v-model="note.description"
                   type="text"
                   name="description"
                   id="description"
                   class="form-input"
-                  placeholder="Ingrese descripcion del proyecto*"
+                  placeholder="Ingrese descripcion de la nota*"
                   required
                 />
               </div>
-              <div class="col-6">
 
-                <label for="continents" class="d-block mt-4 text-7"
-                  >Seleccione un Continente</label
-                >
-                <select
-                  name="continent-name"
-                  id="continents"
-                  class="form-control form-control-sm"
-                  v-model="project.selectedContinent" ref="select"
-                  v-on:change="setContinent(project.selectedContinent)"
-                >
-                  <option selected disabled value="">Seleccion</option>
-                  <option
-                    v-for="continent in continents"
-                    :value="continent.id"
-                    :key="continent.id"
-                  >
-                    {{ continent.continent }}
-                  </option>
-                </select>
-              </div>
-
-              <div class="col-6">
-                <label for="countries" class="d-block mt-4 text-7"
-                  >Seleccione un país</label
-                >
-                <select
-                  name="country-name"
-                  id="countries"
-                  class="form-control form-control-sm"
-                  v-model="project.selectedCountry" ref="select"
-                  v-on:change="setCountry(project.selectedCountry)"
-                >
-                  <option selected disabled value="">Seleccion</option>
-                  <option
-                    v-for="country in countries"
-                    :value="country.id"
-                    :key="country.id"
-                  >
-                    {{ country.country }}
-                  </option>
-                </select>
-              </div>
             </div>
-
-            <label for="sectors" class="d-block mt-4 text-7"
-              >Seleccione un sector</label
-            >
-            <select
-              name="sector-name"
-              id="sectors"
-              class="form-control form-control-sm"
-              v-model="project.selectedSector" ref="select"
-              v-on:change="setSector(project.selectedSector)"
-            >
-              <option selected disabled value="">Seleccion</option>
-              <option
-                v-for="sector in sectors"
-                :value="sector.id"
-                :key="sector.id"
-              >
-                {{ sector.name }}
-              </option>
-            </select>
-
-            <label for="sector_types" class="d-block mt-4 text-7"
-              >Seleccione una subcategoria</label
-            >
-            <select
-              name="sector-type-name"
-              id="sector_types"
-              class="form-control form-control-sm"
-              v-model="project.selectedSectorType" ref="select"
-              v-on:change="setSectortype(project.selectedSectorType)"
-            >
-              <option selected disabled value="">Seleccion</option>
-              <option
-                v-for="sectortype in sectortypes"
-                :value="sectortype.id"
-                :key="sectortype.id"
-              >
-                {{ sectortype.name }}
-              </option>
-            </select>
-
-
 
             <div
               @click="submitRequest"
@@ -192,145 +115,67 @@ export default {
     return {
       selectedValue: null,
       step: 1,
-      chosen_continent: "",
-      chosen_country: "",
-      chosen_sector: "",
-      chosen_sectortype: "",
-      preview_project_img: "../../img/illustrator/uploadimage.png",
-      project: {
-        name: "",
+      chosen_project: "",
+      preview_note_img: "../../img/illustrator/uploadimage.png",
+      note: {
         description: "",
         image: "",
-        chosen_continent: "",
-        chosen_country: "",
-        chosen_sector: "",
-        chosen_sectortype: "",
-        selectedContinent: "",
-        selectedCountry: "",
-        selectedSector: "",
-        selectedSectorType: "",
-        continents: ["America", "Europa", "Asia", "Africa"],
-        countries: {
-          America: [
-            "Canada",
-            "Mexico",
-            "United States",
-            "Argentina",
-            "Brazil",
-            "Chile",
-          ],
-          Europa: ["France", "Germany", "Italy"],
-          Asia: ["China", "India", "Thailand"],
-          Africa: ["Egypt", "Nigeria"],
-        },
+        chosen_project: "",
+        selectedProject: "",
       },
       isSuccess: false,
       isError: false,
       isEmpty: false,
       errortext: "",
-      countries: [],
-      continents: [],
-      sectors: [],
-      sectortypes: [],
+      projects: [],
     };
   },
   methods: {
-    getContinents() {
+    getProjects() {
       axios
-        .get("/admin/continents/get")
+        .get("/admin/projects/get")
         .then((response) => {
-          const continents = response.data;
-          this.continents = continents;
+          const projects = response.data;
+          this.projects = projects;
         })
         .catch((error) => {
           console.log(error);
         });
     },
-    setContinent(continent) {
-      console.log(continent);
-      axios
-        .get("/admin/countries/get/" + continent)
-        .then((response) => {
-          this.project.chosen_continent = continent;
-          this.project.chosen_country = "";
-          const countries = response.data;
-          this.countries = countries;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    setCountry(country) {
-      this.project.chosen_country = country;
-    },
-    getSectors() {
-      axios
-        .get("/admin/sectors/get")
-        .then((response) => {
-          const sectors = response.data;
-          this.sectors = sectors;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    setSector(sector) {
-      this.project.chosen_sector = sector;
-    },
-    getSectorTypes() {
-      axios
-        .get("/admin/sectortypes/get")
-        .then((response) => {
-          const sectortypes = response.data;
-          this.sectortypes = sectortypes;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    setSectortype(sectortype) {
-      this.project.chosen_sectortype = sectortype;
+    setProject(project) {
+      this.note.chosen_project = project;
     },
     selectImage() {
       this.$refs.fileInput.click();
     },
     onFileChange(e) {
-      this.project.image = e.target.files[0];
-      this.preview_project_img = URL.createObjectURL(this.project.image);
+      this.note.image = e.target.files[0];
+      this.preview_note_img = URL.createObjectURL(this.note.image);
     },
     submitRequest() {
       if (
-        this.project.name == "" ||
-        this.project.description == "" ||
-        this.project.chosen_continent == "" ||
-        this.project.chosen_country == "" ||
-        this.project.chosen_sector == "" ||
-        this.project.chosen_sectortype == "" ||
-        this.project.image == ""
+        this.note.description == "" ||
+        this.note.chosen_project == "" ||
+        this.note.image == ""
       ) {
         this.isSuccess = false;
         this.isError = false;
         this.isEmpty = true;
       } else {
         let formData = new FormData();
-        formData.append("name", this.project.name);
-        formData.append("description", this.project.description);
-        formData.append("continent_id", this.project.chosen_continent);
-        formData.append("country_id", this.project.chosen_country);
-        formData.append("sector_id", this.project.chosen_sector);
-        formData.append("sector_type_id", this.project.chosen_sectortype);
-        formData.append("image", this.project.image);
+        formData.append("description", this.note.description);
+        formData.append("project_id", this.note.chosen_project);
+        formData.append("image", this.note.image);
         axios
-          .post("/admin/projects/create", formData, {
+          .post("/admin/notes/create", formData, {
             headers: {
               "Content-Type": "multipart/form-data",
             },
           })
           .then((response) => {
-            this.project.name = "";
-            this.project.description = "";
-            this.project.image = "";
-            this.preview_project_img = "../../img/illustrator/uploadimage.png";
+            this.note.description = "";
+            this.note.image = "";
+            this.preview_note_img = "../../img/illustrator/uploadimage.png";
             this.isSuccess = true;
             this.isError = false;
             this.isEmpty = false;
@@ -348,22 +193,19 @@ export default {
     },
 
     clearFields() {
-      this.project.name = "";
-      this.project.description = "";
+      this.note.description = "";
     },
   },
   computed: {
-    filteredCountries() {
+    /*filteredCountries() {
       return this.project.countries[this.project.selectedContinent] || [];
     },
     getCountries() {
       return new Set(this.countries.map((x) => x.country));
-    },
+    },*/
   },
   mounted() {
-    this.getContinents();
-    this.getSectors();
-    this.getSectorTypes();
+    this.getProjects();
   },
 };
 </script>
@@ -438,7 +280,7 @@ export default {
   width: 90%;
   margin: 0 auto;
 }
-#project-image {
+#note-image {
   width: 350px;
   height: 250px;
   object-fit: contain;

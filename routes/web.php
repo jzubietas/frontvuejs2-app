@@ -1,6 +1,7 @@
 <?php
 
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SellerController;
@@ -103,6 +104,7 @@ Route::group(['middleware' => ['auth','admin','user.active']], function () {
     Route::post('/admin/users/register', [AdminController::class, 'userCheck'])->name('admin.user.check');
     Route::post('/admin/users/create', [AdminController::class, 'userCreate'])->name('admin.user.create');
 
+    Route::get('/admin/projects/get', [ProjectController::class, 'recent_orders'])->name('admin.continent.get');
     Route::get('/admin/projects', [ProjectController::class, 'index'])->name('admin.project.index');
     Route::get('/admin/projects/create', [ProjectController::class, 'createIndex'])->name('admin.project.createindex');
     Route::post('/admin/projects/create', [ProjectController::class, 'create'])->name('admin.project.create');
