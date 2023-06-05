@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             ContinentSeeder::class,
             CountrySeeder::class,
             ProjectSeeder::class,
+            StakeholderTypesSeeder::class,
         ]);
     }
 }
