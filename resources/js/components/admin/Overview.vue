@@ -10,22 +10,30 @@
                 <h3 class="mb-0 d-flex align-items-center">
                   Ingrese unidad de operaciones
                 </h3>
-                <button
-                  type="button"
-                  class="btn base-button rounded-circle ml-2 btn-success btn-md text-left"
-                  style="height: 27px; padding: 0px 4px"
+                <base-button
+                  class="rounded-circle ml-2"
+                  style="height: 27px; padding: 0px 4px; background: #28a745"
+                  size="md"
+                  body-class="text-left"
+                  v-b-popover.hover.top="'Nueva unidad de operaciones'"
+                  type="success"
                   v-b-modal.modal-unidad-operaciones
                 >
-                  <i class="fas fa-plus"></i>
-                </button>
+                  <i
+                    class="fas fa-plus text-white"
+                    style="
+                      height: 20px;
+                      padding: 0px 4px;
+                      width: 20px;
+                      font-size: 11px;
+                    "
+                  ></i>
+                </base-button>
               </div>
             </div>
             <hr class="my-1" />
             <div class="row">
-              <div
-                class="card-body d-flex align-items-center"
-                style="gap: 10px"
-              >
+              <div class="card-body d-flex align-items-center px-0">
                 <div class="col-lg-3 d-flex flex-wrap">
                   <select
                     name="tipo"
@@ -97,131 +105,363 @@
           </div>
         </div>
       </div>
-      <div class="mt-5"></div>
     </div>
 
     <div class="mx-5 mt-4" fluid>
       <div class="row">
         <div
-          class="col-lg-4 col-md-4 col-sm-12"
+          class="col-lg-4 col-md-6 col-sm-12"
           v-for="division in submittedNames"
           :key="division.name"
         >
-          <details class="card p-3 d-flex" open>
-            <summary>
-              {{ division.name }}
-              <button
-                class="btn base-button rounded-circle ml-2 btn-success btn-md text-left"
-                style="height: 27px; padding: 0px 4px"
-                type="button"
-                v-b-modal.modal-categoria
-                @click="openModalCategory(division)"
-              >
-                <i class="fas fa-plus"></i>
-              </button>
-            </summary>
-            <details
-              class="ml-4"
-              open
-              v-for="category in division.categories"
-              :key="category"
-            >
+          <div class="position-relative">
+            <details class="card p-3 d-flex" open>
+              <!-- UNIDAD -->
               <summary>
-                {{ category }}
+                {{ division.name }}
                 <button
-                  class="btn base-button rounded-circle ml-2 btn-success btn-md text-left"
-                  style="height: 27px; padding: 0px 4px"
+                  class="btn base-button rounded-circle btn-success btn-md text-left"
+                  style="
+                    height: 20px;
+                    padding: 0px 4px;
+                    width: 20px;
+                    font-size: 11px;
+                  "
                   type="button"
                   v-b-modal.modal-categoria
                   @click="openModalCategory(division)"
                 >
                   <i class="fas fa-plus"></i>
                 </button>
+                <button
+                  class="btn base-button rounded-circle btn-danger btn-md text-left"
+                  style="
+                    height: 20px;
+                    padding: 0px 4px;
+                    width: 20px;
+                    font-size: 11px;
+                  "
+                  type="button"
+                  @click="confirmDeleteUnidad"
+                >
+                  <i class="fas fa-minus"></i>
+                </button>
               </summary>
-              <details class="ml-4">
-                <summary>Nacional</summary>
-                <p class="ml-4 mb-0">
-                  <a href="#">Nombre de proyecto</a>
-                </p>
-                <p class="ml-4 mb-0">
-                  <a href="#">Nombre de proyecto</a>
-                </p>
-              </details>
-              <details class="ml-4">
-                <summary>Particular</summary>
-                <p class="ml-4 mb-0">
-                  <a href="#">Nombre de proyecto</a>
-                </p>
-                <p class="ml-4 mb-0">
-                  <a href="#">Nombre de proyecto</a>
-                </p>
+              <details
+                class="ml-4"
+                open
+                v-for="category in division.categories"
+                :key="category"
+              >
+                <!-- NIVEL 1 -->
+                <summary>
+                  {{ category }}
+                  <button
+                    class="btn base-button rounded-circle btn-success btn-md text-left"
+                    style="
+                      height: 20px;
+                      padding: 0px 4px;
+                      width: 20px;
+                      font-size: 11px;
+                    "
+                    type="button"
+                    v-b-modal.modal-categoria
+                    @click="openModalSubCategory(division)"
+                  >
+                    <i class="fas fa-plus"></i>
+                  </button>
+                  <button
+                    class="btn base-button rounded-circle btn-danger btn-md text-left"
+                    style="
+                      height: 20px;
+                      padding: 0px 4px;
+                      width: 20px;
+                      font-size: 11px;
+                    "
+                    type="button"
+                    @click="confirmDeleteNivel()"
+                  >
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </summary>
+                <details
+                  class="ml-4"
+                  v-for="subcategory in subdivion"
+                  :key="subcategory"
+                >
+                  <!-- NIVEL 2 -->
+                  <summary>{{ subcategory }}</summary>
+                  <button
+                    class="btn base-button rounded-circle btn-success btn-md text-left"
+                    style="
+                      height: 20px;
+                      padding: 0px 4px;
+                      width: 20px;
+                      font-size: 11px;
+                    "
+                    type="button"
+                    v-b-modal.modal-subcategoria
+                    @click="openModalCategory(subdivision)"
+                  >
+                    <i class="fas fa-plus"></i>
+                  </button>
+
+                  <p class="ml-4 mb-0">
+                    <a
+                      href="#"
+                      style="
+                        text-decoration: none !important;
+                        color: black;
+                        font-size: 0.9rem;
+                      "
+                      >Nombre de proyecto</a
+                    >
+                    <button
+                      class="btn base-button rounded-circle btn-primary btn-md text-left"
+                      style="
+                        height: 20px;
+                        padding: 0px 4px;
+                        width: 20px;
+                        font-size: 11px;
+                      "
+                      type="button"
+                      @click="hideProyect"
+                    >
+                      <i class="fas fa-eye text-white"></i>
+                    </button>
+                  </p>
+                </details>
+                <details class="ml-4">
+                  <summary>
+                    Particular
+                    <button
+                      class="btn base-button rounded-circle btn-success btn-md text-left"
+                      style="
+                        height: 20px;
+                        padding: 0px 4px;
+                        width: 20px;
+                        font-size: 11px;
+                      "
+                      type="button"
+                      v-b-modal.modal-subcategoria
+                      @click="openModalCategory(subdivision)"
+                    >
+                      <i class="fas fa-plus"></i>
+                    </button>
+                    <button
+                      class="btn base-button rounded-circle btn-danger btn-md text-left"
+                      style="
+                        height: 20px;
+                        padding: 0px 4px;
+                        width: 20px;
+                        font-size: 11px;
+                      "
+                      type="button"
+                      @click="confirmDeleteNivel()"
+                    >
+                      <i class="fas fa-minus"></i>
+                    </button>
+                  </summary>
+                  <p class="ml-4 mb-0">
+                    <a
+                      href="#"
+                      style="
+                        text-decoration: none !important;
+                        color: black;
+                        font-size: 0.9rem;
+                      "
+                      >Nombre de proyecto</a
+                    >
+                    <button
+                      class="btn base-button rounded-circle btn-primary btn-md text-left"
+                      style="
+                        height: 20px;
+                        padding: 0px 4px;
+                        width: 20px;
+                        font-size: 8px;
+                      "
+                      type="button"
+                      @click="hideProyect"
+                    >
+                      <i class="fas fa-eye text-white"></i>
+                    </button>
+                  </p>
+                </details>
               </details>
             </details>
-          </details>
+          </div>
+          <div
+            class="position-absolute text-center"
+            style="
+              top: 1px;
+              right: 16px;
+              border: 1px solid rgb(236, 240, 245);
+              border-radius: 3px;
+              padding: 5px;
+            "
+          >
+            <p class="m-0">58</p>
+            <p class="m-0">Proyectos</p>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Version anterior -->
-    <div class="warpper px-5">
-      <a :href="'/admin/projects/create'">
-        <div class="d-inline-block text-3">
-          Ingrese unidad de operaciones <i class="fas fa-arrow-right"></i>
+    <!-- Unidad de operaciones -->
+    <b-modal
+      id="modal-unidad-operaciones"
+      ref="modal"
+      title="Unidad de operaciones"
+      @show="resetModal"
+      @hidden="resetModal"
+      @ok="handleOk"
+    >
+      <form ref="form" @submit.stop.prevent="handleSubmit">
+        <b-form-group
+          label="Nombre"
+          label-for="name-input"
+          invalid-feedback="Name is required"
+          :state="nameState"
+        >
+          <b-form-input
+            id="name-input"
+            v-model="name"
+            :state="nameState"
+            required
+          ></b-form-input>
+        </b-form-group>
+      </form>
+    </b-modal>
+    <!-- Niveles -->
+    <b-modal
+      id="modal-categoria"
+      ref="modal"
+      title="Agregar Nivel"
+      @show="resetModal"
+      @hidden="resetModal"
+      @ok="handleOkCategory"
+    >
+      <form ref="form" @submit.stop.prevent="handleSubmit">
+        <div class="d-flex align-items-center">
+          <b-form-checkbox v-model="checked" name="check-button" switch>
+          </b-form-checkbox>
+          <p v-if="checked" class="m-0">Proyecto</p>
+          <p v-else class="m-0">Subcategoria</p>
         </div>
-      </a>
-    </div>
-    
+
+        <b-form-group
+          label="Nombre del nivel"
+          label-for="name-input"
+          invalid-feedback="Name is required"
+          :state="nameState"
+        >
+          <b-form-input
+            id="name-input"
+            v-model="category"
+            :state="nameState"
+            required
+          ></b-form-input>
+        </b-form-group>
+      </form>
+    </b-modal>
   </div>
 </template>
 
 <script>
 import Modal from "./../Modal.vue";
+import { Form } from "vform";
+import Swal from "sweetalert2";
+import { Input, Tooltip, Popover } from "element-ui";
 import {
   BModal,
   VBModal,
+  BButton,
   BFormInput,
   BFormGroup,
   BFormRadio,
   BFormRadioGroup,
   BFormFile,
+  BInputGroup,
+  BFormCheckboxGroup,
+  BFormCheckbox,
 } from "bootstrap-vue";
 export default {
   components: {
     Modal,
     BModal,
     VBModal,
+    Popover,
+    BButton,
     BFormInput,
     BFormGroup,
-    BFormRadioGroup,
+    BFormRadio,
     BFormRadioGroup,
     BFormFile,
+    BInputGroup,
+    BFormCheckboxGroup,
+    BFormCheckbox,
+    Input,
+    Tooltip,
+    Swal,
   },
-  directives: {
-    "b-modal": Modal,
-  },
-  props: ["data"],
   directives: {
     "b-modal": VBModal,
+    "b-popover": Popover,
+    "b-button": BButton,
     "b-form-input": BFormInput,
     "b-form-group": BFormGroup,
     "b-form-radio": BFormRadio,
     "b-form-radio-group": BFormRadioGroup,
     "b-form-file": BFormFile,
+    "b-input-group": BInputGroup,
+    "b-form-checkbox-group": BFormCheckboxGroup,
+    "b-form-checkbox": BFormCheckbox,
   },
+  props: ["data"],
   data() {
     return {
+      step: 1,
+      checked: false,
+      filtroActivo: false,
+      form: new Form({
+        proyecto: "",
+        tipoP: "",
+        tipoC: "",
+        nick: "",
+      }),
+      filtro: new Form({
+        nomProyecto: "",
+        tipoPais: "-1",
+        tipoContinente: "-1",
+        dni: "",
+      }),
+      name: "",
+      division: {
+        name: "",
+        categories: [],
+      },
+      subdivision: {
+        name: "",
+        subcategories: [],
+      },
+      submittedNames: [],
+      nameState: null,
+      category: "",
+      subcategory: "",
+      categories: [],
+      subcategories: [],
+      divisionEdited: null,
+      subDivisionEdited: null,
+
       chosen_country: "",
       chosen_continent: "",
       getContinents: "",
       getCountries: "",
-
       filtroActivo: false,
-      submittedNames: [],
     };
   },
   methods: {
     //----------------------------------------------------
-
     checkFormValidity() {
       const valid = this.$refs.form.checkValidity();
       this.nameState = valid;
@@ -239,40 +479,90 @@ export default {
       bvModalEvent.preventDefault();
       this.handleSubmitCategory();
     },
+    handleOkSubCategory(bvModalEvent) {
+      bvModalEvent.preventDefault();
+      this.handleSubmitSubCategory();
+    },
     handleSubmit() {
-      // Exit when the form isn't valid
       if (!this.checkFormValidity()) {
         return;
       }
-      // Push the name to submitted names
       this.submittedNames.push(
         JSON.parse(JSON.stringify({ ...this.division, name: this.name }))
       );
-      // Hide the modal manually
       this.$nextTick(() => {
         this.$bvModal.hide("modal-unidad-operaciones");
       });
     },
     handleSubmitCategory() {
-      // Exit when the form isn't valid
       if (!this.checkFormValidity()) {
         return;
       }
       this.divisionEdited.categories.push(this.category);
-      // this.submittedNames.push(
-      //   JSON.parse(JSON.stringify({ ...this.division, name: this.name }))
-      // );
       this.$nextTick(() => {
         this.$bvModal.hide("modal-categoria");
       });
     },
+    handleSubmitSubCategory() {
+      if (!this.checkFormValidity()) {
+        return;
+      }
+      this.subDivisionEdited.subcategories.push(this.subcategory);
+      this.$nextTick(() => {
+        this.$bvModal.hide("modal-subcategoria");
+      });
+    },
     openModalCategory(division) {
       this.divisionEdited = division;
-      //   console.log("division: ", division);
     },
-
+    openModalSubCategory(subdivision) {
+      this.subDivisionEdited = subdivision;
+    },
     //----------------------------------------------------
-
+    confirmDeleteUnidad() {
+      Swal.fire({
+        title: "¿Estás seguro de que quieres eliminar esta unidad?",
+        text: "¡Se perderan todos las categorias, subcategorias y los proyectos correspondientes!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Si, eliminar!",
+        confirmButtonColor: "#dc3545",
+        cancelButtonText: "Cancel",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Perform the deletion operation
+        }
+      });
+    },
+    confirmDeleteNivel() {
+      Swal.fire({
+        title: "¿Estás seguro de que quieres eliminar esta categoria?",
+        text: "¡Se perderan todos las subcategorias y los proyectos relacionados a esta!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Si, eliminar!",
+        confirmButtonColor: "#dc3545",
+        cancelButtonText: "Cancel",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Perform the deletion operation
+        }
+      });
+    },
+    hideProyect() {
+      Swal.fire({
+        title: "Se ocultara el proyecto",
+        icon: "info",
+        html:
+          "Los usuarios con menor privilegio no podran visualizarlo",
+        showCloseButton: true,
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText: '<i class="fa fa-eye"></i> Ocultar!',
+        cancelButtonText: 'Cancelar',
+      });
+    },
+    //----------------------------------------------------
     aplicarFiltro() {
       let loader = this.$loading.show({
         container: this.fullPage ? null : this.$refs.formContainer,
@@ -290,12 +580,10 @@ export default {
     onFiltroChange() {
       this.filtroActivo = true;
     },
+    //----------------------------------------------------
   },
   mounted() {
     // console.log(this.data);
   },
 };
 </script>
-
-<style scoped>
-</style>
