@@ -726,6 +726,22 @@
               >
                 <i class="fa fa-minus-circle"></i>
               </button>
+              <button
+                v-on:click="saveStickyFloating()"
+                style="
+                  color: black;
+                  position: absolute;
+                  top: 20px;
+                  left: 176px;
+                  width: 18px;
+                  height: 18px;
+                  border: none;
+                  background: rgb(249, 239, 175);
+                  font-size: 15px;
+                "
+              >
+                <i class="fa fa-save"></i>
+              </button>
             </div>
           </div>
           <div
