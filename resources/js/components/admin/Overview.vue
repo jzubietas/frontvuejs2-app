@@ -506,7 +506,12 @@ export default {
       if (!this.checkFormValidity()) {
         return;
       }
-      this.subDivisionEdited.subcategories.push(this.subcategory);
+      const subcategory = { name: this.name };
+      if (this.checked) {
+        this.divisionEdited.categories.push(category);
+      } else {
+        this.subDivisionEdited.subcategories.push(this.subcategory);
+      }
       this.$nextTick(() => {
         this.$bvModal.hide("modal-subcategoria");
       });

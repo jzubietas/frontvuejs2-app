@@ -150,12 +150,12 @@
               <details
                 class="ml-4"
                 open
-                v-for="category in division.categories"
-                :key="category"
+                v-for="nivelBase in division.nivelesBase"
+                :key="nivelBase"
               >
                 <!-- NIVEL 1 -->
                 <summary>
-                  {{ category }}
+                  {{ nivelBase }}
                   <button
                     class="btn base-button rounded-circle btn-success btn-md text-left"
                     style="
@@ -166,7 +166,7 @@
                     "
                     type="button"
                     v-b-modal.modal-categoria
-                    @click="openModal"
+                    @click="openModalSubCategory(division)"
                   >
                     <i class="fas fa-plus"></i>
                   </button>
@@ -307,77 +307,6 @@
       </div>
     </div>
 
-    <div class="container mx-5 mt-5">
-      <div class="row">
-        <div>
-          <!-- Button to open the modal -->
-          <button type="button" class="btn btn-primary" @click="openModal">
-            Open Modal
-          </button>
-
-          <!-- Modal HTML markup -->
-          <div class="modal" tabindex="-1" role="dialog" id="myModal">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Modal Title</h5>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="form-group">
-                    <label>Enter Content:</label>
-                    <input type="text" class="form-control" v-model="content" />
-                  </div>
-                  <div class="form-check">
-                    <input
-                      type="checkbox"
-                      class="form-check-input"
-                      v-model="isCategory"
-                    />
-                    <label class="form-check-label">Display as category?</label>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    @click="displayContent"
-                  >
-                    Add Content
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card to display the modal content -->
-          <div
-            class="card mt-3"
-            v-for="(item, index) in modalContents"
-            :key="index"
-          >
-            <div class="card-body">
-              <span>{{ item.prefix }}</span
-              ><span>{{ item.content }}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <!-- Unidad de operaciones -->
     <b-modal
       id="modal-unidad-operaciones"
@@ -414,9 +343,8 @@
     >
       <form ref="form" @submit.stop.prevent="handleSubmit">
         <div class="d-flex align-items-center">
-          <b-form-checkbox v-model="isCategory" name="check-button" switch>
+          <b-form-checkbox v-model="checked" name="check-button" switch>
           </b-form-checkbox>
-          <br /><br />
           <p v-if="checked" class="m-0">Proyecto</p>
           <p v-else class="m-0">Subcategoria</p>
         </div>
@@ -429,7 +357,7 @@
         >
           <b-form-input
             id="name-input"
-            v-model="category"
+            v-model="nivelBase"
             :state="nameState"
             required
           ></b-form-input>
@@ -443,11 +371,11 @@
 import Modal from "./../Modal.vue";
 import { Form } from "vform";
 import Swal from "sweetalert2";
+import BaseButton from "./../BaseButton.vue";
 import { Input, Tooltip, Popover } from "element-ui";
 import {
   BModal,
   VBModal,
-  BButton,
   BFormInput,
   BFormGroup,
   BFormRadio,
@@ -463,7 +391,6 @@ export default {
     BModal,
     VBModal,
     Popover,
-    BButton,
     BFormInput,
     BFormGroup,
     BFormRadio,
@@ -475,11 +402,11 @@ export default {
     Input,
     Tooltip,
     Swal,
+    BaseButton,
   },
   directives: {
     "b-modal": VBModal,
     "b-popover": Popover,
-    "b-button": BButton,
     "b-form-input": BFormInput,
     "b-form-group": BFormGroup,
     "b-form-radio": BFormRadio,
@@ -507,20 +434,20 @@ export default {
         tipoContinente: "-1",
         dni: "",
       }),
-      name: "",
       division: {
         name: "",
-        categories: [],
+        nivelesBase: [],
       },
       subdivision: {
         name: "",
         subcategories: [],
       },
-      submittedNames: [],
+      name: "",
       nameState: null,
-      category: "",
+      submittedNames: [],
+      nivelBase: "",
       subcategory: "",
-      categories: [],
+      nivelesBase: [],
       subcategories: [],
       divisionEdited: null,
       subDivisionEdited: null,
@@ -530,11 +457,6 @@ export default {
       getContinents: "",
       getCountries: "",
       filtroActivo: false,
-
-      content: "",
-      isCategory: false,
-      modalContents: [],
-      prefix: "",
     };
   },
   methods: {
@@ -575,7 +497,7 @@ export default {
       if (!this.checkFormValidity()) {
         return;
       }
-      this.divisionEdited.categories.push(this.category);
+      this.divisionEdited.nivelesBase.push(this.nivelBase);
       this.$nextTick(() => {
         this.$bvModal.hide("modal-categoria");
       });
@@ -657,35 +579,9 @@ export default {
       this.filtroActivo = true;
     },
     //----------------------------------------------------
-    openModal() {
-      // show the modal
-      $("#myModal").modal("show");
-
-      // reset the modal content
-      this.content = "";
-    },
-    displayContent() {
-      // set the modal content
-      var prefixText = this.isCategory ? "categoria: " : "proyecto: ";
-      this.modalContents.push({ prefix: prefixText, content: this.content });
-
-      // hide the modal
-      $("#myModal").modal("hide");
-
-      // reset the input field
-      this.content = "";
-      this.isCategory = false;
-    },
   },
   mounted() {
     // console.log(this.data);
   },
 };
 </script>
-
-<style scoped>
-.card {
-  margin-top: 10px;
-  background-color: #eee;
-}
-</style>
