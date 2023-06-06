@@ -123,7 +123,7 @@
                   class="btn base-button rounded-circle btn-success btn-md text-left"
                   style="
                     height: 20px;
-                    padding: 0px 4px;
+                    padding: 1px;
                     width: 20px;
                     font-size: 11px;
                   "
@@ -137,7 +137,7 @@
                   class="btn base-button rounded-circle btn-danger btn-md text-left"
                   style="
                     height: 20px;
-                    padding: 0px 4px;
+                    padding: 1px;
                     width: 20px;
                     font-size: 11px;
                   "
@@ -160,7 +160,7 @@
                     class="btn base-button rounded-circle btn-success btn-md text-left"
                     style="
                       height: 20px;
-                      padding: 0px 4px;
+                      padding: 1px;
                       width: 20px;
                       font-size: 11px;
                     "
@@ -174,7 +174,7 @@
                     class="btn base-button rounded-circle btn-danger btn-md text-left"
                     style="
                       height: 20px;
-                      padding: 0px 4px;
+                      padding: 1px;
                       width: 20px;
                       font-size: 11px;
                     "
@@ -195,7 +195,7 @@
                     class="btn base-button rounded-circle btn-success btn-md text-left"
                     style="
                       height: 20px;
-                      padding: 0px 4px;
+                      padding: 1px;
                       width: 20px;
                       font-size: 11px;
                     "
@@ -219,10 +219,10 @@
                     <button
                       class="btn base-button rounded-circle btn-primary btn-md text-left"
                       style="
-                        height: 20px;
-                        padding: 0px 4px;
-                        width: 20px;
-                        font-size: 11px;
+                        height: 21px;
+                        padding: 1px;
+                        width: 22px;
+                        font-size: 10px;
                       "
                       type="button"
                       @click="hideProyect"
@@ -238,7 +238,7 @@
                       class="btn base-button rounded-circle btn-success btn-md text-left"
                       style="
                         height: 20px;
-                        padding: 0px 4px;
+                        padding: 1px;
                         width: 20px;
                         font-size: 11px;
                       "
@@ -252,7 +252,7 @@
                       class="btn base-button rounded-circle btn-danger btn-md text-left"
                       style="
                         height: 20px;
-                        padding: 0px 4px;
+                        padding: 1px;
                         width: 20px;
                         font-size: 11px;
                       "
@@ -275,10 +275,10 @@
                     <button
                       class="btn base-button rounded-circle btn-primary btn-md text-left"
                       style="
-                        height: 20px;
-                        padding: 0px 4px;
-                        width: 20px;
-                        font-size: 8px;
+                        height: 21px;
+                        padding: 1px;
+                        width: 22px;
+                        font-size: 10px;
                       "
                       type="button"
                       @click="hideProyect"
