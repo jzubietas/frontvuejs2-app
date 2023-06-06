@@ -34,18 +34,6 @@
             <hr class="my-1" />
             <div class="row">
               <div class="card-body d-flex align-items-center px-0">
-                <div class="col-lg-3 d-flex flex-wrap">
-                  <select
-                    name="tipo"
-                    id="tipoPais"
-                    class="form-control form-control-sm"
-                  >
-                    <option value="-1">Selecione el País</option>
-                    <option value="0">Perú</option>
-                    <option value="1">Alemania</option>
-                    <option value="2">Noruega</option>
-                  </select>
-                </div>
                 <div class="col-lg-3 d-flex">
                   <select
                     name="tipo"
@@ -58,6 +46,18 @@
                     <option value="2">Asia</option>
                     <option value="3">Africa</option>
                     <option value="4">Oceania</option>
+                  </select>
+                </div>
+                <div class="col-lg-3 d-flex flex-wrap">
+                  <select
+                    name="tipo"
+                    id="tipoPais"
+                    class="form-control form-control-sm"
+                  >
+                    <option value="-1">Selecione el País</option>
+                    <option value="0">Perú</option>
+                    <option value="1">Alemania</option>
+                    <option value="2">Noruega</option>
                   </select>
                 </div>
                 <div class="col-lg-3">
