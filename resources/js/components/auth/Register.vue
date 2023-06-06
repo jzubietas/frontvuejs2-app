@@ -11,27 +11,29 @@
           <h6>({{ page }}/3)</h6>
         </div>
 
-        <div
-          @click="selectRole('seller')"
-          class="rolebox d-inline-block w-50 py-4 mt-3 text-center"
-        >
-          <img
-            class="my-3"
-            :src="'../img/illustrator/seller.png'"
-            alt="Versale"
-          />
-          <h6>Empresa</h6>
-        </div>
-        <div
-          @click="selectRole('buyer')"
-          class="rolebox d-inline-block w-50 py-4 mt-3 text-center"
-        >
-          <img
-            class="my-3"
-            :src="'../img/illustrator/buyer.png'"
-            alt="Versale"
-          />
-          <h6>Individuo</h6>
+        <div class="d-flex">
+            <div
+              @click="selectRole('seller')"
+              class="rolebox d-inline-block w-50 py-4 mt-3 text-center"
+            >
+              <img
+                class="my-3"
+                :src="'../img/illustrator/seller.png'"
+                alt="Versale"
+              />
+              <h6>Empresa</h6>
+            </div>
+            <div
+              @click="selectRole('buyer')"
+              class="rolebox d-inline-block w-50 py-4 mt-3 text-center"
+            >
+              <img
+                class="my-3"
+                :src="'../img/illustrator/buyer.png'"
+                alt="Versale"
+              />
+              <h6>Individuo</h6>
+            </div>
         </div>
 
         <hr />
