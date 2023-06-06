@@ -9,8 +9,6 @@
           class="col-lg-10 col-md-10 pt-2"
           style="background-color: #f5f5f5; width: 100px; height: 100%"
         >
-          <!--Begin Column overflow: scroll;-->
-
           <div class="font-weight-light">
             <table
               class="table text-center"
@@ -695,13 +693,13 @@
               </tr>
             </table>
           </div>
-          <!--End colum-->
         </div>
+
+        <!-- STICKY NOTE FLOATING -->
         <div class="col-lg-1 col-md-1 pt-3">
           <div class="sticky-note">
             <div
               v-for="(item, i) in stickyFloating"
-              v-model="item.value"
               :key="i"
               style="position: relative"
             >

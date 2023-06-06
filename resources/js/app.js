@@ -199,6 +199,8 @@ Vue.component('CreateProject', require('./components/admin/project/Create.vue').
 Vue.component('Feedback', require('./components/feedback/Feedback.vue').default);
 Vue.component('CreateFeedback', require('./components/feedback/Create.vue').default);
 
+Vue.component('Map', require('./components/map/Map.vue').default);
+
 Vue.component('Offer', require('./components/seller/offer/Offer.vue').default);
 Vue.component('ShowOffer', require('./components/buyer/offer/Show.vue').default);
 
