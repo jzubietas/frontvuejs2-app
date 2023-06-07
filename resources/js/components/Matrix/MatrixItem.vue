@@ -153,15 +153,17 @@
 </template>
 
 <script>
+import PrimeVue from 'primevue/config';
 import ThreeStateCheckbox from "./../../components/Checkbox/ThreeStateCheckbox.vue";
 import Dialog from "primevue/dialog";
 import Button from "primevue/button";
 import TextArea from "primevue/textarea";
 import { sizeCols, nuevoItem, nuevoCategoria } from "./defaultData";
+import { BContainer } from "bootstrap-vue";
 
 export default {
   name: "MatrixItem",
-  components: { ThreeStateCheckbox, Dialog, Button, TextArea },
+  components: { ThreeStateCheckbox, Dialog, Button, TextArea, BContainer,PrimeVue },
   emits: ["updateComponent"],
   props: {
     categoryEdited: {

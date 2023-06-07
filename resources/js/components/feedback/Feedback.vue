@@ -1840,6 +1840,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import { GridLayout, GridItem } from "vue-grid-layout";
 import { Form } from "vform";
+import VueRouter from 'vue-router'
 
 const defaultProyecto = {
   nombre: "",
@@ -2017,6 +2018,7 @@ export default {
     Swal,
     BootstrapVue,
     IconsPlugin,
+    VueRouter
   },
   props: ["data"],
   directives: {
