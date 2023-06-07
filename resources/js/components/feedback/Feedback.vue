@@ -761,7 +761,7 @@
       @show="resetModal"
       @hidden="resetModal"
     >
-      <form ref="proyecto" @submit.stop.prevent="handleSubmitProyecto">
+      <form ref="proyecto" @submit.stop.prevent="handleSubmit">
         <b-form-group
           id="nombre-proyecto"
           label-cols-sm="4"
@@ -1823,6 +1823,7 @@ import MatrixStakeholders from "../../../js/components/Matrix/MatrixStakeholders
 import { dataInitMatrix } from "../Matrix/defaultData";
 import Vue from "vue";
 import Swal from "sweetalert2";
+import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import { Input, Tooltip, Popover } from "element-ui";
 import {
   BModal,
@@ -2014,6 +2015,8 @@ export default {
     BFormSelect,
     BFormTextarea,
     Swal,
+    BootstrapVue,
+    IconsPlugin,
   },
   props: ["data"],
   directives: {
@@ -2029,11 +2032,6 @@ export default {
   },
   data() {
     return {
-      filter: {
-        name: "",
-        brand: "All",
-        category: "All",
-      },
       visibleFormCrud: false,
       showStyle1: true,
       estilo1:
@@ -2271,24 +2269,10 @@ export default {
       nameState: null,
       submittedNames: [],
       editmode: false,
-      filtroActivo: false,
       perPage: 10,
       currentPage: 1,
       totalItemsRow: 10,
-
-      filtro: new Form({
-        nroFactura: "",
-        codigoCaja: "",
-        nroDocumento: "",
-        idTurno: "",
-        tiendaId: "-1",
-        formaPagoId: "-1",
-        Caja: 0,
-        fechaI: this.getDate(),
-        fechaF: this.getDate(),
-        monto: 0,
-        idCaja: "0",
-      }),
+      //------------------
       stickyFloating: [],
       checkboxValue: null,
     };
@@ -2328,7 +2312,6 @@ export default {
       this.editmode = true;
       this.form.componente = val.name.split("")[0];
     },
-
     //-------------CRUD RESPONSABLE-----------------
     addResponsable() {
       if (this.responsabilidades.responsable != "") {
@@ -2410,7 +2393,6 @@ export default {
           break;
       }
     },
-
     addStickyNoteProyecto: function (key) {
       const keys = {
         "modal-proyectos": () => {
@@ -2434,7 +2416,6 @@ export default {
       };
       keys[key] && keys[key]();
     },
-
     addStickyNotePromotor: function (key) {
       const keys = {
         "modal-promotores": () => {
@@ -2479,7 +2460,6 @@ export default {
       };
       keys[key] && keys[key]();
     },
-
     addStickyNoteResponsabilidad: function (key) {
       const keys = {
         "modal-responsabilidades": () => {
@@ -2503,7 +2483,6 @@ export default {
       };
       keys[key] && keys[key]();
     },
-
     addStickyNoteRecursoSocial: function (key) {
       const keys = {
         "modal-recursos": () => {
@@ -2527,7 +2506,6 @@ export default {
       };
       keys[key] && keys[key]();
     },
-
     addStickyNoteMecanismoDialogo: function (key) {
       const keys = {
         "modal-dialogos": () => {
@@ -2551,7 +2529,6 @@ export default {
       };
       keys[key] && keys[key]();
     },
-
     addStickyNoteGestionComunidad: function (key) {
       const keys = {
         "modal-gestiones": () => {
@@ -2575,7 +2552,6 @@ export default {
       };
       keys[key] && keys[key]();
     },
-
     addStickyNoteBeneficio: function (key) {
       const keys = {
         "modal-beneficios": () => {
@@ -2598,18 +2574,6 @@ export default {
         },
       };
       keys[key] && keys[key]();
-    },
-
-    CalcularRentabilidad() {
-      if (
-        this.rentabilidad.valorantesProyecto > 0 &&
-        this.rentabilidad.valordespuesProyecto > 0
-      ) {
-        this.rentabilidad.diferencia =
-          this.rentabilidad.valorantesProyecto -
-          this.rentabilidad.valordespuesProyecto;
-      } else {
-      }
     },
     async updateProyecto(formProyecto) {
       if (this.$route.query.hasOwnProperty("id")) {
@@ -2679,6 +2643,16 @@ export default {
             }
           });
       }
+    },
+    //------------------------------------------
+    checkFormValidity() {
+      const valid = this.$refs.form.checkValidity();
+      this.nameState = valid;
+      return valid;
+    },
+    resetModal() {
+      this.name = "";
+      this.nameState = null;
     },
     handleOk(key, formActual, bvModalEvent) {
       switch (key) {
@@ -2781,13 +2755,6 @@ export default {
           break;
       }
     },
-    //------------------------------------------
-    checkFormValidity() {
-      const valid = this.$refs.form.checkValidity();
-      this.nameState = valid;
-      return valid;
-    },
-    resetModal() {},
     handleSubmit() {
       if (!this.checkFormValidity()) {
         return;
@@ -2796,6 +2763,7 @@ export default {
         this.$bvModal.hide("modal-herr");
       });
     },
+    //------------------------------------------
     showModal(modal, id) {
       this.$refs[modal].show();
     },
@@ -2829,122 +2797,9 @@ export default {
     onFiltroChange() {
       this.filtroActivo = true;
     },
-    getDate() {
-      var currentDate = new Date();
-      return (
-        currentDate.getFullYear() +
-        "-" +
-        (currentDate.getMonth() < 9
-          ? "0" + (currentDate.getMonth() + 1)
-          : currentDate.getMonth() + 1) +
-        "-" +
-        (currentDate.getDate() < 10
-          ? "0" + currentDate.getDate()
-          : currentDate.getDate())
-      );
-    },
-    getSelectTienda() {
-      this.tiendas.forEach((element) => {
-        let data = { value: element.id, text: element.nombre };
-        this.selectTienda.push(data);
-      });
-    },
-    actorSeleccionado(item) {
-      return item + "----";
-    },
-    getHora() {
-      var currentDate = new Date();
-      var hora = currentDate.getHours();
-      var min = currentDate.getMinutes();
-      //var seg = currentDate.getSeconds();
-      return (
-        (hora < 10 ? "0" + hora : hora) + ":" + (min < 10 ? "0" + min : min)
-      );
-    },
-    calculardiferencia(hora_desde = "12:00T12:00") {
-      var hora_inicio = hora_desde.split("T")[1];
-      hora_inicio = hora_inicio.slice(0, 5);
-      //var hora_iniciop = hora_desde;
-      var hora_final = this.getHora();
-
-      if (hora_desde > hora_final) {
-        hora_inicio = hora_final;
-        hora_final = hora_desde;
-      }
-
-      // Expresión regular para comprobar formato
-      var formatohora = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
-
-      // Si algún valor no tiene formato correcto sale
-      if (!(hora_inicio.match(formatohora) && hora_final.match(formatohora))) {
-        return;
-      }
-
-      // Calcula los minutos de cada hora
-      var minutos_inicio = hora_inicio
-        .split(":")
-        .reduce((p, c) => parseInt(p) * 60 + parseInt(c));
-      var minutos_final = hora_final
-        .split(":")
-        .reduce((p, c) => parseInt(p) * 60 + parseInt(c));
-
-      // Si la hora final es anterior a la hora inicial sale
-      if (minutos_final < minutos_inicio) return;
-
-      // Diferencia de minutos
-      var diferencia = minutos_final - minutos_inicio;
-
-      // Cálculo de horas y minutos de la diferencia
-      var horas = Math.floor(diferencia / 60);
-      var minutos = diferencia % 60;
-
-      return horas + ":" + (minutos < 10 ? "0" : "") + minutos;
-    },
-    zfill(number, width = 6) {
-      var numberOutput = Math.abs(number); /* Valor absoluto del número */
-      var length = number.toString().length; /* Largo del número */
-      var zero = "0"; /* String de cero */
-
-      if (width <= length) {
-        if (number < 0) {
-          return "-" + numberOutput.toString();
-        } else {
-          return numberOutput.toString();
-        }
-      } else {
-        if (number < 0) {
-          return "-" + zero.repeat(width - length) + numberOutput.toString();
-        } else {
-          return zero.repeat(width - length) + numberOutput.toString();
-        }
-      }
-    },
-    optionsMenu(opcion) {
-      let obj = null;
-      switch (opcion) {
-        case "1":
-          obj = this.layout;
-          break;
-        case "2":
-          break;
-        case "3":
-          break;
-        case "4":
-          break;
-        case "5":
-          break;
-        case "6":
-          break;
-        case "7":
-          break;
-        case "8":
-          break;
-      }
-      return obj;
-    },
     removeItem: function (val, i) {
       let actualLayout = null;
-      this.$swal({
+      Swal.fire({
         title: "Esta Seguro de Eliminar?",
         text: "No podra revertir los cambios!",
         type: "warning",
@@ -3063,62 +2918,8 @@ export default {
         }
       }
     },
-    dragend: function (e) {
-      let parentRect = document
-        .getElementById("content")
-        .getBoundingClientRect();
-      let mouseInGrid = false;
-      if (
-        mouseXY.x > parentRect.left &&
-        mouseXY.x < parentRect.right &&
-        mouseXY.y > parentRect.top &&
-        mouseXY.y < parentRect.bottom
-      ) {
-        mouseInGrid = true;
-      }
-      if (mouseInGrid === true) {
-        try {
-          this.$refs.gridlayout.dragEvent(
-            "dragend",
-            "drop",
-            DragPos.x,
-            DragPos.y,
-            1,
-            1
-          );
-        } catch {}
-        this.layout = this.layout.filter((obj) => obj.i !== "drop");
-        if (this.layout.length == 0) {
-          this.layout.push({
-            x: DragPos.x,
-            y: DragPos.y,
-            w: 2,
-            h: 3.5,
-            i: DragPos.i,
-            data: { Nombre: "proyecto " + DragPos.i, Proyecto: this.proyecto },
-          });
-        }
-        try {
-          this.$refs.gridLayout.dragEvent(
-            "dragend",
-            DragPos.i,
-            DragPos.x,
-            DragPos.y,
-            1,
-            1
-          );
-        } catch {}
-        try {
-          this.$refs.gridLayout.$children[
-            this.layout.length
-          ].$refs.item.style.display = "block";
-        } catch {}
-      }
-    },
     //---------2--------
     drag2: function (e) {
-      //console.log(e.target.id);
-      //let layout = this.optionsMenu(e.target.id);
       let parentRect = document
         .getElementById("content2")
         .getBoundingClientRect();
@@ -3193,10 +2994,8 @@ export default {
         }
       }
     },
-
     //-----------------
     drag3: function (e) {
-      //let layout = this.optionsMenu(e.target.id);
       let parentRect = document
         .getElementById("content3")
         .getBoundingClientRect();
@@ -3273,7 +3072,6 @@ export default {
     },
     //-----------------
     drag4: function (e) {
-      //let layout = this.optionsMenu(e.target.id);
       let parentRect = document
         .getElementById("content4")
         .getBoundingClientRect();
@@ -3350,7 +3148,6 @@ export default {
     },
     //-----------------
     drag5: function (e) {
-      //let layout = this.optionsMenu(e.target.id);
       let parentRect = document
         .getElementById("content5")
         .getBoundingClientRect();
@@ -3427,7 +3224,6 @@ export default {
     },
     //-----------------
     drag6: function (e) {
-      //let layout = this.optionsMenu(e.target.id);
       let parentRect = document
         .getElementById("content6")
         .getBoundingClientRect();
@@ -3504,7 +3300,6 @@ export default {
     },
     //-----------------
     drag7: function (e) {
-      //let layout = this.optionsMenu(e.target.id);
       let parentRect = document
         .getElementById("content7")
         .getBoundingClientRect();
@@ -3581,7 +3376,6 @@ export default {
     },
     //-----------------
     drag8: function (e) {
-      //let layout = this.optionsMenu(e.target.id);
       let parentRect = document
         .getElementById("content8")
         .getBoundingClientRect();
@@ -3708,7 +3502,7 @@ export default {
             }
           });
       } else {
-        this.$swal(
+        this.swal(
           "",
           "Falta el Parametro [Id] para cargar un proyecto",
           "error"
@@ -3743,8 +3537,11 @@ export default {
   },
 };
 </script>
+<style src="vue-dialog-drag/dist/vue-dialog-drag.css"></style>
 
-<style>
+<!-- optional dialog styles, see example -->
+<style src="vue-dialog-drag/dist/dialog-styles.css"></style>
+<style scoped>
 h3 {
   font-size: 1.0625rem !important;
 }
