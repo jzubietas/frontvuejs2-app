@@ -3521,6 +3521,7 @@ export default {
   },
   watch: {},
   mounted() {
+    console.log("aqui: ", this)
     this.$root.$on("estilo1", () => {
       this.showStyle1 = true;
     });
