@@ -4,11 +4,12 @@
       <span class="py-1">
         <span
           class="d-flex justify-content-between align-items-center"
+          style=""
           :style="{
             maxWidth: `calc(${sizeCols.categories} - 15px)`,
           }"
         >
-          <span>
+          <span style="white-space: initial !important">
             {{ category.name }}
           </span>
           <Button
@@ -44,6 +45,7 @@
           v-for="(item, idx) in category.items"
           :key="'cat' + category.name + idx + item.name"
           class="category__item category__selectable"
+          style="white-space: initial !important"
         >
           <div
             class="row__matrix"
