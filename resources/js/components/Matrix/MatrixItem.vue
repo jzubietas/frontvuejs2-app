@@ -13,7 +13,7 @@
             {{ category.name }}
           </span>
           <Button
-            :title="`Agregar nueva categoría a '${category.name}'`"
+            :title="`Agregar nueva categoría`"
             class="p-button-sm p-button-info p-button-text"
             @click="openAddCategory()"
           >
@@ -117,7 +117,7 @@
             <i class="pi pi-plus mr-2"></i>
             Agregar item
           </Button>
-          ... <span :style="{ fontSize: '10px' }">{{ category.name }}</span>
+          <!-- ... <span :style="{ fontSize: '10px' }">{{ category.name }}</span> -->
         </div>
       </li>
     </ul>
@@ -267,7 +267,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .category__title {
   font-size: 12px;
   margin-bottom: 0;

@@ -32,6 +32,37 @@ export const dataInitMatrix = [
                         stakeholders: [],
                         beneficiaries: [],
                     },
+                    {
+                        name: "Ahorro en costos",
+                        stakeholders: [],
+                        beneficiaries: [],
+                    },
+                    {
+                        name: "Capitalización de activos",
+                        stakeholders: [],
+                        beneficiaries: [],
+                    },
+                    {
+                        name: "Costo evitados",
+                        stakeholders: [],
+                        beneficiaries: [],
+                    },
+                    {
+                        name: "Ahorro economico por muerte",
+                        stakeholders: [],
+                        beneficiaries: [],
+                    },
+                    {
+                        name: "Ahorro economico por enfermedad",
+                        stakeholders: [],
+                        beneficiaries: [],
+                    },
+                    {
+                        name: "Mejora de recaudación",
+                        stakeholders: [],
+                        beneficiaries: [],
+                    },
+
                 ],
             },
             {
@@ -44,6 +75,21 @@ export const dataInitMatrix = [
                     },
                     {
                         name: "Mejora de imagen corporativa",
+                        stakeholders: [],
+                        beneficiaries: [],
+                    },
+                ],
+            },
+            {
+                name: "AMBIENTAL",
+                items: [
+                    {
+                        name: "Reduccion de CO2",
+                        stakeholders: [],
+                        beneficiaries: [],
+                    },
+                    {
+                        name: "Forestación",
                         stakeholders: [],
                         beneficiaries: [],
                     },

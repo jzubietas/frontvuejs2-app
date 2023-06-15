@@ -6,8 +6,12 @@
     >
       <div class="row">
         <div
-          class="col-lg-10 col-md-10 pt-2"
-          style="background-color: #f5f5f5; width: 100px; height: 100%"
+          class="col-lg-10 col-md-10 p-0 pt-2"
+          style="
+            border: solid 15px rgb(245, 245, 245);
+            width: 100px;
+            height: 100%;
+          "
         >
           <div class="font-weight-light">
             <table
@@ -625,7 +629,7 @@
                         padding-right: 10px;
                         background: #5e72e4;
                       "
-                      v-b-popover.hover.top="'Ver Matriz'"
+                      @click="showMatriz = !showMatriz"
                     >
                       <i class="fas fa-eye text-white"></i>
                     </button>
@@ -1806,7 +1810,7 @@
     </b-modal>
 
     <!-- SECCION DE MATRIZ -->
-    <div class="container mt-4 px-0">
+    <div class="container mt-4 px-0" v-if="showMatriz">
       <MatrixStakeholders
         :key="keyMatrix"
         :stakeHolders="project.promotores"
@@ -1840,7 +1844,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import { GridLayout, GridItem } from "vue-grid-layout";
 import { Form } from "vform";
-import VueRouter from 'vue-router'
+import VueRouter from "vue-router";
 
 const defaultProyecto = {
   nombre: "",
@@ -2018,7 +2022,7 @@ export default {
     Swal,
     BootstrapVue,
     IconsPlugin,
-    VueRouter
+    VueRouter,
   },
   props: ["data"],
   directives: {
@@ -2034,6 +2038,7 @@ export default {
   },
   data() {
     return {
+      showMatriz: false,
       visibleFormCrud: false,
       showStyle1: true,
       estilo1:
@@ -3521,7 +3526,7 @@ export default {
   },
   watch: {},
   mounted() {
-    console.log("aqui: ", this)
+    console.log("aqui: ", this);
     this.$root.$on("estilo1", () => {
       this.showStyle1 = true;
     });
