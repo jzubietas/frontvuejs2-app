@@ -32,7 +32,7 @@
               </div>
             </div>
             <hr class="my-1" />
-            <div class="row">
+            <div>
               <div class="card-body d-flex align-items-center px-0">
                 <div class="col-lg-3 d-flex">
                   <select
@@ -291,13 +291,12 @@
             </details>
           </div>
           <div
-            class="position-absolute text-center"
+            class="position-absolute text-center py-1 px-3"
             style="
               top: 1px;
               right: 16px;
               border: 1px solid rgb(236, 240, 245);
               border-radius: 3px;
-              padding: 5px;
             "
           >
             <p class="m-0">58</p>
