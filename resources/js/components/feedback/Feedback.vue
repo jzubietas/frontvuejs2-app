@@ -31,7 +31,7 @@
                     <button
                       type="button"
                       class="btn base-button rounded-circle btn-success btn-sm text-left"
-                      style="padding-left: 10px; padding-right: 10px"
+                      style="padding-left: 6px; padding-right: 6px"
                       v-b-popover.hover.top="'Nuevo Proyecto'"
                       @click="addStickyNoteProyecto('modal-proyectos')"
                     >
@@ -117,7 +117,7 @@
                     <button
                       type="button"
                       class="btn base-button rounded-circle btn-success btn-sm text-left"
-                      style="padding-left: 10px; padding-right: 10px"
+                      style="padding-left: 6px; padding-right: 6px"
                       v-b-popover.hover.top="'Nuevo Promotor'"
                       @click="addStickyNotePromotor('modal-promotores')"
                     >
@@ -200,7 +200,7 @@
                     <button
                       type="button"
                       class="btn base-button rounded-circle btn-success btn-sm text-left"
-                      style="padding-left: 10px; padding-right: 10px"
+                      style="padding-left: 6px; padding-right: 6px"
                       v-b-popover.hover.top="'Nuevo Beneficiario'"
                       @click="addStickyNoteBeneficiario('modal-beneficiarios')"
                     >
@@ -282,7 +282,7 @@
                       v-b-popover.hover.top="'Nueva Responsabilidad'"
                       type="button"
                       class="btn base-button rounded-circle btn-success btn-sm text-left"
-                      style="padding-left: 10px; padding-right: 10px"
+                      style="padding-left: 6px; padding-right: 6px"
                       @click="
                         addStickyNoteResponsabilidad('modal-responsabilidades')
                       "
@@ -368,7 +368,7 @@
                     <button
                       type="button"
                       class="btn base-button rounded-circle btn-success btn-sm text-left"
-                      style="padding-left: 10px; padding-right: 10px"
+                      style="padding-left: 6px; padding-right: 6px"
                       v-b-popover.hover.top="'Nuevo Recurso Social'"
                       @click="addStickyNoteRecursoSocial('modal-recursos')"
                     >
@@ -446,7 +446,7 @@
                     <button
                       type="button"
                       class="btn base-button rounded-circle btn-success btn-sm text-left"
-                      style="padding-left: 10px; padding-right: 10px"
+                      style="padding-left: 6px; padding-right: 6px"
                       v-b-popover.hover.top="'Nuevo Mecanismo de Diálogo'"
                       @click="addStickyNoteMecanismoDialogo('modal-dialogos')"
                     >
@@ -530,7 +530,7 @@
                     <button
                       type="button"
                       class="btn base-button rounded-circle btn-success btn-sm text-left"
-                      style="padding-left: 10px; padding-right: 10px"
+                      style="padding-left: 6px; padding-right: 6px"
                       v-b-popover.hover.top="'Nueva Gestión de la Comunidad'"
                       @click="addStickyNoteGestionComunidad('modal-gestiones')"
                     >
@@ -615,7 +615,7 @@
                     <button
                       type="button"
                       class="btn base-button rounded-circle btn-success btn-sm text-left"
-                      style="padding-left: 10px; padding-right: 10px"
+                      style="padding-left: 6px; padding-right: 6px"
                       v-b-popover.hover.top="'Nuevo Beneficio'"
                       @click="addStickyNoteBeneficio('modal-beneficios')"
                     >
@@ -625,8 +625,8 @@
                       type="button"
                       class="btn base-button rounded-circle btn-sm text-left"
                       style="
-                        padding-left: 10px;
-                        padding-right: 10px;
+                        padding-left: 5px;
+                        padding-right: 5px;
                         background: #5e72e4;
                       "
                       @click="showMatriz = !showMatriz"
@@ -793,14 +793,62 @@
           label="Color stiky note:"
           label-for="colorStikyNote"
           label-size="sm"
-          class="mr-1"
+          class="mr-1 d-flex align-items-center"
         >
           <b-form-radio-group id="colorStikyNote" class="d-flex">
             <!-- Radios in the default slot will appear after any option generated radios -->
-            <b-form-radio class="input-radio"></b-form-radio>
-            <b-form-radio class="input-radio"></b-form-radio>
-            <b-form-radio class="input-radio"></b-form-radio>
-            <b-form-radio class="input-radio"></b-form-radio>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio pl-0"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-gray"
+                id="stickyNote-gray"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-blue"
+                id="stickyNote-blue"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-green"
+                id="stickyNote-green"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-purple"
+                id="stickyNote-purple"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
           </b-form-radio-group>
         </b-form-group>
         <b-form-group
@@ -1024,26 +1072,74 @@
               spellcheck="true"
             ></b-form-input>
           </b-form-group>
-          <b-form-group
-            id="colors-stiky-note"
-            label-cols-sm="4"
-            label-cols-lg="3"
-            content-cols-sm
-            content-cols-lg="7"
-            description=""
-            label="Color stiky note:"
-            label-for="colorStikyNote"
-            label-size="sm"
-            class="mr-1"
-          >
-            <b-form-radio-group id="colorStikyNote" class="d-flex">
-              <!-- Radios in the default slot will appear after any option generated radios -->
-              <b-form-radio class="input-radio"></b-form-radio>
-              <b-form-radio class="input-radio"></b-form-radio>
-              <b-form-radio class="input-radio"></b-form-radio>
-              <b-form-radio class="input-radio"></b-form-radio>
-            </b-form-radio-group>
-          </b-form-group>
+        <b-form-group
+          id="colors-stiky-note"
+          label-cols-sm="4"
+          label-cols-lg="3"
+          content-cols-sm
+          content-cols-lg="7"
+          description=""
+          label="Color stiky note:"
+          label-for="colorStikyNote"
+          label-size="sm"
+          class="mr-1 d-flex align-items-center"
+        >
+          <b-form-radio-group id="colorStikyNote" class="d-flex">
+            <!-- Radios in the default slot will appear after any option generated radios -->
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio pl-0"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-gray"
+                id="stickyNote-gray"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-blue"
+                id="stickyNote-blue"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-green"
+                id="stickyNote-green"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-purple"
+                id="stickyNote-purple"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+          </b-form-radio-group>
+        </b-form-group>
           <b-form-group
             id="desc1-promotor"
             label-cols-sm="4"
@@ -1090,7 +1186,7 @@
             <div class="col">
               <button
                 type="button"
-                class="btn btn-sm float-left"
+                class="btn btn-sm float-left btn-primary"
                 variant="primary"
                 @click="handleOk(2)"
               >
@@ -1100,7 +1196,7 @@
             <div class="col text-rigth">
               <button
                 type="button"
-                class="btn btn-sm float-right"
+                class="btn btn-sm float-right btn-danger"
                 variant="danger"
                 @click="hideModal('modal-promotor')"
               >
@@ -1139,26 +1235,74 @@
               v-model="beneficiario.actor"
             ></b-form-input>
           </b-form-group>
-          <b-form-group
-            id="colors-stiky-note"
-            label-cols-sm="4"
-            label-cols-lg="3"
-            content-cols-sm
-            content-cols-lg="7"
-            description=""
-            label="Color stiky note:"
-            label-for="colorStikyNote"
-            label-size="sm"
-            class="mr-1"
-          >
-            <b-form-radio-group id="colorStikyNote" class="d-flex">
-              <!-- Radios in the default slot will appear after any option generated radios -->
-              <b-form-radio class="input-radio"></b-form-radio>
-              <b-form-radio class="input-radio"></b-form-radio>
-              <b-form-radio class="input-radio"></b-form-radio>
-              <b-form-radio class="input-radio"></b-form-radio>
-            </b-form-radio-group>
-          </b-form-group>
+        <b-form-group
+          id="colors-stiky-note"
+          label-cols-sm="4"
+          label-cols-lg="3"
+          content-cols-sm
+          content-cols-lg="7"
+          description=""
+          label="Color stiky note:"
+          label-for="colorStikyNote"
+          label-size="sm"
+          class="mr-1 d-flex align-items-center"
+        >
+          <b-form-radio-group id="colorStikyNote" class="d-flex">
+            <!-- Radios in the default slot will appear after any option generated radios -->
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio pl-0"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-gray"
+                id="stickyNote-gray"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-blue"
+                id="stickyNote-blue"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-green"
+                id="stickyNote-green"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-purple"
+                id="stickyNote-purple"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+          </b-form-radio-group>
+        </b-form-group>
           <b-form-group
             id="desc1-beneficiario"
             label-cols-sm="4"
@@ -1255,26 +1399,74 @@
               class="mt-3"
             ></b-form-select>
           </b-form-group>
-          <b-form-group
-            id="colors-stiky-note"
-            label-cols-sm="4"
-            label-cols-lg="3"
-            content-cols-sm
-            content-cols-lg="7"
-            description=""
-            label="Color stiky note:"
-            label-for="colorStikyNote"
-            label-size="sm"
-            class="mr-1"
-          >
-            <b-form-radio-group id="colorStikyNote" class="d-flex">
-              <!-- Radios in the default slot will appear after any option generated radios -->
-              <b-form-radio class="input-radio"></b-form-radio>
-              <b-form-radio class="input-radio"></b-form-radio>
-              <b-form-radio class="input-radio"></b-form-radio>
-              <b-form-radio class="input-radio"></b-form-radio>
-            </b-form-radio-group>
-          </b-form-group>
+        <b-form-group
+          id="colors-stiky-note"
+          label-cols-sm="4"
+          label-cols-lg="3"
+          content-cols-sm
+          content-cols-lg="7"
+          description=""
+          label="Color stiky note:"
+          label-for="colorStikyNote"
+          label-size="sm"
+          class="mr-1 d-flex align-items-center"
+        >
+          <b-form-radio-group id="colorStikyNote" class="d-flex">
+            <!-- Radios in the default slot will appear after any option generated radios -->
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio pl-0"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-gray"
+                id="stickyNote-gray"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-blue"
+                id="stickyNote-blue"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-green"
+                id="stickyNote-green"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-purple"
+                id="stickyNote-purple"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+          </b-form-radio-group>
+        </b-form-group>
           <b-form-group
             id="coment-responsabilidades"
             label-cols-sm="4"
@@ -1418,14 +1610,62 @@
           label="Color stiky note:"
           label-for="colorStikyNote"
           label-size="sm"
-          class="mr-1"
+          class="mr-1 d-flex align-items-center"
         >
           <b-form-radio-group id="colorStikyNote" class="d-flex">
             <!-- Radios in the default slot will appear after any option generated radios -->
-            <b-form-radio class="input-radio"></b-form-radio>
-            <b-form-radio class="input-radio"></b-form-radio>
-            <b-form-radio class="input-radio"></b-form-radio>
-            <b-form-radio class="input-radio"></b-form-radio>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio pl-0"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-gray"
+                id="stickyNote-gray"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-blue"
+                id="stickyNote-blue"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-green"
+                id="stickyNote-green"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-purple"
+                id="stickyNote-purple"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
           </b-form-radio-group>
         </b-form-group>
         <b-form-group
@@ -1544,26 +1784,74 @@
               stacked
             ></b-form-checkbox-group>
           </b-form-group>
-          <b-form-group
-            id="colors-stiky-note"
-            label-cols-sm="4"
-            label-cols-lg="3"
-            content-cols-sm
-            content-cols-lg="7"
-            description=""
-            label="Color stiky note:"
-            label-for="colorStikyNote"
-            label-size="sm"
-            class="mr-1"
-          >
-            <b-form-radio-group id="colorStikyNote" class="d-flex">
-              <!-- Radios in the default slot will appear after any option generated radios -->
-              <b-form-radio class="input-radio"></b-form-radio>
-              <b-form-radio class="input-radio"></b-form-radio>
-              <b-form-radio class="input-radio"></b-form-radio>
-              <b-form-radio class="input-radio"></b-form-radio>
-            </b-form-radio-group>
-          </b-form-group>
+        <b-form-group
+          id="colors-stiky-note"
+          label-cols-sm="4"
+          label-cols-lg="3"
+          content-cols-sm
+          content-cols-lg="7"
+          description=""
+          label="Color stiky note:"
+          label-for="colorStikyNote"
+          label-size="sm"
+          class="mr-1 d-flex align-items-center"
+        >
+          <b-form-radio-group id="colorStikyNote" class="d-flex">
+            <!-- Radios in the default slot will appear after any option generated radios -->
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio pl-0"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-gray"
+                id="stickyNote-gray"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-blue"
+                id="stickyNote-blue"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-green"
+                id="stickyNote-green"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-purple"
+                id="stickyNote-purple"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+          </b-form-radio-group>
+        </b-form-group>
           <b-form-group
             id="comen-dialogo"
             label-cols-sm="4"
@@ -1628,26 +1916,74 @@
               stacked
             ></b-form-checkbox-group>
           </b-form-group>
-          <b-form-group
-            id="colors-stiky-note"
-            label-cols-sm="4"
-            label-cols-lg="3"
-            content-cols-sm
-            content-cols-lg="7"
-            description=""
-            label="Color stiky note:"
-            label-for="colorStikyNote"
-            label-size="sm"
-            class="mr-1"
-          >
-            <b-form-radio-group id="colorStikyNote" class="d-flex">
-              <!-- Radios in the default slot will appear after any option generated radios -->
-              <b-form-radio class="input-radio"></b-form-radio>
-              <b-form-radio class="input-radio"></b-form-radio>
-              <b-form-radio class="input-radio"></b-form-radio>
-              <b-form-radio class="input-radio"></b-form-radio>
-            </b-form-radio-group>
-          </b-form-group>
+        <b-form-group
+          id="colors-stiky-note"
+          label-cols-sm="4"
+          label-cols-lg="3"
+          content-cols-sm
+          content-cols-lg="7"
+          description=""
+          label="Color stiky note:"
+          label-for="colorStikyNote"
+          label-size="sm"
+          class="mr-1 d-flex align-items-center"
+        >
+          <b-form-radio-group id="colorStikyNote" class="d-flex">
+            <!-- Radios in the default slot will appear after any option generated radios -->
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio pl-0"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-gray"
+                id="stickyNote-gray"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-blue"
+                id="stickyNote-blue"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-green"
+                id="stickyNote-green"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-purple"
+                id="stickyNote-purple"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+          </b-form-radio-group>
+        </b-form-group>
           <b-form-group
             id="comen-compromiso"
             label-cols-sm="4"
@@ -1725,26 +2061,74 @@
               class="mt-3"
             ></b-form-select>
           </b-form-group>
-          <b-form-group
-            id="colors-stiky-note"
-            label-cols-sm="4"
-            label-cols-lg="3"
-            content-cols-sm
-            content-cols-lg="7"
-            description=""
-            label="Color stiky note:"
-            label-for="colorStikyNote"
-            label-size="sm"
-            class="mr-1"
-          >
-            <b-form-radio-group id="colorStikyNote" class="d-flex">
-              <!-- Radios in the default slot will appear after any option generated radios -->
-              <b-form-radio class="input-radio"></b-form-radio>
-              <b-form-radio class="input-radio"></b-form-radio>
-              <b-form-radio class="input-radio"></b-form-radio>
-              <b-form-radio class="input-radio"></b-form-radio>
-            </b-form-radio-group>
-          </b-form-group>
+        <b-form-group
+          id="colors-stiky-note"
+          label-cols-sm="4"
+          label-cols-lg="3"
+          content-cols-sm
+          content-cols-lg="7"
+          description=""
+          label="Color stiky note:"
+          label-for="colorStikyNote"
+          label-size="sm"
+          class="mr-1 d-flex align-items-center"
+        >
+          <b-form-radio-group id="colorStikyNote" class="d-flex">
+            <!-- Radios in the default slot will appear after any option generated radios -->
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio pl-0"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-gray"
+                id="stickyNote-gray"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-blue"
+                id="stickyNote-blue"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-green"
+                id="stickyNote-green"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+            <div
+              class="input-radio custom-control custom-control-inline custom-radio"
+            >
+              <input
+                type="radio"
+                name="colorStikyNote"
+                autocomplete="off"
+                class="stickyNote-purple"
+                id="stickyNote-purple"
+                value=""
+                style="width: 25px !important"
+              />
+            </div>
+          </b-form-radio-group>
+        </b-form-group>
           <b-form-group
             id="activ-rentabilidad"
             label-cols-sm="4"
@@ -3550,6 +3934,18 @@ export default {
 <!-- optional dialog styles, see example -->
 <style src="vue-dialog-drag/dist/dialog-styles.css"></style>
 <style scoped>
+input[type="radio"]#stickyNote-gray {
+  accent-color: #938d8d !important;
+}
+input[type="radio"]#stickyNote-blue {
+  accent-color: #838fb3 !important;
+}
+input[type="radio"]#stickyNote-green {
+  accent-color: #649795 !important;
+}
+input[type="radio"]#stickyNote-purple {
+  accent-color: #826f9f !important;
+}
 h3 {
   font-size: 1.0625rem !important;
 }
